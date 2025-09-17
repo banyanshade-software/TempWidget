@@ -52,6 +52,16 @@ class MyBleDelegate extends Ble.BleDelegate {
         Ui.requestUpdate();
     }
 
+    function startScanning() {
+            self.disconnect();
+            self.scanResults = [];
+            Ble.setScanState(Ble.SCAN_STATE_SCANNING);
+            // scan for five seconds
+            timer.start(method(:timerDone), 5000, false);
+            //self.mode = mode;
+            self.scanning = true;
+    }
+
     // helper function to see if a ScanResult has a specific service
     private function hasService(iterator, serviceUuid) {
         for (var uuid = iterator.next(); uuid != null; uuid = iterator.next()) {
@@ -68,8 +78,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
             nscan = nscan + 1;
             // find all unique devices that have the proxy or provision service
-            var res = scanResults as Ble.ScanResult;
-            System.println("scan result: " + res.getDeviceName() + " - RSSI: " + res.getRssi()    );
+            //var res = scanResults as Ble.ScanResult;
+            System.println("scan result: ");// + res.geteviceName() + " - RSSI: " + res.getRssi()    );
 
             //var serviceUuid = null;
             /*
@@ -112,7 +122,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             self.connected = false;
             self.onDisconnected();
         }
-                Ui.requestUpdate();
+        //Ui.requestUpdate();
     }
 
     // callback function for the BLE delegate (overrides superclass)
