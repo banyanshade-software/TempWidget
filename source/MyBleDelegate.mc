@@ -8,6 +8,10 @@ using Toybox.WatchUi as Ui; // to be removed later
 
 // https://github.com/garmin/connectiq-apps/blob/e26454bff1ab9f9e04dce20b7f6b6d2f9cd7155c/barrels/BluetoothMeshBarrel/source/Network/MeshDelegate.mc#L39
 
+/*
+since we want to run on Edge Explore, we stay on API level 3.1.0
+*/
+
 enum {
     MODE_PROXY,
     MODE_PROVISION
@@ -77,6 +81,8 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
 
     // overrides the superclass - filters the results
+    // https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L4
+
     function onScanResults(iterator) {
         System.println("MyBleDelegate onScanResults");
         for (;;) {
@@ -87,10 +93,24 @@ class MyBleDelegate extends Ble.BleDelegate {
             var r = scanResult as Ble.ScanResult;
             //self.scanResults.add(r);
             nscan = nscan + 1;
+            var n = r.getDeviceName();
+            if (n == null) {
+                n = "unknown";
+            }
             System.println("scan result: " 
                 //+ r.getDeviceName() 
+                + "appearance " + r.getAppearance()
+                //+ ", address " + r.getAddress()
+                + ", name " + n
                 + " - RSSI: " + r.getRssi() 
-         );
+                //+ " - uuids: " + r.getServiceUuids().toString()
+                );
+            var serv = r.getServiceUuids();
+            if (serv != null) {
+                for (var u = serv.next(); u != null; u = serv.next()) {
+                    System.println("   s_uuid: " + u.toString());
+                }
+            }
         }
         /*
         for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
@@ -122,6 +142,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         }*/
         self.needsDisplay();
     }
+
 
     // pairs with the device at the specified index of the scan results
     function connectToDevice(index) {
