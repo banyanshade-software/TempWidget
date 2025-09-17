@@ -27,14 +27,14 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     function msgstring()  {
         if (self.isScanning()) {
-            return "Scanning..."+nscan;
+            return "Scanning "+nscan;
         } else if (self.isConnected()) {
-            return "Connected"+nscan;
+            return "Connected "+nscan;
         } else {
-            return "Not connected"+nscan;
+            return "Not connected "+nscan;
         }
         
-        return "Hello, World!";
+        return "Hello, World! ";
     } 
 
     function initialize(/*networkManager*/) {
@@ -46,20 +46,24 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
     // callback function for the timer
 
+    function needsDisplay() {
+        Ui.requestUpdate();
+    }
+        
     function timerDone() {
         self.scanning = false;
         self.onScanFinished();
-        Ui.requestUpdate();
+        self.needsDisplay();
     }
 
     function startScanning() {
-            self.disconnect();
-            self.scanResults = [];
-            Ble.setScanState(Ble.SCAN_STATE_SCANNING);
-            // scan for five seconds
-            timer.start(method(:timerDone), 5000, false);
-            //self.mode = mode;
-            self.scanning = true;
+        self.disconnect();
+        self.scanResults = [];
+        Ble.setScanState(Ble.SCAN_STATE_SCANNING);
+        // scan for five seconds
+        timer.start(method(:timerDone), 5000, false);
+        //self.mode = mode;
+        self.scanning = true;
     }
 
     // helper function to see if a ScanResult has a specific service
@@ -103,7 +107,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
             }*/
         }
-        Ui.requestUpdate();
+        self.needsDisplay();
     }
 
     // pairs with the device at the specified index of the scan results
@@ -111,7 +115,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.disconnect();
         Ble.pairDevice(self.scanResults[index]);
         self.scanResults = [];
-        Ui.requestUpdate();
+        self.needsDisplay();
     }
 
     // unpair the current device
@@ -122,7 +126,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             self.connected = false;
             self.onDisconnected();
         }
-        //Ui.requestUpdate();
+        self.needsDisplay();
     }
 
     // callback function for the BLE delegate (overrides superclass)
@@ -164,7 +168,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             //self.networkManager.setCharacteristics(null, null);
             self.onDisconnected();
         }
-                Ui.requestUpdate();
+                self.needsDisplay();
 
     }
 
@@ -203,7 +207,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onScanFinished() {
-                    Ui.requestUpdate();
+            self.needsDisplay();
 
             // use the connectToDevice(index) function and the
             // devices in the scanResults array to continue connecting
@@ -211,13 +215,13 @@ class MyBleDelegate extends Ble.BleDelegate {
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onConnected() {
-            Ui.requestUpdate();
+            self.needsDisplay();
 
         }
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onDisconnected() {
-            Ui.requestUpdate();
+            self.needsDisplay();
 
         }
 
