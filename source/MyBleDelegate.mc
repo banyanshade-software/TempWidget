@@ -34,7 +34,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             return "Not connected "+nscan;
         }
         
-        return "Hello, World! ";
+        //return "Hello, World! ";
     } 
 
     function initialize(/*networkManager*/) {
@@ -79,8 +79,21 @@ class MyBleDelegate extends Ble.BleDelegate {
     // overrides the superclass - filters the results
     function onScanResults(iterator) {
         System.println("MyBleDelegate onScanResults");
-        for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
+        for (;;) {
+            var scanResult = iterator.next(); // as Ble.ScanResult;
+            if (scanResult == null) { 
+                break; 
+            }
+            var r = scanResult as Ble.ScanResult;
+            //self.scanResults.add(r);
             nscan = nscan + 1;
+            System.println("scan result: " 
+                //+ r.getDeviceName() 
+                + " - RSSI: " + r.getRssi() 
+         );
+        }
+        /*
+        for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
             // find all unique devices that have the proxy or provision service
             //var res = scanResults as Ble.ScanResult;
             System.println("scan result: ");// + res.geteviceName() + " - RSSI: " + res.getRssi()    );
@@ -105,8 +118,8 @@ class MyBleDelegate extends Ble.BleDelegate {
                 if (add) {
                     self.scanResults.add(scanResult);
                 }
-            }*/
-        }
+            }
+        }*/
         self.needsDisplay();
     }
 
@@ -168,7 +181,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             //self.networkManager.setCharacteristics(null, null);
             self.onDisconnected();
         }
-                self.needsDisplay();
+        self.needsDisplay();
 
     }
 
