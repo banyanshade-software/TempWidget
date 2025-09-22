@@ -3,6 +3,9 @@ using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
 using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.Timer;
+using Toybox.Lang;
+
+
 //using Toybox.Cryptography as Crypto;
 
 
@@ -46,4 +49,12 @@ class TempWidgetView extends Ui.View {
     function onHide() as Void {
     }
 
+    // Handle menu item selection
+    function onMenuItem(item as  Lang.Symbol) as Void {
+        if (item == "refresh") {
+            // Handle refresh action
+        } else if (item == "settings") {
+            // Handle settings action
+        }
+    }
 }
