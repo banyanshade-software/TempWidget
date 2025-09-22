@@ -96,6 +96,8 @@ class MyBleDelegate extends Ble.BleDelegate {
             var n = r.getDeviceName();
             if (n == null) {
                 n = "unknown";
+            } else {
+                System.println("got name: " + n);
             }
             System.println("scan result: " 
                 //+ r.getDeviceName() 
