@@ -119,7 +119,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 if (m == null) { break; }
                 var d = m as Lang.Dictionary;
                 // https://www.bluetooth.com/specifications/assigned-numbers/
-                System.println("   m_manuf: " + d[:companyId] );
+                System.println("   m_manuf: 0x" + d[:companyId].format("%04X") );
                 System.println("   m_data: " + d[:data].toString());
                 //System.println("   keys: " + d.keys().toString()); 
                 var cie = d[:companyId];
@@ -130,7 +130,9 @@ class MyBleDelegate extends Ble.BleDelegate {
                 } else if (cie == 0x87) {
                     System.println("   Garmin device");
                 } else {
+                    // 0x
                     // 0x0310 SGL Italia (Bose)
+                    // 0x0312 Ducere Technologies (Jabra)
                     System.println("   Other device");
                 }
                 
@@ -138,7 +140,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 var idx = msdData.size();
                 if (idx >= 2) {
                     var msd = msdData.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT16, { :offset => 0, :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                    System.println("   m_data16: " + msd);
+                    System.println("   m_data16: 0x" + msd.format("%04X") );
 
                 } else {
                     System.println("   m_data16: <2 bytes");
