@@ -113,6 +113,38 @@ class MyBleDelegate extends Ble.BleDelegate {
                     System.println("   s_uuid: " + u.toString());
                 }
             }
+            var mi = r.getManufacturerSpecificDataIterator(); 
+            for (;;) {
+                var m = mi.next();
+                if (m == null) { break; }
+                var d = m as Lang.Dictionary;
+                // https://www.bluetooth.com/specifications/assigned-numbers/
+                System.println("   m_manuf: " + d[:companyId] );
+                System.println("   m_data: " + d[:data].toString());
+                //System.println("   keys: " + d.keys().toString()); 
+                var cie = d[:companyId];
+                if (cie == 0x4C) {
+                    System.println("   Apple device");
+                } else if (cie == 0x75) {
+                    System.println("   Samsung device");
+                } else if (cie == 0x87) {
+                    System.println("   Garmin device");
+                } else {
+                    // 0x0310 SGL Italia (Bose)
+                    System.println("   Other device");
+                }
+                
+                var msdData = d[:data] as Toybox.Lang.ByteArray;
+                var idx = msdData.size();
+                if (idx >= 2) {
+                    var msd = msdData.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT16, { :offset => 0, :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                    System.println("   m_data16: " + msd);
+
+                } else {
+                    System.println("   m_data16: <2 bytes");
+                }
+            }   
+      
         }
         /*
         for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
