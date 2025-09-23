@@ -110,7 +110,14 @@ class MyBleDelegate extends Ble.BleDelegate {
             var serv = r.getServiceUuids();
             if (serv != null) {
                 for (var u = serv.next(); u != null; u = serv.next()) {
-                    System.println("   s_uuid: " + u.toString());
+                    var su = u as Ble.Uuid;
+                    System.println("   s_uuid: " + su.toString());
+                    var d = r.getServiceData(su);
+                    if (d != null) {
+                        System.println("     s_data: " + d);
+                    } else {
+                        System.println("     s_data: <none>");  
+                    }
                 }
             }
             var mi = r.getManufacturerSpecificDataIterator(); 
@@ -131,7 +138,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                     System.println("   Garmin device");
                 } else {
                     // 0x
-                    // 0x0310 SGL Italia (Bose)
+                    // 0x0310 SGL Italia (Bose??)
                     // 0x0312 Ducere Technologies (Jabra)
                     System.println("   Other device");
                 }
