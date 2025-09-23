@@ -16,7 +16,7 @@ class TempWidgetApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         Ble.setDelegate(self.bleDelegate);
-        if ((1)) { self.bleDelegate.startScanning(); }
+        if ((0)) { self.bleDelegate.startScanning(); }
         //Ble.setScanState(Ble.SCAN_STATE_SCANNING); done by belDelegate.statrtScanning()
     }
 
