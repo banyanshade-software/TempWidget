@@ -1,0 +1,2958 @@
+No line 35 in TempWidgetView.mc.
+No line 51 in TempWidgetView.mc.
+No line 50 in MyBleDelegate.mc.
+No line 135 in MyBleDelegate.mc.
+No line 149 in MyBleDelegate.mc.
+No line 182 in MyBleDelegate.mc.
+No line 295 in MyBleDelegate.mc.
+No line 306 in MyBleDelegate.mc.
+No line 322 in MyBleDelegate.mc.
+MyBleDelegate init
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 238, 2, 7, 17, 6, 162, 109, 118, 89, 100, 104, 206, 9, 207, 164, 7, 253, 114, 193, 153, 147]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -60
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -67
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 238, 2, 7, 17, 6, 162, 109, 118, 89, 100, 104, 206, 9, 207, 164, 7, 253, 114, 193, 153, 147]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -67
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -61
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -61
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -74
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -56
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -58
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -60
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -68
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -77
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -73
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -52
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -54
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 2]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -54
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -68
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -73
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -60
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -77
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -78
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 3]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -54
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -59
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -52
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -69
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -73
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -60
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -68
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -52
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -73
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -67
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -52
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 238, 3, 7, 17, 6, 136, 53, 6, 10, 35, 47, 190, 110, 231, 223, 224, 218, 53, 141, 208, 114]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -71
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -67
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -72
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -58
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -63
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -58
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -66
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 238, 3, 7, 17, 6, 136, 53, 6, 10, 35, 47, 190, 110, 231, 223, 224, 218, 53, 141, 208, 114]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -57
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -74
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 238, 3, 7, 17, 6, 136, 53, 6, 10, 35, 47, 190, 110, 231, 223, 224, 218, 53, 141, 208, 114]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -74
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -56
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -56
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -64
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -77
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 3]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -61
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -45
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -79
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 3]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -70
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 48]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 136, 99, 223, 202, 243, 16]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 51, 136, 99, 223, 202, 243, 16, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -62
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 51, 136, 99, 223, 202, 243, 16, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 51, 136, 99, 223, 202, 243, 16, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 51, 136, 99, 223, 202, 243, 16, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -56
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -65
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -67
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -56
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -60
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -58
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -61
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -76
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -58
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -51
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -54
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -74
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -44
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -75
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 1]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -48
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -77
+   m_manuf: 0x0075
+   m_data: [66, 4, 1, 128, 102, 200, 18, 11, 222, 155, 49, 202, 18, 11, 222, 155, 48, 1, 1, 0, 0, 0, 0, 0]
+   Samsung device
+   m_data16: 0x0442
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -55
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -50
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -43
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -46
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -47
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -53
+   m_manuf: 0x004C
+   m_data: [18, 2, 0, 0]
+   Apple device
+   m_data16: 0x0212
+MyBleDelegate onScanResults
+scan result: appearance 0, name unknown - RSSI: -49
+   s_uuid: 0000FEBE-0000-1000-8000-00805F9B34FB
+   m_manuf: 0x0310
+   m_data: [64, 16, 2, 49, 248, 78, 115, 19, 151, 3]
+   Other device
+   m_data16: 0x1040
+
