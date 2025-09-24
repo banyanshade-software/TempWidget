@@ -95,9 +95,46 @@ class MyBleDelegate extends Ble.BleDelegate {
             nscan = nscan + 1;
             var n = r.getDeviceName();
             if (n == null) {
-                n = "unknown";
+                continue; //n = "unknown";
             } else {
                 System.println("got name: " + n);
+                if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
+                    System.println("got a TP357 :" + n
+                        + " - RSSI: " + r.getRssi());
+
+                    // check if device already known
+                    // get raw data and process them
+                    var raw = r.getRawData();
+                    System.println("  raw data" + raw);
+                    System.println("  len=" + raw.size());
+                    /*
+                    ble_temphumid_t* tempHumidData = (ble_temphumid_t*)(advertisedDevice.getPayload() + offsetInPayload);
+                    temperature = tempHumidData->temperature / 10.f;
+                    humidity = tempHumidData->humidity;
+                    lastSeen = millis();
+                    */
+                    // https://github.com/theengs/decoder/blob/development/src/devices/TPTH_json.h#L19-L25
+                    /*
+                    var i;
+                    for (i=0; i<24; i++) {
+                        var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => i,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                        System.println("i="+i+"  t(le)="+t);
+                    }
+                    for (i=0; i<24; i++) {
+                        var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => i,     :endianness => Toybox.Lang.ENDIAN_BIG });
+                        System.println("i="+i+"  t(be)="+t);
+                    }
+                    */
+                    var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => 20,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                    var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                    var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                    
+        
+                    System.println("  temp=" + t/10.0
+                                + "  hum=" + h
+                                + "  flag=" + f.format("%02X"));
+
+                }
             }
             System.println("scan result: " 
                 //+ r.getDeviceName() 
@@ -130,6 +167,11 @@ class MyBleDelegate extends Ble.BleDelegate {
                 System.println("   m_data: " + d[:data].toString());
                 //System.println("   keys: " + d.keys().toString()); 
                 var cie = d[:companyId];
+            
+                if (cie == 0xCAC2) {
+                    // unregistered ?? Thermopro
+
+                }
                 if (cie == 0x4C) {
                     System.println("   Apple device");
                 } else if (cie == 0x75) {
