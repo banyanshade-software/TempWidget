@@ -25,6 +25,7 @@
         -->
         <iq:permissions>
             <iq:uses-permission id="BluetoothLowEnergy"/>
+            <iq:uses-permission id="PersistedContent"/>
             <iq:uses-permission id="Sensor"/>
             <iq:uses-permission id="SensorHistory"/>
         </iq:permissions>
@@ -41,7 +42,5 @@
             command palette to edit the included barrels.
         -->
         <iq:barrels/>
-        <iq:settings filename="datafield-settings.json"/>
-       
     </iq:application>
 </iq:manifest>

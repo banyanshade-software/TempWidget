@@ -4,6 +4,7 @@ using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.Timer;
 using Toybox.WatchUi as Ui; // to be removed later
 using Toybox.Application.Storage as Stor;
+using Toybox.Application.Properties as Prop;
 using Toybox.Application as App;
 //using Toybox.Cryptography as Crypto;
 
@@ -47,7 +48,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
         nscan = 0;
-        if ((1)) {
+        if ((0)) {
             var t = App.getApp().getProperty("kdev");
             if (t != null) {
                 self.knownDevices = t as Lang.Dictionary;
@@ -56,7 +57,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 System.println("no knownDevices found");
             }
             self.knownDevices["4A0D"] = "TP357_4A0D";
-            App.getApp().setProperty( "kdev", self.knownDevices);
+            //App.getApp().setProperty( "kdev", self.knownDevices);
         } else { 
             var t = Stor.getValue("knownDevices");
             if (t != null) {
