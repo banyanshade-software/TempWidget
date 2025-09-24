@@ -41,5 +41,7 @@
             command palette to edit the included barrels.
         -->
         <iq:barrels/>
+        <iq:settings filename="datafield-settings.json"/>
+       
     </iq:application>
 </iq:manifest>

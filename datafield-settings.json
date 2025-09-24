@@ -1,0 +1,45 @@
+{
+    "title": "Temperature Widget Settings",
+    "groups": [
+        {
+            "title": "View Configuration",
+            "settings": [
+                {
+                    "key": "password", 
+                    "title": "Password",
+                    "description": "Your Eversense account password",
+                    "type": "password",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "title": "Known thermometers",
+            "settings": [
+                {
+                    "key": "t1",
+                    "title": "therm1",
+                    "description": "thermometer 1",
+                    "type": "alphaNumeric",
+                    "defaultValue": "none"
+                },
+                {
+                    "key": "t2",
+                    "title": "therm2",
+                    "description": "thermometer 2",
+                    "type": "alphaNumeric",
+                    "defaultValue": "none"
+                },
+                {
+                    "key": "t3",
+                    "title": "therm3",
+                    "description": "thermometer 3",
+                    "type": "alphaNumeric",
+                    "defaultValue": "none"
+                }
+            ]
+        }
+    ]
+}
+
+
