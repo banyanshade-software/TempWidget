@@ -58,7 +58,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             }
             self.knownDevices["4A0D"] = "TP357_4A0D";
             //App.getApp().setProperty( "kdev", self.knownDevices);
-        } else { 
+        } else if ((0)) { 
             var t = Stor.getValue("knownDevices");
             if (t != null) {
                 self.knownDevices = t as Lang.Dictionary;
@@ -70,6 +70,12 @@ class MyBleDelegate extends Ble.BleDelegate {
                 self.knownDevices["4A0D"] = "TP357_4A0D";
                 Stor.setValue(  "knownDevices", self.knownDevices);
             }
+        } else {
+            var t = Prop.getValue("k1");
+            System.println("property k1: " + t);
+            Prop.setValue("k1", "new k1 value"); 
+            var t2 = Prop.getValue("k1");
+            System.println("property k1 after set: " + t2);   
         }
         //self.networkManager = networkManager;
         //self.networkManager.setCallback(self.weak());

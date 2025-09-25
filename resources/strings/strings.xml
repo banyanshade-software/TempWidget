@@ -5,7 +5,8 @@
     <string id="label_1">label 1</string>
     <string id="menu_label_1">menu 1</string>
     <string id="menu_label_2">menu 2</string>
-    <string id="k1">k 1</string>
+    <string id="k1">k1</string>
+    <string id="k1prompt">k1_prompt</string>
     <string id="kdev">kdev</string>
     <string id="kdevTitle">kdevTitle</string>
     <string id="kdevPrompt">kdevPrompt</string>
