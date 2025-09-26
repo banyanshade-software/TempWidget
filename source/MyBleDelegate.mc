@@ -3,7 +3,9 @@ using Toybox.Lang;
 using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.Timer;
 using Toybox.WatchUi as Ui; // to be removed later
-
+using Toybox.Application.Storage as Stor;
+using Toybox.Application.Properties as Prop;
+using Toybox.Application as App;
 //using Toybox.Cryptography as Crypto;
 
 // https://github.com/garmin/connectiq-apps/blob/e26454bff1ab9f9e04dce20b7f6b6d2f9cd7155c/barrels/BluetoothMeshBarrel/source/Network/MeshDelegate.mc#L39
@@ -28,10 +30,11 @@ class MyBleDelegate extends Ble.BleDelegate {
     hidden var connected = false;
     hidden var scanning = false;
     var nscan = 0;
+    var knownDevices = {};
 
     function msgstring()  {
         if (self.isScanning()) {
-            return "Scanning "+nscan;
+            return "Scan "+nscan;
         } else if (self.isConnected()) {
             return "Connected "+nscan;
         } else {
@@ -45,6 +48,35 @@ class MyBleDelegate extends Ble.BleDelegate {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
         nscan = 0;
+        if ((0)) {
+            var t = App.getApp().getProperty("kdev");
+            if (t != null) {
+                self.knownDevices = t as Lang.Dictionary;
+                System.println("loaded knownDevices: " + self.knownDevices.toString());
+            } else {
+                System.println("no knownDevices found");
+            }
+            self.knownDevices["4A0D"] = "TP357_4A0D";
+            //App.getApp().setProperty( "kdev", self.knownDevices);
+        } else if ((0)) { 
+            var t = Stor.getValue("knownDevices");
+            if (t != null) {
+                self.knownDevices = t as Lang.Dictionary;
+                System.println("loaded knownDevices: " + self.knownDevices.toString());
+            } else {
+                System.println("no knownDevices found");
+            }
+            if ((1)) {
+                self.knownDevices["4A0D"] = "TP357_4A0D";
+                Stor.setValue(  "knownDevices", self.knownDevices);
+            }
+        } else {
+            var t = Prop.getValue("k1");
+            System.println("property k1: " + t);
+            Prop.setValue("k1", "new k1 value"); 
+            var t2 = Prop.getValue("k1");
+            System.println("property k1 after set: " + t2);   
+        }
         //self.networkManager = networkManager;
         //self.networkManager.setCallback(self.weak());
     }
