@@ -1,0 +1,77 @@
+using Toybox.System;
+using Toybox.Lang;
+//using Toybox.WatchUi as Ui; // to be removed later
+using Toybox.Application.Storage as Stor;
+using Toybox.Application.Properties as Prop;
+
+
+class ThermoInfo {
+    public var key  as Lang.String;
+    public var name as Lang.String;
+    public var selected as Lang.Boolean;
+    public var lastTemperature;
+    public var lastHumidity;
+
+    function initialize(k,n,s) {
+        self.key = k;
+        self.name = n;
+        self.selected = s;
+    }
+    
+    function setTemperature(t,h) as Void {
+        self.lastTemperature = t;
+        self.lastHumidity = h;
+    }
+}
+
+
+const num_thermo = 4;
+class NameMapper  {
+    protected var knownDevices = [];
+    function initialize() {
+        for (var i=0; i<num_thermo; i++) {
+            var n = "th"+i+"_key";
+            var k = Prop.getValue(n);
+            n = "th"+i+"_name";
+            var nm = Prop.getValue(n);
+            n = "th"+i+"_usable";
+            var s = Prop.getValue(n);
+            if ((k == null)||(nm == null)) {
+                break;
+            } 
+            if (s==null) {
+                s=true;
+            } 
+            self.knownDevices[i] = new ThermoInfo(n, nm, s);
+        }
+    }
+
+    function getThermo(k)
+    {
+        for (var i=0; i<num_thermo; i++) {
+            var th = knownDevices[i];
+            if (th == null) {
+                break;
+            }
+            if (th.key.equals(k)) {
+                return th;
+            } 
+        }
+        return null;
+    } 
+
+
+    function addThermo(k)
+    {
+        return null; //TODO
+    } 
+    function setVal(k, temp, hum)
+    {
+        var th = getThermo(k);
+        if (th == null) {
+            th = addThermo(k);
+            if (th == null) { return; }
+        }
+        th.setTemperature(temp, hum);
+    } 
+}

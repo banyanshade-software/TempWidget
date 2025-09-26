@@ -6,11 +6,15 @@ using Toybox.BluetoothLowEnergy as Ble;
 
 class TempWidgetApp extends Application.AppBase {
     hidden var bleDelegate;
+    hidden var mapper;
     hidden var view;
-    hidden var menudelegate; 
+    hidden var menudelegate;
+
+
     function initialize() {
         AppBase.initialize();
         self.bleDelegate = new MyBleDelegate();
+        self.mapper = new NameMapper();
     }
 
     // onStart() is called on application start up
