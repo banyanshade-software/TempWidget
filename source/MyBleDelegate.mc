@@ -71,7 +71,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 Stor.setValue(  "knownDevices", self.knownDevices);
             }
         } else {*/
-        if ((0)) {
+        if ((0)) { // to be removed
             try {
                 var t = Prop.getValue("k1");
                 System.println("property k1: " + t);

@@ -17,6 +17,7 @@ class ThermoInfo {
         self.key = k;
         self.name = n;
         self.selected = s;
+        System.println("new ThermoInfo");
     }
     
     function setTemperature(t,h) as Void {
@@ -28,22 +29,24 @@ class ThermoInfo {
 
 const num_thermo = 4;
 class NameMapper  {
-    protected var knownDevices = [] as  Lang.Array<ThermoInfo>;
+    protected var knownDevices  as  Lang.Array<ThermoInfo>;
     function initialize() {
+        knownDevices =  new  Lang.Array<ThermoInfo>[num_thermo];
         for (var i=0; i<num_thermo; i++) {
-            var n = "th"+i+"_key";
-            var k = Prop.getValue(n);
-            n = "th"+i+"_name";
+            var kn = "th"+i+"_key";
+            var k = Prop.getValue(kn);
+            var n = "th"+i+"_name";
             var nm = Prop.getValue(n);
             n = "th"+i+"_usable";
             var s = Prop.getValue(n);
-            if ((k == null)||(nm == null)) {
+            if ((k == null)||(nm == null) /*|| nm.equals("")*/) {
                 break;
             } 
             if (s==null) {
                 s=true;
             } 
-            self.knownDevices[i] = new ThermoInfo(n, nm, s);
+            var th = new ThermoInfo(k, nm, s);
+            self.knownDevices[i] = th;
         }
     }
 
@@ -79,10 +82,10 @@ class NameMapper  {
         }
         // not found, try unselected
         if (iunsel >= 0) {
-            var th = knownDevices[i];
-             th.key = k;
-             th.name = k;
-             th.selected = true;
+            var th = knownDevices[iunsel];
+            th.key = k;
+            th.name = k;
+            th.selected = true;
             return th;
         }
         // cannot add

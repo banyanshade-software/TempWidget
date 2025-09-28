@@ -1,4 +1,21 @@
 
 <properties>
   <property id="k1" type="string">hop hop hop</property>
+  <property id="th0_key" type="string">themometer 0</property>
+  <property id="th1_key" type="string">themometer 1</property>
+  <property id="th2_key" type="string">themometer 2</property>
+  <property id="th3_key" type="string">themometer 3</property>
+  <property id="th4_key" type="string">themometer 4</property>
+  <property id="th0_name" type="string"></property>
+  <property id="th1_name" type="string"></property>
+  <property id="th2_name" type="string"></property>
+  <property id="th3_name" type="string"></property>
+  <property id="th4_name" type="string"></property>
+  <property id="th0_usable" type="boolean">false</property>
+  <property id="th1_usable" type="boolean">false</property>
+  <property id="th2_usable" type="boolean">false</property>
+  <property id="th3_usable" type="boolean">false</property>
+  <property id="th4_usable" type="boolean">false</property>
+ 
+
 </properties>
