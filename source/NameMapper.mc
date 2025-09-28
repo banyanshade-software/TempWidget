@@ -54,7 +54,7 @@ class NameMapper  {
     {
         for (var i=0; i<num_thermo; i++) {
             var th = knownDevices[i];
-            if (th == null) {
+            if ((th == null) || (th.name == null) || (th.name.equals(""))) {
                 break;
             }
             if (th.key.equals(k)) {

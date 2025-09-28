@@ -21,7 +21,7 @@ class TempWidgetView extends Ui.View {
 
     // Load your resources here
     function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.MainLayout(dc));
+        setLayout(Rez.Layouts.WidgetLayout(dc));
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -34,6 +34,7 @@ class TempWidgetView extends Ui.View {
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+        if ((1)) { return; }
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
