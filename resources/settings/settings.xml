@@ -5,4 +5,39 @@
   <setting propertyKey="@Properties.k1"  title="k1str"  prompt="prompt">
     <settingConfig type="alphaNumeric" required="true" />
   </setting>
+
+  <setting propertyKey="@Properties.th0_name"  title="th#0 namme"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+   <setting propertyKey="@Properties.th0_usable"  title="th#0 selected"  prompt="prompt">
+    <settingConfig type="boolean" required="true" />
+  </setting>
+
+  <setting propertyKey="@Properties.th1_name"  title="th#1 namme"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+   <setting propertyKey="@Properties.th1_usable"  title="th#1 selected"  prompt="prompt">
+    <settingConfig type="boolean" required="true" />
+  </setting>
+
+  <setting propertyKey="@Properties.th2_name"  title="th#2 namme"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+   <setting propertyKey="@Properties.th2_usable"  title="th#2 selected"  prompt="prompt">
+    <settingConfig type="boolean" required="true" />
+  </setting>
+
+  <setting propertyKey="@Properties.th3_name"  title="th#3 namme"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+   <setting propertyKey="@Properties.th3_usable"  title="th#3 selected"  prompt="prompt">
+    <settingConfig type="boolean" required="true" />
+  </setting>
+
+  <setting propertyKey="@Properties.th4_name"  title="th#4 namme"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+   <setting propertyKey="@Properties.th4_usable"  title="th#4 selected"  prompt="prompt">
+    <settingConfig type="boolean" required="true" />
+  </setting>
 </settings>
