@@ -23,7 +23,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     private var timer = new Timer.Timer();
     //public var networkManager;
 
-    hidden var scanResults = [];
+    hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
     hidden var mode = null;
     hidden var device;
     hidden var currentPacket;
@@ -48,7 +48,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
         nscan = 0;
-        if ((0)) {
+        /*if ((0)) {
             var t = App.getApp().getProperty("kdev");
             if (t != null) {
                 self.knownDevices = t as Lang.Dictionary;
@@ -70,13 +70,23 @@ class MyBleDelegate extends Ble.BleDelegate {
                 self.knownDevices["4A0D"] = "TP357_4A0D";
                 Stor.setValue(  "knownDevices", self.knownDevices);
             }
-        } else {
-            var t = Prop.getValue("k1");
-            System.println("property k1: " + t);
-            Prop.setValue("k1", "new k1 value"); 
-            var t2 = Prop.getValue("k1");
-            System.println("property k1 after set: " + t2);   
+        } else {*/
+        if ((0)) {
+            try {
+                var t = Prop.getValue("k1");
+                System.println("property k1: " + t);
+                Prop.setValue("k1", "new k1 value"); 
+                var t2 = Prop.getValue("k1");
+                System.println("property k1 after set: " + t2);   
+            } catch(ex) {
+                System.println("exception " + ex);   
+
+            } finally {
+
+            }
         }
+           
+        //}
         //self.networkManager = networkManager;
         //self.networkManager.setCallback(self.weak());
     }
@@ -264,7 +274,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     // pairs with the device at the specified index of the scan results
     function connectToDevice(index) {
         self.disconnect();
-        Ble.pairDevice(self.scanResults[index]);
+        Ble.pairDevice(self.scanResults[index] as  Ble.ScanResult);
         self.scanResults = [];
         self.needsDisplay();
     }

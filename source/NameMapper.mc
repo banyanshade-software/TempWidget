@@ -3,6 +3,7 @@ using Toybox.Lang;
 //using Toybox.WatchUi as Ui; // to be removed later
 using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
+import Toybox.Test;
 
 
 class ThermoInfo {
@@ -27,7 +28,7 @@ class ThermoInfo {
 
 const num_thermo = 4;
 class NameMapper  {
-    protected var knownDevices = [];
+    protected var knownDevices = [] as  Lang.Array<ThermoInfo>;
     function initialize() {
         for (var i=0; i<num_thermo; i++) {
             var n = "th"+i+"_key";
@@ -63,7 +64,29 @@ class NameMapper  {
 
     function addThermo(k)
     {
-        return null; //TODO
+        var iunsel = -1;
+        for (var i = 0; i<num_thermo; i++) {
+            var th = knownDevices[i];
+            if ((th==null) || (th.name==null)) {
+                th.key = k;
+                th.name = k;
+                th.selected = true;
+                return th;
+            }
+            if (th.selected == false) {
+                iunsel = i;
+            }
+        }
+        // not found, try unselected
+        if (iunsel >= 0) {
+            var th = knownDevices[i];
+             th.key = k;
+             th.name = k;
+             th.selected = true;
+            return th;
+        }
+        // cannot add
+        return null;
     } 
     function setVal(k, temp, hum)
     {
@@ -74,4 +97,13 @@ class NameMapper  {
         }
         th.setTemperature(temp, hum);
     } 
+}
+
+
+(:test)
+function test1(logger as Logger) as Lang.Boolean {
+    var m = new NameMapper();
+    logger.debug("hop");
+    m.setVal("toto", 25.0, 10);
+    return true;
 }

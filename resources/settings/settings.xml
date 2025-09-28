@@ -1,0 +1,8 @@
+
+
+
+<settings>
+  <setting propertyKey="@Properties.k1"  title="k1str"  prompt="prompt">
+    <settingConfig type="alphaNumeric" required="true" />
+  </setting>
+</settings>
