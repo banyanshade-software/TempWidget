@@ -5,6 +5,7 @@ using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
 import Toybox.Test;
 
+using Toybox.WatchUi as Ui; // to be removed later
 
 class ThermoInfo {
     public var key  as Lang.String;
@@ -48,6 +49,11 @@ class NameMapper  {
             var th = new ThermoInfo(k, nm, s);
             self.knownDevices[i] = th;
         }
+    }
+
+
+    function needsDisplay() {
+        Ui.requestUpdate();
     }
 
     function getThermo(k)
@@ -99,6 +105,9 @@ class NameMapper  {
             if (th == null) { return; }
         }
         th.setTemperature(temp, hum);
+        if (th.selected) {
+            self.needsDisplay();
+        }
     } 
 }
 
