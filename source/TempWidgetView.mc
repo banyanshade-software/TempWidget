@@ -56,12 +56,13 @@ class TempWidgetView extends Ui.View {
             tt = t as Ui.Text;
             tt.setText(hum+" %");
         }
+        /*
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
                     Graphics.FONT_MEDIUM, self.bled.msgstring(),
                     Graphics.TEXT_JUSTIFY_CENTER);
-    
+        */
 
     }
 
