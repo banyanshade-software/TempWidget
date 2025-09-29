@@ -22,7 +22,7 @@ enum {
 class MyBleDelegate extends Ble.BleDelegate {
     private var timer = new Timer.Timer();
     //public var networkManager;
-
+    protected var namemapper;
     hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
     hidden var mode = null;
     hidden var device;
@@ -44,33 +44,12 @@ class MyBleDelegate extends Ble.BleDelegate {
         //return "Hello, World! ";
     } 
 
-    function initialize(/*networkManager*/) {
+    function initialize(nm) {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
+        self.namemapper = nm;
         nscan = 0;
-        /*if ((0)) {
-            var t = App.getApp().getProperty("kdev");
-            if (t != null) {
-                self.knownDevices = t as Lang.Dictionary;
-                System.println("loaded knownDevices: " + self.knownDevices.toString());
-            } else {
-                System.println("no knownDevices found");
-            }
-            self.knownDevices["4A0D"] = "TP357_4A0D";
-            //App.getApp().setProperty( "kdev", self.knownDevices);
-        } else if ((0)) { 
-            var t = Stor.getValue("knownDevices");
-            if (t != null) {
-                self.knownDevices = t as Lang.Dictionary;
-                System.println("loaded knownDevices: " + self.knownDevices.toString());
-            } else {
-                System.println("no knownDevices found");
-            }
-            if ((1)) {
-                self.knownDevices["4A0D"] = "TP357_4A0D";
-                Stor.setValue(  "knownDevices", self.knownDevices);
-            }
-        } else {*/
+        
         if ((0)) { // to be removed
             try {
                 var t = Prop.getValue("k1");
@@ -85,10 +64,6 @@ class MyBleDelegate extends Ble.BleDelegate {
 
             }
         }
-           
-        //}
-        //self.networkManager = networkManager;
-        //self.networkManager.setCallback(self.weak());
     }
     // callback function for the timer
 
@@ -127,6 +102,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     function onScanResults(iterator) {
         System.println("MyBleDelegate onScanResults");
+        var need = false;
         for (;;) {
             var scanResult = iterator.next(); // as Ble.ScanResult;
             if (scanResult == null) { 
@@ -176,8 +152,16 @@ class MyBleDelegate extends Ble.BleDelegate {
                                 + "  hum=" + h
                                 + "  flag=" + f.format("%02X"));
 
+                    self.namemapper.setVal(n, t/10.0, h);
+                    need = true;
                 }
             }
+        }
+        if (need) {
+            self.needsDisplay();
+        } 
+    }
+            /*
             System.println("scan result: " 
                 //+ r.getDeviceName() 
                 + "appearance " + r.getAppearance()
@@ -198,7 +182,8 @@ class MyBleDelegate extends Ble.BleDelegate {
                         System.println("     s_data: <none>");  
                     }
                 }
-            }
+            }*/
+            /*
             var mi = r.getManufacturerSpecificDataIterator(); 
             for (;;) {
                 var m = mi.next();
@@ -239,6 +224,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             }   
       
         }
+        */
         /*
         for (var scanResult = iterator.next(); scanResult != null; scanResult = iterator.next()) {
             // find all unique devices that have the proxy or provision service
@@ -267,8 +253,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
             }
         }*/
-        self.needsDisplay();
-    }
+       
 
 
     // pairs with the device at the specified index of the scan results

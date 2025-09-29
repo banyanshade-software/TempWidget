@@ -125,6 +125,8 @@ class NameMapper  {
             if (th == null) { return; }
         }
         th.setTemperature(temp, hum);
+        System.println("th temp:"+th.lastTemperature);
+        System.println("th temp:"+th.lastHumidity);
         if (th.selected) {
             self.needsDisplay();
         }

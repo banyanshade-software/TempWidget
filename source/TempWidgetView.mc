@@ -47,9 +47,14 @@ class TempWidgetView extends Ui.View {
             }
             var tht = th as ThermoInfo;
             var tt = t as Ui.Text;
-            tt.setText("#"+i+" : "+tht.lastTemperature+" °C");
-            
-            //Rez.Layouts.WidgetLayout()
+            var temp = tht.lastTemperature;
+            var hum = tht.lastHumidity;
+
+            tt.setText("#"+i+" : "+temp+" °C");
+            n = "th" + i + "hum";
+            t = self.findDrawableById(n);
+            tt = t as Ui.Text;
+            tt.setText(hum+" %");
         }
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);

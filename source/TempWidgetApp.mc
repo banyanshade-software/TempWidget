@@ -13,14 +13,15 @@ class TempWidgetApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
-        self.bleDelegate = new MyBleDelegate();
         self.mapper = new NameMapper();
+
+        self.bleDelegate = new MyBleDelegate(self.mapper);
     }
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         Ble.setDelegate(self.bleDelegate);
-        if ((0)) { self.bleDelegate.startScanning(); }
+        if ((1)) { self.bleDelegate.startScanning(); }
         //Ble.setScanState(Ble.SCAN_STATE_SCANNING); done by belDelegate.statrtScanning()
     }
 
