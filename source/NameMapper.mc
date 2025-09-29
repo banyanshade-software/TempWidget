@@ -79,8 +79,8 @@ class NameMapper  {
             if (self.iteratorIndex >= num_thermo) {
                 return null;
             }
-            self.iteratorIndex++;
             var th = knownDevices[self.iteratorIndex];
+            self.iteratorIndex++;
             if (th == null) {
                 return null;
             }
