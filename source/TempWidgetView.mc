@@ -41,12 +41,13 @@ class TempWidgetView extends Ui.View {
             if (t == null) {
                 break;
             } 
-            var th = self.namemapper.thermoIteratorNext() as ThermoInfo;  
+            var th = self.namemapper.thermoIteratorNext();  
             if (th == null) {
                 break;
             }
+            var tht = th as ThermoInfo;
             var tt = t as Ui.Text;
-            tt.setText("#"+i+" : "+th.lastTemperature()+" °C");
+            tt.setText("#"+i+" : "+tht.lastTemperature+" °C");
             
             //Rez.Layouts.WidgetLayout()
         }

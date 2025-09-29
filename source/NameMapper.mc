@@ -75,10 +75,20 @@ class NameMapper  {
         self.iteratorIndex = 0;
     }   
     function thermoIteratorNext() {
-        if (self.iteratorIndex >= num_thermo) {
-            return null;
+        for (;;) {
+            if (self.iteratorIndex >= num_thermo) {
+                return null;
+            }
+            self.iteratorIndex++;
+            var th = knownDevices[self.iteratorIndex];
+            if (th == null) {
+                return null;
+            }
+            if (th.selected==false) {
+                continue;
+            }
+            return th;
         }
-        var th = knownDevices[self.iteratorIndex];
         return null;
     }
     function addThermo(k)
