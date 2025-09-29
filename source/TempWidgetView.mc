@@ -34,7 +34,15 @@ class TempWidgetView extends Ui.View {
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
-        if ((1)) { return; }
+        if ((1)) { 
+            var t = self.findDrawableById("th0temp");
+            if (t != null) {
+                var tt = t as Ui.Text;
+                tt.setText(self.bled.msgstring());
+            }
+            //Rez.Layouts.WidgetLayout()
+            return; 
+        }
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
