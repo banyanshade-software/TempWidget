@@ -84,7 +84,7 @@ class NameMapper  {
             if (th == null) {
                 return null;
             }
-            if (th.selected==false) {
+            if ((th.selected==false) || (th.name==null) || (th.name.equals(""))) {
                 continue;
             }
             return th;
