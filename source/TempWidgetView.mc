@@ -5,18 +5,18 @@ using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.Timer;
 using Toybox.Lang;
 
-
 //using Toybox.Cryptography as Crypto;
 
 
 class TempWidgetView extends Ui.View {
      
     private var bled;
+    private var namemapper;
 
-
-    function initialize(bleDelegate) {
+    function initialize(bleDelegate, nm) {
         View.initialize();
         bled = bleDelegate;
+        namemapper = nm;
     }
 
     // Load your resources here
@@ -34,14 +34,21 @@ class TempWidgetView extends Ui.View {
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
-        if ((1)) { 
-            var t = self.findDrawableById("th0temp");
-            if (t != null) {
-                var tt = t as Ui.Text;
-                tt.setText(self.bled.msgstring());
+        self.namemapper.thermoIteratorReset();
+        for (var i=0; i<8; i++) {
+            var n = "th" + i + "temp";
+            var t = self.findDrawableById(n);
+            if (t == null) {
+                break;
+            } 
+            var th = self.namemapper.thermoIteratorNext() as ThermoInfo;  
+            if (th == null) {
+                break;
             }
+            var tt = t as Ui.Text;
+            tt.setText("#"+i+" : "+th.lastTemperature()+" °C");
+            
             //Rez.Layouts.WidgetLayout()
-            return; 
         }
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);

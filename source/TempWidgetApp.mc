@@ -31,7 +31,7 @@ class TempWidgetApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as [Ui.Views] or [Ui.Views, Ui.InputDelegates] {
         menudelegate = new BleMenuDelegate();
-        view = new TempWidgetView(self.bleDelegate);    
+        view = new TempWidgetView(self.bleDelegate, self.mapper);    
         return [view, menudelegate];
         //return [view];
     }
