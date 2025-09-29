@@ -31,6 +31,8 @@ class ThermoInfo {
 const num_thermo = 4;
 class NameMapper  {
     protected var knownDevices  as  Lang.Array<ThermoInfo>;
+    protected var iteratorIndex as Lang.Integer = 0;
+
     function initialize() {
         knownDevices =  new  Lang.Array<ThermoInfo>[num_thermo];
         for (var i=0; i<num_thermo; i++) {
@@ -69,8 +71,16 @@ class NameMapper  {
         }
         return null;
     } 
-
-
+    function thermoIteratorReset() {
+        self.iteratorIndex = 0;
+    }   
+    function thermoIteratorNext() {
+        if (self.iteratorIndex >= num_thermo) {
+            return null;
+        }
+        var th = knownDevices[self.iteratorIndex];
+        return null;
+    }
     function addThermo(k)
     {
         var iunsel = -1;
