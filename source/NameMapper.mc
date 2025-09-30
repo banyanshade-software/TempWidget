@@ -7,9 +7,20 @@ import Toybox.Test;
 
 using Toybox.WatchUi as Ui; // to be removed later
 
+/* (2025-09-30)
+ * this is a simple class to map thermometer broadcasted name
+ * whcih includes 16 bits of adress / device id (eg "TH357 (40D2)"") to 
+ * user friendly names (eg "Living Room").class 
+ *
+ * the ThermoInfo class holds the latest temperature/humidty of thermometer
+ * and the selected flag states if it should be displayed.
+ * 
+ */
+
+
 class ThermoInfo {
-    public var key  as Lang.String;
-    public var name as Lang.String;
+    public var key  as Lang.String; // the name broadcasted by thermometer
+    public var name as Lang.String; // user friendly name
     public var selected as Lang.Boolean;
     public var lastTemperature;
     public var lastHumidity;
@@ -27,8 +38,17 @@ class ThermoInfo {
     }
 }
 
+/*
+ * 2025-09-30
+ * the NameMapper class holds a fixed number of ThermoInfo objects 
+ * (num_thermo) which are initialized from properties stored in
+ * persistent storage (see initialize() function).
+ * This means that only that number of thermometers can be present 
+ * when scanning (otherwise they are ignored).
+ */
 
 const num_thermo = 4;
+
 class NameMapper  {
     protected var knownDevices  as  Lang.Array<ThermoInfo>;
     protected var iteratorIndex as Lang.Integer = 0;
@@ -55,6 +75,14 @@ class NameMapper  {
 
 
     function needsDisplay() {
+        /*
+         * (2025-09-30) unclear if throttling is done by
+         * UI.requestUpdate() or if we need to do it here.
+         *
+         * design is a bit ugly here, as we include WatchUi
+         * in this class, only for this function.
+         * (we probably should move function to app class)
+         */
         Ui.requestUpdate();
     }
 
