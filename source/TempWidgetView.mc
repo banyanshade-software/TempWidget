@@ -51,17 +51,24 @@ class TempWidgetView extends Ui.View {
             var hum = tht.lastHumidity;
 
             tt.setText("#"+i+" : "+temp+" °C");
+
+            n = "th" + i + "name";
+            t = self.findDrawableById(n);
+            tt = t as Ui.Text;
+            tt.setText(th.name);
+
             n = "th" + i + "hum";
             t = self.findDrawableById(n);
             tt = t as Ui.Text;
             tt.setText(hum+" %");
         }
+        /*
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
                     Graphics.FONT_MEDIUM, self.bled.msgstring(),
                     Graphics.TEXT_JUSTIFY_CENTER);
-    
+        */
 
     }
 
