@@ -52,7 +52,8 @@ class TempWidgetView extends Ui.View {
             var temp = tht.lastTemperature;
             var hum = tht.lastHumidity;
 
-            tt.setText("#"+i+" : "+temp+" °C");
+            var ts = temp.format("%.1f");
+            tt.setText(ts + " °C");
 
             n = "th" + i + "name";
             t = self.findDrawableById(n);
