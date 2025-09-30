@@ -32,6 +32,21 @@ class MyBleDelegate extends Ble.BleDelegate {
     var nscan = 0;
     var knownDevices = {};
 
+
+
+/*
+ * (2025-09-29)
+ * this is still experimental, and includes a lot of code
+ * copied from the MeshDelegate example code, and not used
+ * Currently we just scan for devices, as temperature
+ * and humidity are broadcasted, and we dont need
+ * to connect/pair to the devices.
+ * The code will be cleaned up later.
+ *
+ * Nothing is done yet to limit power consumption.
+ * (we should probably not scan all the time, as having temperature every
+ * few minutes is  sufficient)
+ */
     function msgstring()  {
         if (self.isScanning()) {
             return "Scan "+nscan;

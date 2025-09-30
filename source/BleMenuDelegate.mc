@@ -1,6 +1,13 @@
 using Toybox.WatchUi as Ui;
 using Toybox.System;
 
+/*
+ * (2025-09-29)
+ * this is a simple leby delegate to exeperment menus
+ * It is to be deleted later (probably) as we dont really need
+ * a menu in this widget (all configuration, and specifically
+ * thermometer renaming is done in mobile app ConnectIQ)
+ */
 class BleMenuDelegate extends Ui.BehaviorDelegate {
 
     function initialize() {

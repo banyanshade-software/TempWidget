@@ -1,7 +1,7 @@
 import Toybox.Graphics;
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
-using Toybox.BluetoothLowEnergy as Ble;
+//using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.Timer;
 using Toybox.Lang;
 
@@ -10,12 +10,10 @@ using Toybox.Lang;
 
 class TempWidgetView extends Ui.View {
      
-    private var bled;
     private var namemapper;
 
-    function initialize(bleDelegate, nm) {
+    function initialize(nm) {
         View.initialize();
-        bled = bleDelegate;
         namemapper = nm;
     }
 
@@ -34,6 +32,10 @@ class TempWidgetView extends Ui.View {
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+        /*
+         * (2025-09-30) all display fields are handled by layout.xml
+         * so we just need to update the text fields here.
+         */
         self.namemapper.thermoIteratorReset();
         for (var i=0; i<8; i++) {
             var n = "th" + i + "temp";
@@ -56,7 +58,7 @@ class TempWidgetView extends Ui.View {
             tt = t as Ui.Text;
             tt.setText(hum+" %");
         }
-        /*
+        /* 2025-09-30 olds code to be removed (but we may need it as example)
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
@@ -72,7 +74,7 @@ class TempWidgetView extends Ui.View {
     function onHide() as Void {
     }
 
-    // Handle menu item selection
+    // Handle menu item selection actually not called ?? (2025-09-29)
     function onMenuItem(item as  Lang.Symbol) as Void {
         if (item == "refresh") {
             // Handle refresh action

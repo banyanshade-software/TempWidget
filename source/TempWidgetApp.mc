@@ -21,8 +21,9 @@ class TempWidgetApp extends Application.AppBase {
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         Ble.setDelegate(self.bleDelegate);
+        // 2025-09-30 on station without BLE dongle, startScanning() 
+        // would crash the app. For debug/dev we may turn it off.
         if ((1)) { self.bleDelegate.startScanning(); }
-        //Ble.setScanState(Ble.SCAN_STATE_SCANNING); done by belDelegate.statrtScanning()
     }
 
     // onStop() is called when your application is exiting
@@ -32,7 +33,7 @@ class TempWidgetApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as [Ui.Views] or [Ui.Views, Ui.InputDelegates] {
         menudelegate = new BleMenuDelegate();
-        view = new TempWidgetView(self.bleDelegate, self.mapper);    
+        view = new TempWidgetView(self.mapper);    
         return [view, menudelegate];
         //return [view];
     }
