@@ -52,7 +52,10 @@ class TempWidgetView extends Ui.View {
             var temp = tht.lastTemperature;
             var hum = tht.lastHumidity;
 
-            var ts = temp.format("%.1f");
+            var ts = "";
+            if (temp != null) {
+                ts = temp.format("%.1f");
+            }
             tt.setText(ts + " °C");
 
             n = "th" + i + "name";
@@ -63,7 +66,9 @@ class TempWidgetView extends Ui.View {
             n = "th" + i + "hum";
             t = self.findDrawableById(n);
             tt = t as Ui.Text;
-            tt.setText(hum+" %");
+            if (hum != null) {
+                tt.setText(hum+" %");
+            }
         }
         /* 2025-09-30 olds code to be removed (but we may need it as example)
         dc.clear();
