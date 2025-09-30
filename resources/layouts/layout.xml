@@ -1,16 +1,16 @@
 <layout id="WidgetLayout">
         <label text="TH357 Thermometers" x="10" y="25" font="Gfx.FONT_SMALL" color="Gfx.COLOR_RED" />
        
-        <label id="th0name" text="----"   x="10" y="50"  font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
-        <label id="th0temp" text="-- °C"        x="15" y="70"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
-        <label id="th0hum"  text="-- %"         x="70" y="100" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
+        <label id="th0name" text="----"    x="10" y="50"  font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
+        <label id="th0temp" text="-- °C"   x="15" y="70"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
+        <label id="th0hum"  text="-- %"    x="70" y="100" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
 
         <label id="th1name" text="----"   x="10" y="130"  font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
-        <label id="th1temp" text="-- °C"      x="15" y="150"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
-        <label id="th1hum"  text="-- %"         x="70" y="180" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
+        <label id="th1temp" text="-- °C"  x="15" y="150"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
+        <label id="th1hum"  text="-- %"   x="70" y="180" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
    
         <label id="th2name" text="----"   x="10" y="210" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
-        <label id="th2temp" text="-- °C"      x="15" y="230" font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
-        <label id="th2hum"  text="--  %"         x="70" y="260" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
+        <label id="th2temp" text="-- °C"  x="15" y="230" font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
+        <label id="th2hum"  text="--  %"  x="70" y="260" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
 
 </layout>

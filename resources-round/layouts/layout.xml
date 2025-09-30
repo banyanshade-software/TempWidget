@@ -2,11 +2,11 @@
         <label text="Thermometers" x="35" y="25" font="Gfx.FONT_XTINY"   color="Gfx.COLOR_YELLOW" />
        
         <label id="th0name" text="----"         x="10%" y="80"  font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
-        <label id="th0temp" text="-- °C"        x="15%" y="110"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
+        <label id="th0temp" text="-- °C"        x="10%" y="110"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
         <label id="th0hum"  text="-- %"         x="20%" y="150" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
 
         <label id="th1name" text="----"       x="60%" y="80"  font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_RED" />
-        <label id="th1temp" text="-- °C"      x="65%" y="110"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
+        <label id="th1temp" text="-- °C"      x="60%" y="110"  font="Gfx.FONT_LARGE" color="Gfx.COLOR_GREEN" />
         <label id="th1hum"  text="-- %"       x="70%" y="150" font="Gfx.FONT_SMALL" color="Gfx.COLOR_BLUE" />
    
 </layout>
