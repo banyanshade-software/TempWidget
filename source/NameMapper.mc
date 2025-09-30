@@ -91,12 +91,13 @@ class NameMapper  {
         }
         return null;
     }
+
     function addThermo(k)
     {
         var iunsel = -1;
         for (var i = 0; i<num_thermo; i++) {
             var th = knownDevices[i];
-            if ((th==null) || (th.name==null)) {
+            if ((th==null) || (th.name==null) || th.name.equals("")) {
                 th.key = k;
                 th.name = k;
                 th.selected = true;
@@ -115,6 +116,7 @@ class NameMapper  {
             return th;
         }
         // cannot add
+        System.println("cant add");
         return null;
     } 
     function setVal(k, temp, hum)
