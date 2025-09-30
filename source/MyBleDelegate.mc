@@ -1,7 +1,7 @@
 using Toybox.System;
 using Toybox.Lang;
 using Toybox.BluetoothLowEnergy as Ble;
-using Toybox.Timer;
+//using Toybox.Timer;
 using Toybox.WatchUi as Ui; // to be removed later
 using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
@@ -20,7 +20,7 @@ enum {
 }
 
 class MyBleDelegate extends Ble.BleDelegate {
-    private var timer = new Timer.Timer();
+    //private var timer = new Timer.Timer();
     //public var networkManager;
     protected var namemapper;
     hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
@@ -97,7 +97,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.scanResults = [];
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
         // scan for five seconds
-        timer.start(method(:timerDone), 5000, false);
+        //timer.start(method(:timerDone), 5000, false);
         //self.mode = mode;
         self.scanning = true;
     }

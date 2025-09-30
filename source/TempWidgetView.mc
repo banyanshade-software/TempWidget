@@ -2,18 +2,19 @@ import Toybox.Graphics;
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
 //using Toybox.BluetoothLowEnergy as Ble;
-using Toybox.Timer;
+//using Toybox.Timer;
 using Toybox.Lang;
 
 //using Toybox.Cryptography as Crypto;
 
 
-class TempWidgetView extends Ui.View {
-     
+class TempWidgetView extends Ui.DataField
+ {
+    
     private var namemapper;
 
     function initialize(nm) {
-        View.initialize();
+        DataField.initialize();
         namemapper = nm;
     }
 
@@ -31,7 +32,8 @@ class TempWidgetView extends Ui.View {
     // Update the view
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc);
+        System.println("TempWidgetView onUpdate()"+System.getClockTime().toString());
+        DataField.onUpdate(dc);
         /*
          * (2025-09-30) all display fields are handled by layout.xml
          * so we just need to update the text fields here.
