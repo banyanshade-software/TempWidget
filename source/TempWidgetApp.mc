@@ -2,7 +2,15 @@ import Toybox.Application;
 import Toybox.Lang;
 using Toybox.WatchUi as Ui;
 using Toybox.BluetoothLowEnergy as Ble;
- 
+using Toybox.System as System;  
+
+function timstr(){
+    var t = System.getClockTime();
+    var s = t.hour.format("%02d") + ":" 
+        + t.min.format("%02d") + ":" 
+        + t.sec.format("%02d");
+    return s;
+}
 
 class TempWidgetApp extends Application.AppBase {
     hidden var bleDelegate;
@@ -20,6 +28,7 @@ class TempWidgetApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
+            System.println("TempWidgetApp onStart() "+timstr());
         Ble.setDelegate(self.bleDelegate);
         // 2025-09-30 on station without BLE dongle, startScanning() 
         // would crash the app. For debug/dev we may turn it off.
