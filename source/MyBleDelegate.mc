@@ -34,19 +34,21 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
 
-/*
- * (2025-09-29)
- * this is still experimental, and includes a lot of code
- * copied from the MeshDelegate example code, and not used
- * Currently we just scan for devices, as temperature
- * and humidity are broadcasted, and we dont need
- * to connect/pair to the devices.
- * The code will be cleaned up later.
- *
- * Nothing is done yet to limit power consumption.
- * (we should probably not scan all the time, as having temperature every
- * few minutes is  sufficient)
- */
+    /*
+    * (2025-09-29)
+    * this is still experimental, and includes a lot of code
+    * copied from the MeshDelegate example code, and not used
+    * Currently we just scan for devices, as temperature
+    * and humidity are broadcasted, and we dont need
+    * to connect/pair to the devices.
+    * The code will be cleaned up later.
+    *
+    * Nothing is done yet to limit power consumption.
+    * (we should probably not scan all the time, as having temperature every
+    * few minutes is  sufficient)
+    */
+
+    /*
     function msgstring()  {
         if (self.isScanning()) {
             return "Scan "+nscan;
@@ -58,6 +60,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         
         //return "Hello, World! ";
     } 
+    */
 
     function initialize(nm) {
         System.println("MyBleDelegate init");
@@ -99,6 +102,15 @@ class MyBleDelegate extends Ble.BleDelegate {
         // scan for five seconds
         //timer.start(method(:timerDone), 5000, false);
         //self.mode = mode;
+        self.scanning = false;
+    }
+
+    function stopScanning() {
+        self.disconnect();
+        Ble.setScanState(Ble.SCAN_STATE_OFF);
+        // scan for five seconds
+        //timer.start(method(:timerDone), 5000, false);
+        //self.mode = mode;
         self.scanning = true;
     }
 
@@ -116,7 +128,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     // https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L4
 
     function onScanResults(iterator) {
-        System.println("MyBleDelegate onScanResults");
+        System.println("MyBleDelegate onScanResults "+timstr());
         var need = false;
         for (;;) {
             var scanResult = iterator.next(); // as Ble.ScanResult;
@@ -166,7 +178,14 @@ class MyBleDelegate extends Ble.BleDelegate {
                     System.println("  temp=" + t/10.0
                                 + "  hum=" + h
                                 + "  flag=" + f.format("%02X"));
-
+                    var th = self.namemapper.getThermo(n);
+                    if (th != null) {
+                        if (th.selected) {
+                            System.println("  known device, updating "+timstr() );
+                            self.connectToDevice(r);
+                            self.namemapper.setVal(n, t/10.0, h);
+                        }
+                    }
                     self.namemapper.setVal(n, t/10.0, h);
                     need = true;
                 }
@@ -272,10 +291,22 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     // pairs with the device at the specified index of the scan results
-    function connectToDevice(index) {
+    function connectToDevice(dev as Ble.ScanResult) {
         self.disconnect();
-        Ble.pairDevice(self.scanResults[index] as  Ble.ScanResult);
-        self.scanResults = [];
+        var d = Ble.pairDevice(dev);
+        if (d == null) {
+            System.println("pairDevice failed");
+            return;
+        } else {
+            System.println("pairDevice succeeded");
+        }
+        var therder = d as Ble.Device;
+        System.println("pairDevice returned " + therder);
+        System.println("pairDevice returned " + therder.getName());
+        //System.println("     bonded " + d.isBonded()); API 4.2.5
+        System.println("     connected " + d.isConnected());
+        System.println("     name " + d.getName());
+        System.println("     services " + d.getServices().toString());
         self.needsDisplay();
     }
 

@@ -32,7 +32,7 @@ class TempWidgetApp extends Application.AppBase {
         Ble.setDelegate(self.bleDelegate);
         // 2025-09-30 on station without BLE dongle, startScanning() 
         // would crash the app. For debug/dev we may turn it off.
-        if ((0)) { self.bleDelegate.startScanning(); }
+        if ((1)) { self.bleDelegate.startScanning(); }
     }
 
     // onStop() is called when your application is exiting
