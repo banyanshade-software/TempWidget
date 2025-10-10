@@ -2,11 +2,10 @@ import Toybox.Graphics;
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
 using Toybox.BluetoothLowEnergy as Ble;
-using Toybox.Timer;
+// using Toybox.Timer;
 using Toybox.Lang;
 
 
-//using Toybox.Cryptography as Crypto;
 
 
 class TempWidgetView extends Ui.View {
