@@ -84,8 +84,8 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
     // callback function for the timer
     function tick() {
-        System.println("MyBleDelegate tick "+timstr());
-        self.needsDisplay();
+        System.println("MyBleDelegate tick " + timstr());
+        //self.needsDisplay();
     }
 
     function needsDisplay() {

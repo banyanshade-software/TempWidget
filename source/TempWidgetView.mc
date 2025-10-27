@@ -10,14 +10,15 @@ using Toybox.Lang;
 
 
 
-class TempWidgetView extends Ui.DataField
+class TemperatureDatafield extends Ui.DataField
  {
     
     private var namemapper;
-
-    function initialize(nm) {
+    private var bled;
+    function initialize(nm as NameMapper, b as MyBleDelegate) {
         DataField.initialize();
         namemapper = nm;
+        self.bled = b;
     }
 
 /*
@@ -45,10 +46,10 @@ class TempWidgetView extends Ui.DataField
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
-        // Call the parent onUpdate function to redraw the layout
        
-        //System.println("TempWidgetView onUpdate() "+timstr());
+        // Call the parent onUpdate function to redraw the layout
         DataField.onUpdate(dc);
+        bled.tick();
         /*
          * (2025-09-30) all display fields are handled by layout.xml
          * so we just need to update the text fields here.
@@ -76,12 +77,12 @@ class TempWidgetView extends Ui.DataField
             tt.setText(ts + " °C");
 
             n = "th" + i + "name";
-            t = self.findDrawableById(n);
+            t = TemperatureDatafield.findDrawableById(n);
             tt = t as Ui.Text;
             tt.setText(th.name);
 
             n = "th" + i + "hum";
-            t = self.findDrawableById(n);
+            t = TemperatureDatafield.findDrawableById(n);
             tt = t as Ui.Text;
             if (hum != null) {
                 tt.setText(hum+" %");
