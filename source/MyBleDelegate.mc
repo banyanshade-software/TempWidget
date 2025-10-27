@@ -1,7 +1,8 @@
 using Toybox.System;
 using Toybox.Lang;
 using Toybox.BluetoothLowEnergy as Ble;
-//using Toybox.Timer;
+//using Toybox.Timer; // Details: Module 'Toybox.Timer' not available to 'Data Field'
+
 using Toybox.WatchUi as Ui; // to be removed later
 using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
@@ -31,8 +32,6 @@ class MyBleDelegate extends Ble.BleDelegate {
     hidden var scanning = false;
     var nscan = 0;
     var knownDevices = {};
-
-
 
     /*
     * (2025-09-29)
@@ -84,6 +83,10 @@ class MyBleDelegate extends Ble.BleDelegate {
         }
     }
     // callback function for the timer
+    function tick() {
+        System.println("MyBleDelegate tick "+timstr());
+        self.needsDisplay();
+    }
 
     function needsDisplay() {
         Ui.requestUpdate();
@@ -141,12 +144,21 @@ class MyBleDelegate extends Ble.BleDelegate {
             var n = r.getDeviceName();
             if (n == null) {
                 continue; //n = "unknown";
-            } else {
-                System.println("got name: " + n);
-                if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
-                    System.println("got a TP357 :" + n
-                        + " - RSSI: " + r.getRssi());
+            } 
+            System.println("got name: " + n);
+            if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
+                System.println("got a TP357 :" + n  + " - RSSI: " + r.getRssi());
+                var add = true;
+                for (var i = 0; i < self.scanResults.size(); i++) {
+                    if (self.scanResults[i].isSameDevice(scanResult)) {
+                        add = false;
+                        break;
+                    }
+                }
+                if (add) {
+                    self.scanResults.add(scanResult);
 
+                    System.println(" new device, processing data:");
                     // check if device already known
                     // get raw data and process them
                     var raw = r.getRawData();
@@ -174,20 +186,24 @@ class MyBleDelegate extends Ble.BleDelegate {
                     var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
                     var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
                     
-        
-                    System.println("  temp=" + t/10.0
-                                + "  hum=" + h
-                                + "  flag=" + f.format("%02X"));
-                    var th = self.namemapper.getThermo(n);
-                    if (th != null) {
-                        if (th.selected) {
-                            System.println("  known device, updating "+timstr() );
-                            self.connectToDevice(r);
-                            self.namemapper.setVal(n, t/10.0, h);
+                
+                    if ((0)) {
+                        System.println("  temp=" + t/10.0
+                                    + "  hum=" + h
+                                    + "  flag=" + f.format("%02X"));
+
+                        
+                        var th = self.namemapper.getThermo(n);
+                        if (th != null) {
+                            if (th.selected) {
+                                System.println("  known device, updating "+timstr() );
+                                self.connectToDevice(r);
+                                self.namemapper.setVal(n, t/10.0, h);
+                            }
                         }
+                        self.namemapper.setVal(n, t/10.0, h);
+                        need = true;
                     }
-                    self.namemapper.setVal(n, t/10.0, h);
-                    need = true;
                 }
             }
         }
