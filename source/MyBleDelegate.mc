@@ -74,7 +74,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     // callback function for the timer
     function tick() {
-        System.println("MyBleDelegate tick " + timstr());
+        //System.println("MyBleDelegate tick " + timstr());
         tickValue++;
         switch (mode) {
             case MODE_SCAN_LOW_SCAN:
@@ -383,6 +383,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     // callback function for the BLE delegate (overrides superclass)
     function onConnectedStateChanged(device, state) {
+        System.println("MyBleDelegate onConnectedStateChanged  state="+state);
         // if connected, send connection info to the network manager
         if (state == Ble.CONNECTION_STATE_CONNECTED && device != null) {
             self.device = device;
