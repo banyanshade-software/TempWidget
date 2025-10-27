@@ -7,6 +7,7 @@ import Toybox.Test;
 
 using Toybox.WatchUi as Ui; // to be removed later
 
+
 /* (2025-09-30)
  * this is a simple class to map thermometer broadcasted name
  * whcih includes 16 bits of adress / device id (eg "TH357 (40D2)"") to 
@@ -166,8 +167,24 @@ class NameMapper  {
 
 (:test)
 function test1(logger as Logger) as Lang.Boolean {
-    var m = new NameMapper();
     logger.debug("hop");
+    var m = new NameMapper();
     m.setVal("toto", 25.0, 10);
     return true;
+}
+
+(:test)
+function test2(logger as Logger) as Lang.Boolean {
+    logger.debug("plouf");
+    Test.assert(false);
+    return false;
+}
+(:test)
+function aTestOfAssert(logger) {
+   logger.debug("This tests the assert() function.");
+   Test.assert(true);
+   logger.debug("Test.assert(true) didn't throw an Exception which is a very good thing.");
+   Test.assert(false);
+   logger.error("We should not be executing this statement.");
+   return true;
 }
