@@ -16,21 +16,24 @@ since we want to run on Edge Explore, we stay on API level 3.1.0
 */
 
 enum {
-    MODE_PROXY,
-    MODE_PROVISION
+    MODE_NONE,           // init value, not used
+    MODE_SCAN,           // scan for devices
+    MODE_SCAN_LOW_SCAN,  // scan for devices every minutes
+    MODE_SCAN_LOW_IDLE,
+    MODE_CONNECTED
 }
 
 class MyBleDelegate extends Ble.BleDelegate {
-    //private var timer = new Timer.Timer();
-    //public var networkManager;
     protected var namemapper;
     hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
-    hidden var mode = null;
-    hidden var device;
-    hidden var currentPacket;
-    hidden var connected = false;
-    hidden var scanning = false;
-    var nscan = 0;
+    hidden var mode = MODE_NONE;
+    hidden var device as Ble.Device or Null = null;
+    //hidden var currentPacket;
+    //hidden var connected = false;
+    //hidden var scanning = false;
+    //var nscan = 0;
+    protected var t0 = 0;
+    protected var tickValue = 0;
     var knownDevices = {};
 
     /*
@@ -45,27 +48,13 @@ class MyBleDelegate extends Ble.BleDelegate {
     * Nothing is done yet to limit power consumption.
     * (we should probably not scan all the time, as having temperature every
     * few minutes is  sufficient)
-    */
-
-    /*
-    function msgstring()  {
-        if (self.isScanning()) {
-            return "Scan "+nscan;
-        } else if (self.isConnected()) {
-            return "Connected "+nscan;
-        } else {
-            return "Not connected "+nscan;
-        }
-        
-        //return "Hello, World! ";
-    } 
-    */
+    */ 
 
     function initialize(nm) {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
         self.namemapper = nm;
-        nscan = 0;
+        self.mode = MODE_NONE;
         
         if ((0)) { // to be removed
             try {
@@ -82,32 +71,96 @@ class MyBleDelegate extends Ble.BleDelegate {
             }
         }
     }
+
     // callback function for the timer
     function tick() {
         System.println("MyBleDelegate tick " + timstr());
-        //self.needsDisplay();
+        tickValue++;
+        switch (mode) {
+            case MODE_SCAN_LOW_SCAN:
+                if (tickValue-t0 > 30) {
+                    if (foundDevice()) {
+                        System.println("TODO ");
+                    } else {
+                        Ble.setScanState(Ble.SCAN_STATE_OFF);
+                        t0 = tickValue;
+                        mode = MODE_SCAN_LOW_IDLE;
+                    }
+                }
+                break;
+            case MODE_SCAN_LOW_IDLE:
+                if (tickValue-t0 > 120) {
+                    Ble.setScanState(Ble.SCAN_STATE_SCANNING);
+                    t0 = tickValue;
+                    mode = MODE_SCAN_LOW_SCAN;
+                }
+                break;
+            case MODE_SCAN:
+                if (tickValue - t0 > 60) {
+                    if (foundDevice()) {
+                        System.println("TODO ");
+                    } else {
+                        Ble.setScanState(Ble.SCAN_STATE_OFF);
+                        t0 = tickValue;
+                        mode = MODE_SCAN_LOW_IDLE;
+                    }
+                }
+                break;
+            case MODE_NONE:
+                System.println("should not happen"); 
+                break;
+            case MODE_CONNECTED:
+                if ((0==t0) || (tickValue - t0 > 300)) {
+                    System.println("update value ");
+                    t0 = tickValue;
+                }
+                break;
+            default:
+                break;
+        }
     }
+
+    public function foundDevice() as Toybox.Lang.Boolean {
+        if (self.scanResults.size() < 0) {
+            return false;
+        }
+        // more check (vs selected device in config) to be added here
+        return true;
+    }
+    function getFoundDevice() as Ble.ScanResult or Null {
+        if (self.scanResults.size() < 0) {
+            return null;
+        }
+        var d = self.scanResults[0] as Ble.ScanResult;
+        return d;
+    }   
 
     function needsDisplay() {
         Ui.requestUpdate();
     }
-        
+    /*
     function timerDone() {
         self.scanning = false;
         self.onScanFinished();
         self.needsDisplay();
     }
+    */
 
-    function startScanning() {
+    function startScanning() 
+    {
         self.disconnect();
         self.scanResults = [];
+        self.mode = MODE_SCAN;
+        self.t0= tickValue;
+
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
         // scan for five seconds
         //timer.start(method(:timerDone), 5000, false);
         //self.mode = mode;
-        self.scanning = false;
+        //self.scanning = false;
     }
 
+    /*
     function stopScanning() {
         self.disconnect();
         Ble.setScanState(Ble.SCAN_STATE_OFF);
@@ -116,16 +169,17 @@ class MyBleDelegate extends Ble.BleDelegate {
         //self.mode = mode;
         self.scanning = true;
     }
+    */
 
     // helper function to see if a ScanResult has a specific service
-    private function hasService(iterator, serviceUuid) {
+    /*private function hasService(iterator, serviceUuid) {
         for (var uuid = iterator.next(); uuid != null; uuid = iterator.next()) {
             if (uuid.equals(serviceUuid)) {
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
     // overrides the superclass - filters the results
     // https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L4
@@ -139,8 +193,6 @@ class MyBleDelegate extends Ble.BleDelegate {
                 break; 
             }
             var r = scanResult as Ble.ScanResult;
-            //self.scanResults.add(r);
-            nscan = nscan + 1;
             var n = r.getDeviceName();
             if (n == null) {
                 continue; //n = "unknown";
@@ -157,42 +209,22 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
                 if (add) {
                     self.scanResults.add(scanResult);
-
-                    System.println(" new device, processing data:");
-                    // check if device already known
-                    // get raw data and process them
-                    var raw = r.getRawData();
-                    System.println("  raw data" + raw);
-                    System.println("  len=" + raw.size());
-                    /*
-                    ble_temphumid_t* tempHumidData = (ble_temphumid_t*)(advertisedDevice.getPayload() + offsetInPayload);
-                    temperature = tempHumidData->temperature / 10.f;
-                    humidity = tempHumidData->humidity;
-                    lastSeen = millis();
-                    */
-                    // https://github.com/theengs/decoder/blob/development/src/devices/TPTH_json.h#L19-L25
-                    /*
-                    var i;
-                    for (i=0; i<24; i++) {
-                        var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => i,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                        System.println("i="+i+"  t(le)="+t);
-                    }
-                    for (i=0; i<24; i++) {
-                        var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => i,     :endianness => Toybox.Lang.ENDIAN_BIG });
-                        System.println("i="+i+"  t(be)="+t);
-                    }
-                    */
-                    var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => 20,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                    var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                    var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                    
+                    if ((1)) { 
+                        System.println(" new device, processing data:");
+                        var raw = r.getRawData();
+                        System.println("  raw data" + raw);
+                        System.println("  len=" + raw.size());
+                        // https://github.com/theengs/decoder/blob/development/src/devices/TPTH_json.h#L19-L25
+                        var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => 20,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                        var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                        var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                        
                 
-                    if ((0)) {
                         System.println("  temp=" + t/10.0
                                     + "  hum=" + h
                                     + "  flag=" + f.format("%02X"));
 
-                        
+                        /*
                         var th = self.namemapper.getThermo(n);
                         if (th != null) {
                             if (th.selected) {
@@ -203,6 +235,16 @@ class MyBleDelegate extends Ble.BleDelegate {
                         }
                         self.namemapper.setVal(n, t/10.0, h);
                         need = true;
+                        */
+                    }
+                    if (foundDevice()) {
+                        Ble.setScanState(Ble.SCAN_STATE_OFF);
+                        var fd = getFoundDevice() as Ble.ScanResult;
+                        self.connectToDevice(fd);
+                        self.mode = MODE_CONNECTED;
+                        self.t0 = 0; // force update (tickValue;
+                        System.println("-- connected -- ");
+                        break;
                     }
                 }
             }
@@ -316,6 +358,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         } else {
             System.println("pairDevice succeeded");
         }
+        self.device = d;
+
         var therder = d as Ble.Device;
         System.println("pairDevice returned " + therder);
         System.println("pairDevice returned " + therder.getName());
@@ -328,10 +372,10 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     // unpair the current device
     function disconnect() {
-        if (self.connected) {
+        if ((self.device != null) && (self.device.isConnected())) {
             Ble.unpairDevice(self.device);
             self.device = null;
-            self.connected = false;
+            //self.connected = false;
             self.onDisconnected();
         }
         self.needsDisplay();
@@ -367,6 +411,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
                 self.onConnected();
             }*/
+            /*
         } else {  // clear the connection parameters
             if (device != null) {
                 Ble.unpairDevice(device);
@@ -375,6 +420,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             self.connected = false;
             //self.networkManager.setCharacteristics(null, null);
             self.onDisconnected();
+            */
         }
         self.needsDisplay();
 
@@ -387,6 +433,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         //}
     }
 
+/*
     function isConnected() {
         return self.connected;
     }
@@ -394,16 +441,16 @@ class MyBleDelegate extends Ble.BleDelegate {
     function isScanning() {
         return self.scanning;
     }
-
+*/
     // clears all known data of the mesh network
-    function deleteAllData() {
+    //function deleteAllData() {
         /*
         self.networkManager.keyManager.clearKeys();
         self.networkManager.deviceManager.reset();
         self.networkManager.provisioningManager.reset();
         self.networkManager.save();
         */
-    }
+    //}
 
 
     // *************** USER IMPLEMENTABLE FUNCTIONS ***************** //

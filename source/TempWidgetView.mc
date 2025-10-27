@@ -57,7 +57,7 @@ class TemperatureDatafield extends Ui.DataField
         self.namemapper.thermoIteratorReset();
         for (var i=0; i<8; i++) {
             var n = "th" + i + "temp";
-            var t = self.findDrawableById(n);
+            var t = TemperatureDatafield.findDrawableById(n);
             if (t == null) {
                 break;
             } 
