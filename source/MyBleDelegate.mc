@@ -112,6 +112,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             case MODE_CONNECTED:
                 if ((0==t0) || (tickValue - t0 > 300)) {
                     System.println("update value ");
+                    self.updateValues();
                     t0 = tickValue;
                 }
                 break;
@@ -121,14 +122,14 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
 
     public function foundDevice() as Toybox.Lang.Boolean {
-        if (self.scanResults.size() < 0) {
+        if (self.scanResults.size() == 0) {
             return false;
         }
         // more check (vs selected device in config) to be added here
         return true;
     }
     function getFoundDevice() as Ble.ScanResult or Null {
-        if (self.scanResults.size() < 0) {
+        if (self.scanResults.size() == 0) {
             return null;
         }
         var d = self.scanResults[0] as Ble.ScanResult;
@@ -159,6 +160,16 @@ class MyBleDelegate extends Ble.BleDelegate {
         //self.mode = mode;
         //self.scanning = false;
     }
+
+    function updateValues() {
+        if (self.device != null && self.device.isConnected()) {
+            System.println("updating values from device " + self.device.getName());
+            // read TP357 temperature and humidity characteristics
+            
+        } else {
+            System.println("cannot update values, not connected");
+        }
+    }   
 
     /*
     function stopScanning() {
