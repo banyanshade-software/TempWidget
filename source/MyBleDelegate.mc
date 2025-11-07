@@ -429,7 +429,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                     :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
                     :characteristics => [
                         { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
-                          :descriptors => [ Ble.cccdUuid() ] },
+                          :descriptors => [ /*Ble.cccdUuid()*/ ] },
                         { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
                           :descriptors => [] }
                     ]
@@ -521,7 +521,11 @@ class MyBleDelegate extends Ble.BleDelegate {
             System.println("service: " + service.toString());
             var chUUID = Ble.stringToUuid(UUID_CHAR_TP357_READ);
             var ch = service.getCharacteristic(chUUID);
-            System.println("characteristic: " + ch.toString());
+            System.println("characteristic R : " + ch);
+            chUUID = Ble.stringToUuid(UUID_CHAR_TP357_WRITE);
+            ch = service.getCharacteristic(chUUID);
+            System.println("characteristic W: " + ch);
+
         }
         // if connected, send connection info to the network manager
         if (state == Ble.CONNECTION_STATE_CONNECTED && device != null) {
