@@ -402,26 +402,36 @@ class MyBleDelegate extends Ble.BleDelegate {
     const SERVICE_UUID = "00001234-0000-1000-8000-00805F9B34FB";
     const CHARACTERISTIC_UUID = "00005678-0000-1000-8000-00805F9B34FB";
 
-    const uuid_write = Ble.stringToUuid("00010203-0405-0607-0809-0a0b0c0d2b11");
-    const uuid_read  = Ble.stringToUuid("00010203-0405-0607-0809-0a0b0c0d2b10");
+    // common services uuids
+    const SERV_UUID_GEN_DEVICE_INFO = "0000180A-0000-1000-8000-00805F9B34FB";
+    const SERV_UUID_GEN_BATTERY      = "0000180F-0000-1000-8000-00805F9B34FB";
+    // TP357 specific services uuids
+    const SERV_UUID_TP357_PRIMARY = "00010203-0405-0607-0809-0a0b0c0d1910";
+    const UUID_CHAR_TP357_READ    = "00010203-0405-0607-0809-0a0b0c0d2b10";
+    const UUID_CHAR_TP357_WRITE   = "00010203-0405-0607-0809-0a0b0c0d2b11";
+
+
     function registerMyProfile() {
             Ble.registerProfile(
-                {   :uuid => Ble.stringToUuid("0000180A-0000-1000-8000-00805F9B34FB"), // Device Information
+                {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
                     :characteristics => [
                         { :uuid => Ble.stringToUuid("00002A29-0000-1000-8000-00805F9B34FB") }, // Manufacturer Name
                         { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
                     ]
                 });
             Ble.registerProfile({
-                    :uuid => Ble.stringToUuid("0000180F-0000-1000-8000-00805F9B34FB"), // Battery Service
+                    :uuid => Ble.stringToUuid(SERV_UUID_GEN_BATTERY), // Battery Service
                     :characteristics => [
                         { :uuid => Ble.stringToUuid("00002A19-0000-1000-8000-00805F9B34FB") }  // Battery Level
                     ]  
                 });
             Ble.registerProfile({
-                    :uuid => Ble.stringToUuid("0000180D-0000-1000-8000-00805F9B34FB"), // Heart Rate Service
+                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
                     :characteristics => [
-                        { :uuid => Ble.stringToUuid("00002A37-0000-1000-8000-00805F9B34FB") }  // Heart Rate Measurement
+                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
+                          :descriptors => [ Ble.cccdUuid() ] },
+                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
+                          :descriptors => [] }
                     ]
                 });
             //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
@@ -506,11 +516,12 @@ class MyBleDelegate extends Ble.BleDelegate {
     function onConnectedStateChanged(device, state) {
         System.println("MyBleDelegate onConnectedStateChanged  state="+state);
         dumpServices(device);
-        if ((0)) {
-            var service = device.getService(Ble.stringToUuid(SERVICE_UUID));
-            System.println("service: " + service);
-            var chUUID = Ble.stringToUuid(CHARACTERISTIC_UUID);
+        if ((1)) {
+            var service = device.getService(Ble.stringToUuid(SERV_UUID_TP357_PRIMARY));
+            System.println("service: " + service.toString());
+            var chUUID = Ble.stringToUuid(UUID_CHAR_TP357_READ);
             var ch = service.getCharacteristic(chUUID);
+            System.println("characteristic: " + ch.toString());
         }
         // if connected, send connection info to the network manager
         if (state == Ble.CONNECTION_STATE_CONNECTED && device != null) {
