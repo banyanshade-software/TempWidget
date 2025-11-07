@@ -110,7 +110,14 @@ class MyBleDelegate extends Ble.BleDelegate {
                 System.println("should not happen"); 
                 break;
             case MODE_CONNECTED:
-                if ((0==t0) || (tickValue - t0 > 300)) {
+                var k = false;
+                if (self.device != null) {
+                    k = self.device.isConnected();
+                }
+                if (k != false) {
+                    System.println("device connected");
+                }
+                if ((0==t0) || (tickValue - t0 > 30)) {
                     System.println("update value ");
                     self.updateValues();
                     t0 = tickValue;
@@ -154,6 +161,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.mode = MODE_SCAN;
         self.t0= tickValue;
 
+        //registerMyProfile();
+
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
         // scan for five seconds
         //timer.start(method(:timerDone), 5000, false);
@@ -161,6 +170,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         //self.scanning = false;
     }
 
+  
     function updateValues() {
         if (self.device != null && self.device.isConnected()) {
             System.println("updating values from device " + self.device.getName());
@@ -170,6 +180,38 @@ class MyBleDelegate extends Ble.BleDelegate {
             System.println("cannot update values, not connected");
         }
     }   
+    function msgstring() as Toybox.Lang.String {
+        var s = "Mode: ";
+        switch (self.mode) {
+            case MODE_NONE:
+                s += "NONE";
+                break;
+            case MODE_SCAN:
+                s += "SCANNING";
+                break;
+            case MODE_SCAN_LOW_SCAN:
+                s += "LOW SCANNING";
+                break;
+            case MODE_SCAN_LOW_IDLE:
+                s += "LOW IDLE";
+                break;
+            case MODE_CONNECTED:
+                if (self.device == null) {
+                    s += "CONNECTED (no device)";
+                    break;
+                } else if (self.device.isConnected() == false) {
+                    s += "CONNECTED (not connected)";
+                    break;
+                } else {
+                    s += "PAIRED to " + self.device.getName();
+                }
+                break;
+            default:
+                s += "UNKNOWN";
+                break;
+        }
+        return s;
+    }
 
     /*
     function stopScanning() {
@@ -356,29 +398,83 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
             }
         }*/
-       
+    const DEVICE_NAME = "Bramator";
+    const SERVICE_UUID = "00001234-0000-1000-8000-00805F9B34FB";
+    const CHARACTERISTIC_UUID = "00005678-0000-1000-8000-00805F9B34FB";
+
+    const uuid_write = Ble.stringToUuid("00010203-0405-0607-0809-0a0b0c0d2b11");
+    const uuid_read  = Ble.stringToUuid("00010203-0405-0607-0809-0a0b0c0d2b10");
+    function registerMyProfile() {
+            Ble.registerProfile(
+                {   :uuid => Ble.stringToUuid("0000180A-0000-1000-8000-00805F9B34FB"), // Device Information
+                    :characteristics => [
+                        { :uuid => Ble.stringToUuid("00002A29-0000-1000-8000-00805F9B34FB") }, // Manufacturer Name
+                        { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
+                    ]
+                });
+            Ble.registerProfile({
+                    :uuid => Ble.stringToUuid("0000180F-0000-1000-8000-00805F9B34FB"), // Battery Service
+                    :characteristics => [
+                        { :uuid => Ble.stringToUuid("00002A19-0000-1000-8000-00805F9B34FB") }  // Battery Level
+                    ]  
+                });
+            Ble.registerProfile({
+                    :uuid => Ble.stringToUuid("0000180D-0000-1000-8000-00805F9B34FB"), // Heart Rate Service
+                    :characteristics => [
+                        { :uuid => Ble.stringToUuid("00002A37-0000-1000-8000-00805F9B34FB") }  // Heart Rate Measurement
+                    ]
+                });
+            //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
+            //var x = Ble.cccdUuid();
+            //System.println("cccd uuid: " + x.toString() );
+    }
 
 
     // pairs with the device at the specified index of the scan results
     function connectToDevice(dev as Ble.ScanResult) {
+        // stop scanning
+        Ble.setScanState(Ble.SCAN_STATE_OFF);
         self.disconnect();
+        registerMyProfile();
+
         var d = Ble.pairDevice(dev);
         if (d == null) {
             System.println("pairDevice failed");
             return;
         } else {
-            System.println("pairDevice succeeded");
+            System.println("pairDevice succeeded "+d.isConnected());
         }
         self.device = d;
-
+/*
         var therder = d as Ble.Device;
         System.println("pairDevice returned " + therder);
         System.println("pairDevice returned " + therder.getName());
         //System.println("     bonded " + d.isBonded()); API 4.2.5
         System.println("     connected " + d.isConnected());
         System.println("     name " + d.getName());
-        System.println("     services " + d.getServices().toString());
+        var s = d.getServices();
+        System.println("     services " + s.toString());
+        //System.println("     service # " + s.size());
+
+        // iterater and print services
+        for (var svcIter = s.next(); svcIter != null; svcIter = s.next()) {
+            var service = svcIter as Ble.Service;
+            System.println(" -- service: " + service.getUuid().toString());
+            var charIter = service.getCharacteristics();
+            for (var char = charIter.next(); char != null; char = charIter.next()) {
+                var characteristic = char as Ble.Characteristic;
+                System.println(" ---  characteristic: " + characteristic.getUuid().toString());
+            }
+        } 
+        var s2 = dev.getServiceUuids();
+        for (var svcIter = s2.next(); svcIter != null; svcIter = s2.next()) {
+            var uuid = svcIter as Ble.Uuid;
+            System.println(" -- service uuid: " + uuid.toString());
+           
+        } */
+    
         self.needsDisplay();
+    
     }
 
     // unpair the current device
@@ -392,12 +488,48 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.needsDisplay();
     }
 
+
+    function dumpServices(device as Ble.Device) {
+        var s = device.getServices();
+        for (var svcIter = s.next(); svcIter != null; svcIter = s.next()) {
+            System.println("....... service XXXX");
+            var service = svcIter as Ble.Service;
+            System.println(" -- service: " + service.getUuid().toString());
+            var charIter = service.getCharacteristics();
+            for (var char = charIter.next(); char != null; char = charIter.next()) {
+                var characteristic = char as Ble.Characteristic;
+                System.println(" ---  characteristic: " + characteristic.getUuid().toString());
+            }
+        } 
+    }
     // callback function for the BLE delegate (overrides superclass)
     function onConnectedStateChanged(device, state) {
         System.println("MyBleDelegate onConnectedStateChanged  state="+state);
+        dumpServices(device);
+        if ((0)) {
+            var service = device.getService(Ble.stringToUuid(SERVICE_UUID));
+            System.println("service: " + service);
+            var chUUID = Ble.stringToUuid(CHARACTERISTIC_UUID);
+            var ch = service.getCharacteristic(chUUID);
+        }
         // if connected, send connection info to the network manager
         if (state == Ble.CONNECTION_STATE_CONNECTED && device != null) {
+            System.println("talallalala connected XXXX");
             self.device = device;
+            // iterater and print services
+            var s = device.getServices();
+            for (var svcIter = s.next(); svcIter != null; svcIter = s.next()) {
+                System.println("....... service XXXX");
+                var service = svcIter as Ble.Service;
+                System.println(" -- service: " + service.getUuid().toString());
+                var charIter = service.getCharacteristics();
+                for (var char = charIter.next(); char != null; char = charIter.next()) {
+                    var characteristic = char as Ble.Characteristic;
+                    System.println(" ---  characteristic: " + characteristic.getUuid().toString());
+                }
+            } 
+            //var s = self.device.getServices();
+            
             /*
             var read = null;
             var write = null;

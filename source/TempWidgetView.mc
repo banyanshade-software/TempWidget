@@ -54,7 +54,7 @@ class TemperatureDatafield extends Ui.DataField
          * (2025-09-30) all display fields are handled by layout.xml
          * so we just need to update the text fields here.
          */
-        self.namemapper.thermoIteratorReset();
+        /*self.namemapper.thermoIteratorReset();
         for (var i=0; i<8; i++) {
             var n = "th" + i + "temp";
             var t = TemperatureDatafield.findDrawableById(n);
@@ -87,14 +87,14 @@ class TemperatureDatafield extends Ui.DataField
             if (hum != null) {
                 tt.setText(hum+" %");
             }
-        }
-        /* 2025-09-30 olds code to be removed (but we may need it as example)
+        }*/
+        /* 2025-09-30 olds code to be removed (but we may need it as example)*/
         dc.clear();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
         dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
                     Graphics.FONT_MEDIUM, self.bled.msgstring(),
                     Graphics.TEXT_JUSTIFY_CENTER);
-        */
+        /* */
 
     }
 
