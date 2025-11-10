@@ -176,7 +176,7 @@ class MyBleDelegate extends Ble.BleDelegate {
   
     function updateValues() {
         if (self.device != null /* && self.device.isConnected() */) {
-            System.println("updating values from device " + self.device.getName());
+            System.println("updating values from device " + self.device);
             // read TP357 temperature and humidity characteristics
             if ((charact_read == null) || (charact_write == null)) {
                 System.println("cannot update, charact nil");
@@ -419,24 +419,27 @@ class MyBleDelegate extends Ble.BleDelegate {
     const UUID_CHAR_TP357_READ    = "00010203-0405-0607-0809-0a0b0c0d2b10";
     const UUID_CHAR_TP357_WRITE   = "00010203-0405-0607-0809-0a0b0c0d2b11";
     // OTA according to https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L29
-    const SERV_UUID_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d1911";
-    const UUID_CHAR_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d2b12";
+    //const SERV_UUID_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d1911";
+    //const UUID_CHAR_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d2b12";
 
 
     function registerMyProfile() {
-            Ble.registerProfile(
+            if ((0)) {
+                Ble.registerProfile(
                 {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
                     :characteristics => [
                         { :uuid => Ble.stringToUuid("00002A29-0000-1000-8000-00805F9B34FB") }, // Manufacturer Name
                         { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
                     ]
                 });
-            Ble.registerProfile({
+                Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_GEN_BATTERY), // Battery Service
                     :characteristics => [
                         { :uuid => Ble.stringToUuid("00002A19-0000-1000-8000-00805F9B34FB") }  // Battery Level
                     ]  
                 });
+            }
+           
             Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
                     :characteristics => [
@@ -446,14 +449,14 @@ class MyBleDelegate extends Ble.BleDelegate {
                           :descriptors => [] }
                     ]
                 });
-                Ble.registerProfile({
+                /*Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_TP357_2), 
                     :characteristics => [
                         { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_2),
-                          :descriptors => [ /*Ble.cccdUuid()*/ ] },
+                          :descriptors => [ Ble.cccdUuid() ] },
                       
                     ]
-                });
+                });*/
             //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
             //var x = Ble.cccdUuid();
             //System.println("cccd uuid: " + x.toString() );
@@ -475,6 +478,9 @@ class MyBleDelegate extends Ble.BleDelegate {
             System.println("pairDevice succeeded "+d.isConnected());
         }
         self.device = d;
+        dumpServices(d);
+        getCharact(d);
+
 /*
         var therder = d as Ble.Device;
         System.println("pairDevice returned " + therder);
@@ -520,6 +526,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function dumpServices(device as Ble.Device) {
+        System.println("dumpService");
         var s = device.getServices();
         for (var svcIter = s.next(); svcIter != null; svcIter = s.next()) {
             System.println("....... service XXXX");
@@ -532,20 +539,28 @@ class MyBleDelegate extends Ble.BleDelegate {
             }
         } 
     }
+
+    function getCharact(device) as Void {
+        var service = device.getService(Ble.stringToUuid(SERV_UUID_TP357_PRIMARY));
+        if (service == null) {
+            System.println("no primary service: ");
+            return;
+        }
+        System.println("service: " + service.toString());
+        var chUUID = Ble.stringToUuid(UUID_CHAR_TP357_READ);
+        charact_read = service.getCharacteristic(chUUID);
+        System.println("characteristic R : " + charact_read);
+        chUUID = Ble.stringToUuid(UUID_CHAR_TP357_WRITE);
+        charact_write = service.getCharacteristic(chUUID);
+        System.println("characteristic W: " + charact_write);
+    }
+
     // callback function for the BLE delegate (overrides superclass)
     function onConnectedStateChanged(device, state) {
         System.println("MyBleDelegate onConnectedStateChanged  state="+state);
         dumpServices(device);
         if ((1)) {
-            var service = device.getService(Ble.stringToUuid(SERV_UUID_TP357_PRIMARY));
-            System.println("service: " + service.toString());
-            var chUUID = Ble.stringToUuid(UUID_CHAR_TP357_READ);
-            charact_read = service.getCharacteristic(chUUID);
-            System.println("characteristic R : " + charact_read);
-            chUUID = Ble.stringToUuid(UUID_CHAR_TP357_WRITE);
-            charact_write = service.getCharacteristic(chUUID);
-            System.println("characteristic W: " + charact_write);
-
+            getCharact(device);
         }
        
         // if connected, send connection info to the network manager
