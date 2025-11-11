@@ -446,14 +446,8 @@ class MyBleDelegate extends Ble.BleDelegate {
                           :descriptors => [] }
                     ]
                 });
-                Ble.registerProfile({
-                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_2), 
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_2),
-                          :descriptors => [ /*Ble.cccdUuid()*/ ] },
-                      
-                    ]
-                });
+                
+                
             //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
             //var x = Ble.cccdUuid();
             //System.println("cccd uuid: " + x.toString() );
