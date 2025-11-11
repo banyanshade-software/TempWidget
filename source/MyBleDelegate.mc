@@ -181,7 +181,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             // read TP357 temperature and humidity characteristics
             if ((charact_read == null) || (charact_write == null)) {
                 System.println("cannot update, charact nil");
-                System.println(". caract R="+charact_read+" W="+charact_write);
+                 System.println(". caract R="+charact_read+" W="+charact_write);
                 return;
             }
             var payload = [ 0x01, 0x00, 0x00, 0x00 ]b as Lang.ByteArray; 
@@ -427,7 +427,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function registerMyProfile() {
-            if ((0)) {
+            if ((1)) {
                 Ble.registerProfile(
                 {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
                     :characteristics => [
@@ -435,6 +435,8 @@ class MyBleDelegate extends Ble.BleDelegate {
                         { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
                     ]
                 });
+            }
+            if ((1)) {
                 Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_GEN_BATTERY), // Battery Service
                     :characteristics => [
@@ -443,12 +445,12 @@ class MyBleDelegate extends Ble.BleDelegate {
                 });
             }
            
-            if ((0)) {
+            if ((1)) {
                 Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
                     :characteristics => [
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE)/*,
-                          :descriptors => [] */ },
+                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
+                          :descriptors => []  },
                         { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
                           :descriptors => [ Ble.cccdUuid() ] },
                     ]
