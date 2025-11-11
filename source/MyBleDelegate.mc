@@ -416,6 +416,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     const SERV_UUID_GEN_BATTERY      = "0000180F-0000-1000-8000-00805F9B34FB";
     // TP357 specific services uuids
     const SERV_UUID_TP357_PRIMARY = "00010203-0405-0607-0809-0a0b0c0d1910";
+                                     
     const UUID_CHAR_TP357_READ    = "00010203-0405-0607-0809-0a0b0c0d2b10";
     const UUID_CHAR_TP357_WRITE   = "00010203-0405-0607-0809-0a0b0c0d2b11";
     // OTA according to https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L29
@@ -424,7 +425,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function registerMyProfile() {
-            if ((0)) {
+            if ((1)) {
                 Ble.registerProfile(
                 {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
                     :characteristics => [
