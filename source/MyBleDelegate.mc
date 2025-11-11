@@ -181,7 +181,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             // read TP357 temperature and humidity characteristics
             if ((charact_read == null) || (charact_write == null)) {
                 System.println("cannot update, charact nil");
-                 System.println(". caract R="+charact_read+" W="+charact_write);
+                System.println(". caract R="+charact_read+" W="+charact_write);
                 return;
             }
             var payload = [ 0x01, 0x00, 0x00, 0x00 ]b as Lang.ByteArray; 
@@ -427,7 +427,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function registerMyProfile() {
-            if ((1)) {
+            if ((0)) {
                 Ble.registerProfile(
                 {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
                     :characteristics => [
@@ -443,7 +443,8 @@ class MyBleDelegate extends Ble.BleDelegate {
                 });
             }
            
-            Ble.registerProfile({
+            if ((0)) {
+                Ble.registerProfile({
                     :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
                     :characteristics => [
                         { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE)/*,
@@ -452,6 +453,21 @@ class MyBleDelegate extends Ble.BleDelegate {
                           :descriptors => [ Ble.cccdUuid() ] },
                     ]
                 });
+            } else {
+                Ble.registerProfile({
+                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
+                    :characteristics => [
+                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
+                          :descriptors => [ Ble.cccdUuid() ] }
+                    ]
+                });
+                Ble.registerProfile({
+                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
+                    :characteristics => [
+                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE)}
+                    ]
+                });
+            }
                 
             //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
             //var x = Ble.cccdUuid();
