@@ -469,6 +469,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             System.println("pairDevice succeeded "+d.isConnected());
         }
         self.device = d;
+        //dumpServices(d);
 /*
         var therder = d as Ble.Device;
         System.println("pairDevice returned " + therder);
@@ -525,6 +526,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 System.println(" ---  characteristic: " + characteristic.getUuid().toString());
             }
         } 
+        System.println("....... service scan done");
     }
     // callback function for the BLE delegate (overrides superclass)
     function onConnectedStateChanged(device, state) {
