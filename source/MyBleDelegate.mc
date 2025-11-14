@@ -26,20 +26,18 @@ enum {
 class MyBleDelegate extends Ble.BleDelegate {
     protected var namemapper;
     hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
+
     hidden var mode = MODE_NONE;
     hidden var device as Ble.Device or Null = null;
-    //hidden var currentPacket;
-    //hidden var connected = false;
-    //hidden var scanning = false;
-    //var nscan = 0;
     protected var t0 = 0;
     protected var tickValue = 0;
-    var knownDevices = {};
+    //var knownDevices = {};
 
     protected var charact_read  as Ble.Characteristic or Null;
     protected var charact_write as Ble.Characteristic or Null; 
 
     protected var cnx_ok = false;
+    protected var register_done = false;
     /*
     * (2025-09-29)
     * this is still experimental, and includes a lot of code
@@ -119,7 +117,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                     k = self.device.isConnected();
                 }
                 if (k != false) {
-                    System.println("device connected");
+                    if ((0)) { System.println("device connected"); }
                 }
                 if ((0==t0) || (tickValue - t0 > 30)) {
                     System.println("update value ");
@@ -160,12 +158,12 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     function startScanning() 
     {
+        //Profile();
         self.disconnect();
         self.scanResults = [];
         self.mode = MODE_SCAN;
         self.t0= tickValue;
 
-        //registerMyProfile();
 
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
         // scan for five seconds
@@ -176,21 +174,32 @@ class MyBleDelegate extends Ble.BleDelegate {
 
   
     function updateValues() {
-        if (self.device != null && cnx_ok == true /* && self.device.isConnected() */) {
+        if (self.device != null /*&& cnx_ok == true /* && self.device.isConnected() */) {
             System.println("updating values from device " + self.device);
             // read TP357 temperature and humidity characteristics
             if ((charact_read == null) || (charact_write == null)) {
                 System.println("cannot update, charact nil");
                  System.println(". caract R="+charact_read+" W="+charact_write);
+                 if (false && charact_read != null) {
+                    System.println("request read -----");
+                    charact_read.requestRead();
+                 }
+                 dumpServices(self.device);
+                 dumpServices2(self.device);
                 return;
             }
             var payload = [ 0x01, 0x00, 0x00, 0x00 ]b as Lang.ByteArray; 
             charact_write.requestWrite(payload, {:writeType => Ble.WRITE_TYPE_DEFAULT});
-            charact_read.requestRead();
+            //charact_read.requestRead();
         } else {
             System.println("cannot update values, not connected");
         }
     }   
+
+    function onCharacteristicWrite(characteristic as Ble.Characteristic, status as Ble.Status) {
+            System.println("onCharacteristicWrite status="+status);
+
+    }    
     function msgstring() as Toybox.Lang.String {
         var s = "Mode: ";
         switch (self.mode) {
@@ -418,7 +427,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     const SERV_UUID_GEN_BATTERY      = "0000180F-0000-1000-8000-00805F9B34FB";
     // TP357 specific services uuids
     const SERV_UUID_TP357_PRIMARY = "00010203-0405-0607-0809-0a0b0c0d1910";
-                                     
+                                //   00010203-0405-0607-0809-0A0B0C0D1910 
     const UUID_CHAR_TP357_READ    = "00010203-0405-0607-0809-0a0b0c0d2b10";
     const UUID_CHAR_TP357_WRITE   = "00010203-0405-0607-0809-0a0b0c0d2b11";
     // OTA according to https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L29
@@ -427,62 +436,65 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function registerMyProfile() {
-            if ((1)) {
-                Ble.registerProfile(
-                {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid("00002A29-0000-1000-8000-00805F9B34FB") }, // Manufacturer Name
-                        { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
-                    ]
-                });
-            }
-            if ((1)) {
-                Ble.registerProfile({
-                    :uuid => Ble.stringToUuid(SERV_UUID_GEN_BATTERY), // Battery Service
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid("00002A19-0000-1000-8000-00805F9B34FB") }  // Battery Level
-                    ]  
-                });
-            }
-           
-            if ((1)) {
-                Ble.registerProfile({
-                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
-                          :descriptors => []  },
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
-                          :descriptors => [ Ble.cccdUuid() ] },
-                    ]
-                });
-            } else {
-                Ble.registerProfile({
-                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
-                          :descriptors => [ Ble.cccdUuid() ] }
-                    ]
-                });
-                Ble.registerProfile({
-                    :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
-                    :characteristics => [
-                        { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE)}
-                    ]
-                });
-            }
-                
-            //Ble.registerProfile(profile); // onProfileRegister will be called on the delegate
-            //var x = Ble.cccdUuid();
-            //System.println("cccd uuid: " + x.toString() );
+        System.println("registerMyProfile");
+        if ((0)) {
+            Ble.registerProfile(
+            {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
+                :characteristics => [
+                    { :uuid => Ble.stringToUuid("00002A29-0000-1000-8000-00805F9B34FB") }, // Manufacturer Name
+                    { :uuid => Ble.stringToUuid("00002A24-0000-1000-8000-00805F9B34FB") }  // Model Number
+                ]
+            });
+        }
+        if ((0)) {
+            Ble.registerProfile({
+                :uuid => Ble.stringToUuid(SERV_UUID_GEN_BATTERY), // Battery Service
+                :characteristics => [
+                    { :uuid => Ble.stringToUuid("00002A19-0000-1000-8000-00805F9B34FB") }  // Battery Level
+                ]  
+            });
+        }
+        
+        if ((1)) {
+            Ble.registerProfile({
+                :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
+                :characteristics => [
+                     { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
+                        :descriptors => [ Ble.cccdUuid() ] },
+                    { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
+                        :descriptors => []  },
+                   
+                ]
+            });
+        }
     }
+    
 
+    function onProfileRegister(uuid as Ble.Uuid, status as Ble.Status) as Void {
+        System.println("onProfileRegister uuid="+uuid+" status="+status);
+        if (self.device) {
+            dumpServices(self.device);
+        }
+    }
 
     // pairs with the device at the specified index of the scan results
     function connectToDevice(dev as Ble.ScanResult) {
+        if (!register_done ) {  
+            registerMyProfile();
+            register_done = true;   
+        }
         // stop scanning
         Ble.setScanState(Ble.SCAN_STATE_OFF);
         self.disconnect();
-        registerMyProfile();
+        if ((1)) {
+            System.println("listing paired devices:");
+            var p = Ble.getPairedDevices();
+            for (var pi = p.next(); pi != null; pi = p.next()) {
+                var pd = pi as Ble.Device;
+                System.println("    paired device: " + pd);
+            }
+        }
+     
 
         var d = Ble.pairDevice(dev);
         if (d == null) {
@@ -490,8 +502,17 @@ class MyBleDelegate extends Ble.BleDelegate {
             return;
         } else {
             System.println("pairDevice succeeded "+d.isConnected());
+            if ((1)) {
+                System.println("(after) listing paired devices:");
+                var p = Ble.getPairedDevices();
+                for (var pi = p.next(); pi != null; pi = p.next()) {
+                    var pd = pi as Ble.Device;
+                    System.println("    paired device: " + pd);
+                }
+            }
+            self.device = d;
+            getCharact(d);
         }
-        self.device = d;
         //dumpServices(d);
         //getCharact(d);
 
@@ -553,6 +574,20 @@ class MyBleDelegate extends Ble.BleDelegate {
             }
         } 
         System.println("....... service scan done");
+    }
+    function dumpServices2(device as Ble.Device) {
+        System.println("======== dumpService2 dev=" + device + " name="+device.getName());
+        var s = device.getService(Ble.stringToUuid(SERV_UUID_TP357_PRIMARY));
+        System.println(".     primService: " + s);
+        if (s != null) {
+            var charIter = s.getCharacteristics();
+            for (var char = charIter.next(); char != null; char = charIter.next()) {
+                var characteristic = char as Ble.Characteristic;
+                System.println(" ---  characteristic: " + characteristic.getUuid().toString());
+            }
+        }
+         
+        System.println("....... service chk done");
     }
 
     function getCharact(device) as Void {

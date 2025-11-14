@@ -61,8 +61,17 @@ def scan_with_simplepyble(timeout):
     TP357_READ_CHARACTERISTIC_UUID = "00010203-0405-0607-0809-0a0b0c0d2b10"
     TP357_WRITE_CHARACTERISTIC_UUID = "00010203-0405-0607-0809-0a0b0c0d2b11"
     
-    c = dev.read(TP357_PRIVATE_SERVICE_UUID, TP357_READ_CHARACTERISTIC_UUI) 
+    c = dev.read(TP357_PRIVATE_SERVICE_UUID, TP357_READ_CHARACTERISTIC_UUID) 
     print(f"Read from TP357: {c}")
+
+    cmd = b"\xa7\x00\x00\x00\x00\x7a" # https://github.com/alexpacini/tpy357/blob/master/tpy357/__init__.py
+    dev.write_command(TP357_PRIVATE_SERVICE_UUID, TP357_WRITE_CHARACTERISTIC_UUID, cmd) #bytearray([0x01, 0x02, 0x03]))
+    c = dev.read(TP357_PRIVATE_SERVICE_UUID, TP357_READ_CHARACTERISTIC_UUID) 
+    print(f"Read from TP357: {c}")
+
+    c = dev.read(TP357_PRIVATE_SERVICE_UUID, TP357_READ_CHARACTERISTIC_UUID) 
+    print(f"Read from TP357: {c}")
+
     dev.disconnect()
     print("Disconnected.")
 
