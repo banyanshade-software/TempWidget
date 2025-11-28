@@ -58,20 +58,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.namemapper = nm;
         self.mode = MODE_NONE;
         
-        if ((0)) { // to be removed
-            try {
-                var t = Prop.getValue("k1");
-                System.println("property k1: " + t);
-                Prop.setValue("k1", "new k1 value"); 
-                var t2 = Prop.getValue("k1");
-                System.println("property k1 after set: " + t2);   
-            } catch(ex) {
-                System.println("exception " + ex);   
-
-            } finally {
-
-            }
-        }
+        registerMyProfile();
+        
     }
 
     // callback function for the timer
@@ -433,10 +421,18 @@ class MyBleDelegate extends Ble.BleDelegate {
     // OTA according to https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L29
     //const SERV_UUID_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d1911";
     //const UUID_CHAR_TP357_2       = "00010203-0405-0607-0809-0a0b0c0d2b12";
-
+    const profile_TP357 = {
+                :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
+                :characteristics => [
+                     { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE)/*,
+                        :descriptors => [] */ },
+                     { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
+                        :descriptors => [ Ble.cccdUuid() ] },
+                ]
+            };
 
     function registerMyProfile() {
-        System.println("registerMyProfile");
+        System.println("registerMyProfile "+profile_TP357);
         if ((0)) {
             Ble.registerProfile(
             {   :uuid => Ble.stringToUuid(SERV_UUID_GEN_DEVICE_INFO), // Device Information
@@ -456,16 +452,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         }
         
         if ((1)) {
-            Ble.registerProfile({
-                :uuid => Ble.stringToUuid(SERV_UUID_TP357_PRIMARY), 
-                :characteristics => [
-                     { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_READ),
-                        :descriptors => [ Ble.cccdUuid() ] },
-                    { :uuid => Ble.stringToUuid(UUID_CHAR_TP357_WRITE),
-                        :descriptors => []  },
-                   
-                ]
-            });
+            Ble.registerProfile(profile_TP357);
         }
     }
     
@@ -479,10 +466,10 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     // pairs with the device at the specified index of the scan results
     function connectToDevice(dev as Ble.ScanResult) {
-        if (!register_done ) {  
-            registerMyProfile();
-            register_done = true;   
-        }
+        //if (!register_done ) {  
+        //    registerMyProfile();
+        //    register_done = true;   
+        //}
         // stop scanning
         Ble.setScanState(Ble.SCAN_STATE_OFF);
         self.disconnect();
@@ -561,16 +548,19 @@ class MyBleDelegate extends Ble.BleDelegate {
 
 
     function dumpServices(device as Ble.Device) {
-        System.println("======== dumpService");
+        System.println("======== dumpService of dev=" + device );
         var s = device.getServices();
+        System.println("....... services="+s);
         for (var svcIter = s.next(); svcIter != null; svcIter = s.next()) {
-            System.println("....... service XXXX");
             var service = svcIter as Ble.Service;
+            System.println(" -- service: " + service);
+            System.println(" -- service: " + service.toString());
+            System.println(" -- service: " + service.getUuid());
             System.println(" -- service: " + service.getUuid().toString());
             var charIter = service.getCharacteristics();
             for (var char = charIter.next(); char != null; char = charIter.next()) {
                 var characteristic = char as Ble.Characteristic;
-                System.println(" ---  characteristic: " + characteristic.getUuid().toString());
+                System.println("   ---  characteristic: " + characteristic.getUuid().toString());
             }
         } 
         System.println("....... service scan done");
