@@ -7,7 +7,7 @@ using Toybox.WatchUi as Ui; // to be removed later
 using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
 using Toybox.Application as App;
-//using Toybox.Cryptography as Crypto;
+using Toybox.Application.Properties as Prop;
 
 // https://github.com/garmin/connectiq-apps/blob/e26454bff1ab9f9e04dce20b7f6b6d2f9cd7155c/barrels/BluetoothMeshBarrel/source/Network/MeshDelegate.mc#L39
 
@@ -26,11 +26,11 @@ enum {
 
 class MyBleDelegate extends Ble.BleDelegate {
     protected var namemapper;
-    //hidden var scanResults = [] as Lang.Array<Ble.ScanResult>;
 
     hidden var mode = MODE_NONE;
     protected var regdev as Ble.ScanResult or Null = null;
-    //hidden var device as Ble.Device or Null = null;
+    protected var regdevname as Toybox.Lang.String or Null = "";
+    //protected var valueUpdatedFlag = false;
     protected var t0 = 0;
     protected var tickValue = 0;
     
@@ -41,16 +41,22 @@ class MyBleDelegate extends Ble.BleDelegate {
     
     /*
     * (2025-09-29)
-    * this is still experimental, and includes a lot of code
-    * copied from the MeshDelegate example code, and not used
-    * Currently we just scan for devices, as temperature
-    * and humidity are broadcasted, and we dont need
-    * to connect/pair to the devices.
-    * The code will be cleaned up later.
+    * we only use broadcasted data, no connections, as it proved to be tricky (need to register
+    * profile, connexion state seems to be unclear with simulation, 
+    * services are not documented at all on TP357, etc..) and
+    * adds no value (as we dont want to display historical data).
     *
-    * Nothing is done yet to limit power consumption.
-    * (we should probably not scan all the time, as having temperature every
-    * few minutes is  sufficient)
+    * thought it is unclear how much power the BLE scanning uses (this is only RX, so it 
+    * should be low), we limit the scanning time to regular intervals.
+    *
+    * we also store latest knonw device, and we will stick on it unless it is not seen 
+    * for a while.
+    *
+    * this is still very basic and may need improvements later, and user should be
+    * notified when no device is found for a long time / new device is used.
+    *
+    * a lot of processing is done in this Ble Delegate subclass, and it should 
+    * be refactored 
     */ 
 
     function initialize(nm) {
@@ -58,6 +64,9 @@ class MyBleDelegate extends Ble.BleDelegate {
         BleDelegate.initialize();
         self.namemapper = nm;
         self.mode = MODE_NONE;
+
+        self.regdevname = Prop.getValue("tp357_devname");
+        System.println("restored regdevname: " + regdevname);
         //registerMyProfile();
     }
     /*
@@ -89,16 +98,16 @@ class MyBleDelegate extends Ble.BleDelegate {
                 s += "NONE";
                 break;
             case MODE_SCAN_KN:
-                s += "SCANNING (kn)";
+                s += "SCAN (kn)";
                 break;
             case MODE_SCAN_NOKN:
-                s += "SCANNING (NOkn)";
+                s += "SCAN (NOkn)";
                 break;
             case MODE_SCAN_REG:
                 s += "REG";
                 break;
             case MODE_SCAN_LOW:
-                s += "LOW SCANNING";
+                s += "LOW SCAN";
                 break;
             default:
                 s += "UNKNOWN";
@@ -108,6 +117,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
 
     // callback function for the timer
+    // main entry point for FSM
     function tick() {
         //System.println("MyBleDelegate tick " + timstr());
         tickValue++;
@@ -139,15 +149,23 @@ class MyBleDelegate extends Ble.BleDelegate {
     }
 
     public function hasRegisteredDevice() as Toybox.Lang.Boolean {
-        if (regdev == null) {
+        if ((regdevname == null) || (regdevname.equals("") == true)) {
             return false;
         }
         return true;
     }
 
-    public function registerDevice(r) {
-        regdev = r;
+    public function registerDevice(r as Ble.ScanResult, n as Toybox.Lang.String) {
+        if (r != regdev) {
+            regdev = r;
+            // n is r.getDeviceName()
+            if (n != regdevname) {
+                regdevname = n;
+                Prop.setValue("tp357_devname", regdevname);
+            }
+        }
     }
+
     public function registeredDevice() {
         return regdev;
     }
@@ -194,7 +212,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                  
                 if (mode == MODE_SCAN_NOKN) {
                     // any TP357 can be regisetered
-                    registerDevice(r);
+                    registerDevice(r, n);
                 } else {
                     if (self.registeredDevice().isSameDevice(r) == false) {
                         continue;
