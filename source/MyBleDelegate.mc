@@ -170,6 +170,10 @@ class MyBleDelegate extends Ble.BleDelegate {
         return regdev;
     }
 
+    public function registeredDeviceName() {
+        return regdevname;
+    }
+
     function startScanning() 
     {
         self.t0 = tickValue;
@@ -214,9 +218,16 @@ class MyBleDelegate extends Ble.BleDelegate {
                     // any TP357 can be regisetered
                     registerDevice(r, n);
                 } else {
-                    if (self.registeredDevice().isSameDevice(r) == false) {
+                    var rd = self.registeredDevice();
+                    if ((rd != null) && (rd.isSameDevice(r) == false)) {
                         continue;
                     }
+                    var devname = self.registeredDeviceName();
+                    if ((devname != null) && (devname.equals(n) == false)) {
+                        continue;
+                    }
+                    registerDevice(r, n);
+
                 }
                 Ble.setScanState(SCAN_STATE_OFF);
                 mode = MODE_SCAN_REG;

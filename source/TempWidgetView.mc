@@ -48,6 +48,12 @@ class TemperatureDatafield extends Ui.DataField
        
         // Call the parent onUpdate function to redraw the layout
         DataField.onUpdate(dc);
+        var bgcolor = getBackgroundColor();
+        var fgcolor = Graphics.COLOR_WHITE;
+        if (bgcolor == Graphics.COLOR_WHITE) {
+            // light mode
+            fgcolor = Graphics.COLOR_BLACK;
+        }
 
         // update BLE state. clock tick is about once per second but does not
         // have to be exact.
@@ -57,7 +63,7 @@ class TemperatureDatafield extends Ui.DataField
         dc.clear();
         var w = dc.getWidth();
         var h = dc.getHeight();
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
+        dc.setColor(fgcolor, bgcolor);
         if (h>50) {
             // display state
             var s = self.bled.msgstring();
@@ -97,7 +103,7 @@ class TemperatureDatafield extends Ui.DataField
         //tdeg = -18.1; // for test
         var st = (valid ? tdeg.format("%.1f") : "--") +" °C";
         if (valid && (tdeg < 3.0)) {
-            dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_BLACK);
+            dc.setColor(Graphics.COLOR_BLUE, bgcolor);
         }
         dc.drawText(wt, h/2-10,
                     Graphics.FONT_LARGE, st,
