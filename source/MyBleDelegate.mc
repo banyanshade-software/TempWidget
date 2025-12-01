@@ -78,6 +78,9 @@ class MyBleDelegate extends Ble.BleDelegate {
             case MODE_SCAN_NOKN:
                 s += "SCANNING (NOkn)";
                 break;
+            case MODE_SCAN_REG:
+                s += "REG";
+                break;
             case MODE_SCAN_LOW:
                 s += "LOW SCANNING";
                 break;
@@ -107,6 +110,11 @@ class MyBleDelegate extends Ble.BleDelegate {
                     Ble.setScanState(Ble.SCAN_STATE_OFF);
                     mode = MODE_SCAN_LOW;
                 }
+                break;
+            case MODE_SCAN_REG:
+                if (tickValue-t0 > 2*60) {
+                    self.startScanning();
+                }  
                 break;
             default:
                 System.println("ooo" + mode);
@@ -178,6 +186,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
                 Ble.setScanState(SCAN_STATE_OFF);
                 mode = MODE_SCAN_REG;
+                t0 = tickValue;
                 
                 System.println("known device, processing data:");
                 var raw = r.getRawData();
