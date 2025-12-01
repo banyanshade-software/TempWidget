@@ -68,22 +68,31 @@ class TemperatureDatafield extends Ui.DataField
                     Graphics.TEXT_JUSTIFY_LEFT);
         }
         var wt = 0;
-
+        var just = Graphics.TEXT_JUSTIFY_LEFT;
         if (w>160) {
             wt = 50;
         } else {
-            wt = 10;
+            wt = w/2;
+            just = Graphics.TEXT_JUSTIFY_CENTER;
         }
         var tdeg = self.bled.temperature/10.0; // in 0.1 degC
+       //tdeg = -123.4;
         var st = tdeg.format("%.1f")+" °C";
         dc.drawText(wt, h/2-10,
                     Graphics.FONT_LARGE, st,
-                    Graphics.TEXT_JUSTIFY_LEFT);
+                    just);
         if (w>110) {
             var fh = Graphics.FONT_SMALL;
             var hhum = self.bled.humidity; // in % RH
             var sh = hhum.format("%d")+" %RH";
-            dc.drawText(w-20, h/2-5,
+            var wh = w - 20;
+            var hh = h/2;
+            if (w<200) {
+                fh = Graphics.FONT_TINY;
+                hh = 10;
+                wh = w - 5;
+            }
+            dc.drawText(wh, hh,
                         fh, sh,
                         Graphics.TEXT_JUSTIFY_RIGHT);
         }
