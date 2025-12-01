@@ -34,7 +34,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     protected var t0 = 0;
     protected var tickValue = 0;
     
-    protected var valueUpdatedFlag = false;
+    protected var valueUpdatedTick = 0;
     public var temperature = 0; // in 0.1 degC
     public var humidity = 0;    // in % RH
 
@@ -65,13 +65,22 @@ class MyBleDelegate extends Ble.BleDelegate {
         Ui.requestUpdate();
     }*/
 
+/*
     public function valueUpdated() as Toybox.Lang.Boolean {
         if (self.valueUpdatedFlag == true) {
             self.valueUpdatedFlag = false;
             return true;
         }
         return false;
-    }   
+    }
+    */
+
+    public function valueAreValid() as Toybox.Lang.Boolean {
+        if ((valueUpdatedTick>0) && (tickValue - valueUpdatedTick < 60*5)) {
+           return true;
+        }
+        return false;
+    }
 
     function msgstring() as Toybox.Lang.String {
         var s = "Mode: ";
@@ -207,7 +216,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                         
                 temperature = t;
                 humidity = h;
-                valueUpdatedFlag = true;
+                valueUpdatedTick = tickValue;
 
 
                 System.println("  temp=" + t/10.0

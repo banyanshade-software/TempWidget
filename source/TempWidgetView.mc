@@ -52,10 +52,8 @@ class TemperatureDatafield extends Ui.DataField
         // update BLE state. clock tick is about once per second but does not
         // have to be exact.
         bled.tick();
-        if (bled.valueUpdated() != true) {
-            // no new data, skip redraw
-            //return;
-        }
+       
+       
         dc.clear();
         var w = dc.getWidth();
         var h = dc.getHeight();
@@ -67,6 +65,10 @@ class TemperatureDatafield extends Ui.DataField
                     Graphics.FONT_TINY, s,
                     Graphics.TEXT_JUSTIFY_LEFT);
         }
+        var valid = false;
+        if (self.bled.valueAreValid()) {
+            valid = true;
+        }
         var wt = 0;
         var just = Graphics.TEXT_JUSTIFY_LEFT;
         if (w>160) {
@@ -75,16 +77,11 @@ class TemperatureDatafield extends Ui.DataField
             wt = w/2;
             just = Graphics.TEXT_JUSTIFY_CENTER;
         }
-        var tdeg = self.bled.temperature/10.0; // in 0.1 degC
-       //tdeg = -123.4;
-        var st = tdeg.format("%.1f")+" °C";
-        dc.drawText(wt, h/2-10,
-                    Graphics.FONT_LARGE, st,
-                    just);
+      
         if (w>110) {
             var fh = Graphics.FONT_SMALL;
             var hhum = self.bled.humidity; // in % RH
-            var sh = hhum.format("%d")+" %RH";
+            var sh = (valid ? hhum.format("%d") : "--" ) +" %RH";
             var wh = w - 20;
             var hh = h/2;
             if (w<200) {
@@ -96,7 +93,15 @@ class TemperatureDatafield extends Ui.DataField
                         fh, sh,
                         Graphics.TEXT_JUSTIFY_RIGHT);
         }
-
+        var tdeg = self.bled.temperature/10.0; // in 0.1 degC
+        //tdeg = -18.1; // for test
+        var st = (valid ? tdeg.format("%.1f") : "--") +" °C";
+        if (valid && (tdeg < 3.0)) {
+            dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_BLACK);
+        }
+        dc.drawText(wt, h/2-10,
+                    Graphics.FONT_LARGE, st,
+                    just);
     }
 
     // Called when this View is removed from the screen. Save the
