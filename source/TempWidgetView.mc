@@ -12,12 +12,11 @@ using Toybox.Lang;
 
 class TemperatureDatafield extends Ui.DataField
  {
-    
-    private var namemapper;
+    //private var namemapper;
     private var bled;
-    function initialize(nm as NameMapper, b as MyBleDelegate) {
+    function initialize(b as MyBleDelegate) {
         DataField.initialize();
-        namemapper = nm;
+        //namemapper = nm;
         self.bled = b;
     }
 
@@ -49,52 +48,45 @@ class TemperatureDatafield extends Ui.DataField
        
         // Call the parent onUpdate function to redraw the layout
         DataField.onUpdate(dc);
+
+        // update BLE state. clock tick is about once per second but does not
+        // have to be exact.
         bled.tick();
-        /*
-         * (2025-09-30) all display fields are handled by layout.xml
-         * so we just need to update the text fields here.
-         */
-        /*self.namemapper.thermoIteratorReset();
-        for (var i=0; i<8; i++) {
-            var n = "th" + i + "temp";
-            var t = TemperatureDatafield.findDrawableById(n);
-            if (t == null) {
-                break;
-            } 
-            var th = self.namemapper.thermoIteratorNext();  
-            if (th == null) {
-                break;
-            }
-            var tht = th as ThermoInfo;
-            var tt = t as Ui.Text;
-            var temp = tht.lastTemperature;
-            var hum = tht.lastHumidity;
-
-            var ts = "";
-            if (temp != null) {
-                ts = temp.format("%.1f");
-            }
-            tt.setText(ts + " °C");
-
-            n = "th" + i + "name";
-            t = TemperatureDatafield.findDrawableById(n);
-            tt = t as Ui.Text;
-            tt.setText(th.name);
-
-            n = "th" + i + "hum";
-            t = TemperatureDatafield.findDrawableById(n);
-            tt = t as Ui.Text;
-            if (hum != null) {
-                tt.setText(hum+" %");
-            }
-        }*/
-        /* 2025-09-30 olds code to be removed (but we may need it as example)*/
+        if (bled.valueUpdated() != true) {
+            // no new data, skip redraw
+            //return;
+        }
         dc.clear();
+        var w = dc.getWidth();
+        var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
-        dc.drawText(dc.getWidth()/2, dc.getHeight()/2,
-                    Graphics.FONT_MEDIUM, self.bled.msgstring(),
-                    Graphics.TEXT_JUSTIFY_CENTER);
-        /* */
+        if (h>50) {
+            // display state
+            var s = self.bled.msgstring();
+            dc.drawText(5, h-16,
+                    Graphics.FONT_TINY, s,
+                    Graphics.TEXT_JUSTIFY_LEFT);
+        }
+        var wt = 0;
+
+        if (w>160) {
+            wt = 50;
+        } else {
+            wt = 10;
+        }
+        var tdeg = self.bled.temperature/10.0; // in 0.1 degC
+        var st = tdeg.format("%.1f")+" °C";
+        dc.drawText(wt, h/2-10,
+                    Graphics.FONT_LARGE, st,
+                    Graphics.TEXT_JUSTIFY_LEFT);
+        if (w>110) {
+            var fh = Graphics.FONT_SMALL;
+            var hhum = self.bled.humidity; // in % RH
+            var sh = hhum.format("%d")+" %RH";
+            dc.drawText(w-20, h/2-5,
+                        fh, sh,
+                        Graphics.TEXT_JUSTIFY_RIGHT);
+        }
 
     }
 

@@ -33,13 +33,12 @@ class MyBleDelegate extends Ble.BleDelegate {
     //hidden var device as Ble.Device or Null = null;
     protected var t0 = 0;
     protected var tickValue = 0;
-    //var knownDevices = {};
+    
+    protected var valueUpdatedFlag = false;
+    public var temperature = 0; // in 0.1 degC
+    public var humidity = 0;    // in % RH
 
-    //protected var charact_read  as Ble.Characteristic or Null;
-    //protected var charact_write as Ble.Characteristic or Null; 
-
-    //protected var cnx_ok = false;
-    //protected var register_done = false;
+    
     /*
     * (2025-09-29)
     * this is still experimental, and includes a lot of code
@@ -61,10 +60,18 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.mode = MODE_NONE;
         //registerMyProfile();
     }
-
+    /*
     function needsDisplay() {
         Ui.requestUpdate();
-    }
+    }*/
+
+    public function valueUpdated() as Toybox.Lang.Boolean {
+        if (self.valueUpdatedFlag == true) {
+            self.valueUpdatedFlag = false;
+            return true;
+        }
+        return false;
+    }   
 
     function msgstring() as Toybox.Lang.String {
         var s = "Mode: ";
@@ -188,6 +195,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 mode = MODE_SCAN_REG;
                 t0 = tickValue;
                 
+
                 System.println("known device, processing data:");
                 var raw = r.getRawData();
                 System.println("  raw data" + raw);
@@ -197,7 +205,11 @@ class MyBleDelegate extends Ble.BleDelegate {
                 var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
                 var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
                         
-                
+                temperature = t;
+                humidity = h;
+                valueUpdatedFlag = true;
+
+
                 System.println("  temp=" + t/10.0
                                     + "  hum=" + h
                                     + "  flag=" + f.format("%02X"));
@@ -220,7 +232,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onScanFinished() {
-            self.needsDisplay();
+            //self.needsDisplay();
 
             // use the connectToDevice(index) function and the
             // devices in the scanResults array to continue connecting
@@ -228,13 +240,13 @@ class MyBleDelegate extends Ble.BleDelegate {
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onConnected() {
-            self.needsDisplay();
+            //self.needsDisplay();
 
         }
 
         // THIS IS A USER-OVERRIDEABLE FUNCTION
         function onDisconnected() {
-            self.needsDisplay();
+            //self.needsDisplay();
 
         }
 

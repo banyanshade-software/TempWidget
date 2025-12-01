@@ -21,7 +21,7 @@ class TempWidgetApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
-        self.mapper = new NameMapper();
+        //self.mapper = new NameMapper();
         self.bleDelegate = new MyBleDelegate(self.mapper);
     }
 
@@ -41,7 +41,7 @@ class TempWidgetApp extends Application.AppBase {
     // Return the initial view of your application here
     function getInitialView() as [Ui.Views] or [Ui.Views, Ui.InputDelegates] {
         menudelegate = new BleMenuDelegate();
-        view = new TemperatureDatafield(self.mapper, self.bleDelegate);
+        view = new TemperatureDatafield(/*self.mapper,*/ self.bleDelegate);
         return [view, menudelegate];
         //return [view];
     }
