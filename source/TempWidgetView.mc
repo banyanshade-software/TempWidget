@@ -59,11 +59,10 @@ class TemperatureDatafield extends Ui.DataField
         // have to be exact.
         bled.tick();
        
-       
+        dc.setColor(fgcolor, bgcolor);
         dc.clear();
         var w = dc.getWidth();
         var h = dc.getHeight();
-        dc.setColor(fgcolor, bgcolor);
         if (h>50) {
             // display state
             var s = self.bled.msgstring();
