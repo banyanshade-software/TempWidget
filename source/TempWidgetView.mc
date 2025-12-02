@@ -1,34 +1,27 @@
+using Toybox.Lang;
 import Toybox.Graphics;
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
-//using Toybox.BluetoothLowEnergy as Ble;
-//using Toybox.Timer;
-using Toybox.Lang;
-
-//using Toybox.Cryptography as Crypto;
 
 
 
 
 class TemperatureDatafield extends Ui.DataField
  {
-    //private var namemapper;
     private var bled;
+    private var fontheight_large;
+    private var fontheight_small;
+    private var fontheight_tiny;
+    private var temp_width;
+
     function initialize(b as MyBleDelegate) {
         DataField.initialize();
-        //namemapper = nm;
         self.bled = b;
+        fontheight_large = Graphics.getFontHeight(Graphics.FONT_LARGE);
+        fontheight_small = Graphics.getFontHeight(Graphics.FONT_SMALL);
+        fontheight_tiny  = Graphics.getFontHeight(Graphics.FONT_TINY);
     }
 
-/*
-    function timstr(){
-        var t = System.getClockTime();
-        var s = t.hour.format("%02d") + ":" 
-            + t.min.format("%02d") + ":" 
-            + t.sec.format("%02d");
-        return s;
-    }
-*/
 
 
     // Load your resources here
@@ -45,9 +38,9 @@ class TemperatureDatafield extends Ui.DataField
 
     // Update the view
     function onUpdate(dc as Dc) as Void {
-       
         // Call the parent onUpdate function to redraw the layout
         DataField.onUpdate(dc);
+
         var bgcolor = getBackgroundColor();
         var fgcolor = Graphics.COLOR_WHITE;
         if (bgcolor == Graphics.COLOR_WHITE) {
@@ -63,10 +56,46 @@ class TemperatureDatafield extends Ui.DataField
         dc.clear();
         var w = dc.getWidth();
         var h = dc.getHeight();
-        if (h>50) {
-            // display state
+        temp_width = dc.getTextWidthInPixels("-00.0 °C", Graphics.FONT_LARGE);
+
+        System.println("TempWidgetView onUpdate() w="
+            +w.format("%d")+" h="+h.format("%d")
+            +" fhl="+fontheight_large.format("%d")
+            +" twidth="+temp_width.format("%d")
+            +" fhs="+fontheight_small.format("%d")
+            +" fht="+fontheight_tiny.format("%d")
+            );
+        /*
+         * depending on field size, we will display mode below temperature
+         * and humidity over temperature or on its right side
+         * maller display will only show temperature
+         *
+         * Edge Explore 240x240
+         *    half field : w=119 h=79 fhl=36 fhs=19 fht=17
+         *    full field : w=240 h=79 fhl=36 fhs=19 fht=17
+         */
+        
+        var hright = false;
+        var hup = false;
+        var disp_status = true;
+
+        if (w>temp_width+fontheight_small*5) {
+            // we assume that fontheiught_small*5 is enought space for humidity
+            // and avoid calculating real width
+            hright = true;
+        } else if (h>fontheight_large+fontheight_tiny*2) {
+            hup = true;
+        } else if (h>fontheight_large+fontheight_tiny*1) {
+            hup = true;
+            disp_status = false;
+        } else {
+            disp_status = false;
+        }
+        if (disp_status) {
+            // display state for debugging
+            //it should be changed to something user friendly later
             var s = self.bled.msgstring();
-            dc.drawText(5, h-16,
+            dc.drawText(5, h-fontheight_tiny-1,
                     Graphics.FONT_TINY, s,
                     Graphics.TEXT_JUSTIFY_LEFT);
         }

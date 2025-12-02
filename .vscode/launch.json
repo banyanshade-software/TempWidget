@@ -9,8 +9,8 @@
             "request": "launch",
             "name": "Run App",
             "stopAtLaunch": false,
-            //"device": "${command:GetTargetDevice}"
-            "device": "edgeexplore"
+            "device": "${command:GetTargetDevice}"
+            //"device": "edgeexplore"
         },
         {
             "type": "monkeyc",

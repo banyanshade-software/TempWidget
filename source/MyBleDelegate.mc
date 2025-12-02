@@ -210,7 +210,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             if (n == null) {
                 continue; //n = "unknown";
             } 
-            System.println("got name: " + n);
+            //System.println("got name: " + n);
             if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
                 System.println("got a TP357 :" + n  + " - RSSI: " + r.getRssi());
                  
@@ -234,23 +234,21 @@ class MyBleDelegate extends Ble.BleDelegate {
                 t0 = tickValue;
                 
 
-                System.println("known device, processing data:");
+                System.println("known device, processing data");
                 var raw = r.getRawData();
-                System.println("  raw data" + raw);
-                System.println("  len=" + raw.size());
+                //System.println("  raw data" + raw);
+                //System.println("  len=" + raw.size());
                 // https://github.com/theengs/decoder/blob/development/src/devices/TPTH_json.h#L19-L25
                 var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => 20,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
                 var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                //var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
                         
                 temperature = t;
                 humidity = h;
                 valueUpdatedTick = tickValue;
 
 
-                System.println("  temp=" + t/10.0
-                                    + "  hum=" + h
-                                    + "  flag=" + f.format("%02X"));
+                //System.println("  temp=" + t/10.0  + "  hum=" + h  + "  flag=" + f.format("%02X"));
 
                  
             }
