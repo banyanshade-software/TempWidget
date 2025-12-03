@@ -8,6 +8,8 @@ using Toybox.Application.Storage as Stor;
 using Toybox.Application.Properties as Prop;
 using Toybox.Application as App;
 using Toybox.Application.Properties as Prop;
+using Toybox.System as Sys;
+using Toybox.Time as Time;
 
 // https://github.com/garmin/connectiq-apps/blob/e26454bff1ab9f9e04dce20b7f6b6d2f9cd7155c/barrels/BluetoothMeshBarrel/source/Network/MeshDelegate.mc#L39
 
@@ -33,6 +35,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     //protected var valueUpdatedFlag = false;
     protected var t0 = 0;
     protected var tickValue = 0;
+    protected var tickBase = 0;
     
     protected var valueUpdatedTick = 0;
     public var temperature = 0; // in 0.1 degC
@@ -66,7 +69,11 @@ class MyBleDelegate extends Ble.BleDelegate {
         self._mode = MODE_NONE;
 
         self.regdevname = Prop.getValue("tp357_devname");
+        self.regdevname =  "TP357 (4A0D)"; /// XXX DENIG
         System.println("restored regdevname: " + regdevname);
+
+        tickBase = Time.now().value();
+        tickValue = 0;
         //registerMyProfile();
     }
 
@@ -92,8 +99,11 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     public function valueAreValid() as Toybox.Lang.Boolean {
         if ((valueUpdatedTick>0) && (tickValue - valueUpdatedTick < 60*5)) {
+           //System.println("Valid true");
            return true;
         }
+        System.println("NOT valid tick="+tickValue.format("%d")
+            +" vut="+valueUpdatedTick.format("%d"));
         return false;
     }
 
@@ -126,12 +136,17 @@ class MyBleDelegate extends Ble.BleDelegate {
     // main entry point for FSM
     function tick() {
         //System.println("MyBleDelegate tick " + timstr());
-        tickValue++;
+        tickValue  = Time.now().value()-tickBase;
+        //tickValue++;
         switch (_mode) {
             case MODE_SCAN_LOW:
                 if (tickValue-t0 > 300) {
                     self.startScanning();
                     // this set mode and t0 too
+                    t0 = tickValue;
+                    regdevname = "";
+                    regdev = null;
+                    setMode(MODE_SCAN_NOKN);
                 }
                 break;
 
@@ -188,7 +203,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         } else {
             setMode(MODE_SCAN_NOKN);
         }
-
+        System.println("startScanning");
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
     }
 
@@ -254,7 +269,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 valueUpdatedTick = tickValue;
 
 
-                //System.println("  temp=" + t/10.0  + "  hum=" + h  + "  flag=" + f.format("%02X"));
+                System.println("  temp=" + t/10.0  + "  hum=" + h);
 
                  
             }

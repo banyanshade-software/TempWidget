@@ -17,6 +17,7 @@ class TemperatureDatafield extends Ui.DataField
     function initialize(b as MyBleDelegate) {
         DataField.initialize();
         self.bled = b;
+        //fontheight_large = Graphics.getFontAscent(Graphics.FONT_LARGE);
         fontheight_large = Graphics.getFontHeight(Graphics.FONT_LARGE);
         fontheight_small = Graphics.getFontHeight(Graphics.FONT_SMALL);
         fontheight_tiny  = Graphics.getFontHeight(Graphics.FONT_TINY);
@@ -58,13 +59,15 @@ class TemperatureDatafield extends Ui.DataField
         var h = dc.getHeight();
         temp_width = dc.getTextWidthInPixels("-00.0 °C", Graphics.FONT_LARGE);
 
-        System.println("TempWidgetView onUpdate() w="
-            +w.format("%d")+" h="+h.format("%d")
-            +" fhl="+fontheight_large.format("%d")
-            +" twidth="+temp_width.format("%d")
-            +" fhs="+fontheight_small.format("%d")
-            +" fht="+fontheight_tiny.format("%d")
-            );
+        if ((false)) {
+            System.println("TempWidgetView onUpdate() w="
+                +w.format("%d")+" h="+h.format("%d")
+                +" fhl="+fontheight_large.format("%d")
+                +" twidth="+temp_width.format("%d")
+                +" fhs="+fontheight_small.format("%d")
+                +" fht="+fontheight_tiny.format("%d")
+                );
+        }
         /*
          * depending on field size, we will display mode below temperature
          * and humidity over temperature or on its right side
