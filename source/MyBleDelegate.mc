@@ -161,6 +161,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             case MODE_SCAN_REG:
                 if (tickValue-t0 > 2*60) {
                     self.startScanning();
+                    t0 = tickValue;
                 }  
                 break;
             default:
@@ -169,6 +170,13 @@ class MyBleDelegate extends Ble.BleDelegate {
         }
     }
 
+    function forceRefresh() {
+        if (_mode == MODE_SCAN_REG) {
+            System.println("forceRefresh");
+            self.startScanning();
+            t0 = tickValue;
+        }
+    }
     public function hasRegisteredDevice() as Toybox.Lang.Boolean {
         if ((regdevname == null) || (regdevname.equals("") == true)) {
             return false;

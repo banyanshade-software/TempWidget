@@ -35,6 +35,7 @@ class TemperatureDatafield extends Ui.DataField
     // loading resources into memory.
     function onShow() as Void {
         System.println("TempWidgetView onShow() "+timstr());
+        self.bled.forceRefresh();
     }
 
     // Update the view
