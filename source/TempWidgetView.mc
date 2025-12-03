@@ -120,7 +120,7 @@ class TemperatureDatafield extends Ui.DataField
             var hh = h/2;
             if (w<200) {
                 fh = Graphics.FONT_TINY;
-                hh = 10;
+                hh = fontheight_tiny;
                 wh = w - 5;
             }
             dc.drawText(wh, hh,
@@ -133,7 +133,7 @@ class TemperatureDatafield extends Ui.DataField
         if (valid && (tdeg < 3.0)) {
             dc.setColor(Graphics.COLOR_BLUE, bgcolor);
         }
-        dc.drawText(wt, h/2-10,
+        dc.drawText(wt, h/2-fontheight_large/2,
                     Graphics.FONT_LARGE, st,
                     just);
     }

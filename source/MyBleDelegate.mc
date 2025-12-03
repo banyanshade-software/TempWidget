@@ -27,7 +27,7 @@ enum {
 class MyBleDelegate extends Ble.BleDelegate {
     protected var namemapper;
 
-    hidden var mode = MODE_NONE;
+    hidden var _mode = MODE_NONE;
     protected var regdev as Ble.ScanResult or Null = null;
     protected var regdevname as Toybox.Lang.String or Null = "";
     //protected var valueUpdatedFlag = false;
@@ -63,12 +63,18 @@ class MyBleDelegate extends Ble.BleDelegate {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
         self.namemapper = nm;
-        self.mode = MODE_NONE;
+        self._mode = MODE_NONE;
 
         self.regdevname = Prop.getValue("tp357_devname");
         System.println("restored regdevname: " + regdevname);
         //registerMyProfile();
     }
+
+    function setMode(m) {
+        System.println("mode " + _mode + " -> " + m);
+        self._mode = m;
+    }
+
     /*
     function needsDisplay() {
         Ui.requestUpdate();
@@ -93,7 +99,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     function msgstring() as Toybox.Lang.String {
         var s = "Mode: ";
-        switch (self.mode) {
+        switch (self._mode) {
             case MODE_NONE:
                 s += "NONE";
                 break;
@@ -121,7 +127,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     function tick() {
         //System.println("MyBleDelegate tick " + timstr());
         tickValue++;
-        switch (mode) {
+        switch (_mode) {
             case MODE_SCAN_LOW:
                 if (tickValue-t0 > 300) {
                     self.startScanning();
@@ -134,7 +140,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 if (tickValue-t0 > 2*60) {
                     t0 = tickValue;
                     Ble.setScanState(Ble.SCAN_STATE_OFF);
-                    mode = MODE_SCAN_LOW;
+                    setMode(MODE_SCAN_LOW);
                 }
                 break;
             case MODE_SCAN_REG:
@@ -143,7 +149,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }  
                 break;
             default:
-                System.println("ooo" + mode);
+                System.println("ooo" + _mode);
                 break;
         }
     }
@@ -178,9 +184,9 @@ class MyBleDelegate extends Ble.BleDelegate {
     {
         self.t0 = tickValue;
         if (hasRegisteredDevice()) {
-            self.mode = MODE_SCAN_KN;
+            setMode(MODE_SCAN_KN);
         } else {
-            self.mode = MODE_SCAN_NOKN;
+            setMode(MODE_SCAN_NOKN);
         }
 
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
@@ -214,7 +220,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
                 System.println("got a TP357 :" + n  + " - RSSI: " + r.getRssi());
                  
-                if (mode == MODE_SCAN_NOKN) {
+                if (_mode == MODE_SCAN_NOKN) {
                     // any TP357 can be regisetered
                     registerDevice(r, n);
                 } else {
@@ -230,7 +236,7 @@ class MyBleDelegate extends Ble.BleDelegate {
 
                 }
                 Ble.setScanState(SCAN_STATE_OFF);
-                mode = MODE_SCAN_REG;
+                setMode(MODE_SCAN_REG);
                 t0 = tickValue;
                 
 
