@@ -26,6 +26,10 @@ enum {
     
 }
 
+const DURATION_REGULAR_SCAN = 60*2; // seconds
+const DURATION_TO_LOW       = 60*3; // seconds
+const DURATION_INVALID_DATA = 60*4; // seconds
+const DURATION_LOW_SCAN     = 60*5; // seconds
 class MyBleDelegate extends Ble.BleDelegate {
     protected var namemapper;
 
@@ -98,7 +102,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     */
 
     public function valueAreValid() as Toybox.Lang.Boolean {
-        if ((valueUpdatedTick>0) && (tickValue - valueUpdatedTick < 60*5)) {
+        if ((valueUpdatedTick>0) && (tickValue - valueUpdatedTick < DURATION_INVALID_DATA)) {
            //System.println("Valid true");
            return true;
         }
@@ -140,7 +144,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         //tickValue++;
         switch (_mode) {
             case MODE_SCAN_LOW:
-                if (tickValue-t0 > 300) {
+                if (tickValue-t0 > DURATION_LOW_SCAN) {
                     self.startScanning();
                     // this set mode and t0 too
                     t0 = tickValue;
@@ -152,14 +156,14 @@ class MyBleDelegate extends Ble.BleDelegate {
 
             case MODE_SCAN_NOKN:
             case MODE_SCAN_KN:
-                if (tickValue-t0 > 2*60) {
+                if (tickValue-t0 > DURATION_TO_LOW) {
                     t0 = tickValue;
                     Ble.setScanState(Ble.SCAN_STATE_OFF);
                     setMode(MODE_SCAN_LOW);
                 }
                 break;
             case MODE_SCAN_REG:
-                if (tickValue-t0 > 2*60) {
+                if (tickValue-t0 > DURATION_TO_LOW) {
                     self.startScanning();
                     t0 = tickValue;
                 }  
