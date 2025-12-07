@@ -34,7 +34,7 @@ class TemperatureDatafield extends Ui.DataField
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() as Void {
-        System.println("TempWidgetView onShow() "+timstr());
+        System.println("TemperatureDatafield onShow() "+timstr());
         self.bled.forceRefresh();
     }
 
@@ -61,7 +61,7 @@ class TemperatureDatafield extends Ui.DataField
         temp_width = dc.getTextWidthInPixels("-00.0 °C", Graphics.FONT_LARGE);
 
         if ((false)) {
-            System.println("TempWidgetView onUpdate() w="
+            System.println("TemperatureDatafield onUpdate() w="
                 +w.format("%d")+" h="+h.format("%d")
                 +" fhl="+fontheight_large.format("%d")
                 +" twidth="+temp_width.format("%d")
@@ -146,7 +146,7 @@ class TemperatureDatafield extends Ui.DataField
     // state of this View here. This includes freeing resources from
     // memory.
     function onHide() as Void {
-            System.println("TempWidgetView onHide() "+timstr());
+            System.println("TemperatureDatafield onHide() "+timstr());
     }
 
     // Handle menu item selection actually not called ?? (2025-09-29)

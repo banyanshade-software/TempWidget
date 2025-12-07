@@ -12,7 +12,7 @@ function timstr(){
     return s;
 }
 
-class TempWidgetApp extends Application.AppBase {
+class Thermo357App extends Application.AppBase {
     hidden var bleDelegate;
     hidden var mapper;
     hidden var view;
@@ -27,7 +27,7 @@ class TempWidgetApp extends Application.AppBase {
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
-        System.println("TempWidgetApp onStart() "+timstr());
+        System.println("Thermo357App onStart() "+timstr());
         Ble.setDelegate(self.bleDelegate);
         // 2025-09-30 on station without BLE dongle, startScanning() 
         // would crash the app. For debug/dev we may turn it off.
@@ -48,6 +48,6 @@ class TempWidgetApp extends Application.AppBase {
 
 }
 
-function getApp() as TempWidgetApp {
-    return Application.getApp() as TempWidgetApp;
+function getApp() as Thermo357App {
+    return Application.getApp() as Thermo357App;
 }
