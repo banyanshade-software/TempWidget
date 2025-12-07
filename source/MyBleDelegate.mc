@@ -76,8 +76,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         self.regdevname =  "TP357 (4A0D)"; /// XXX DENIG
         System.println("restored regdevname: " + regdevname);
 
-        tickBase = Time.now().value();
-        tickValue = 0;
+        tickBase = Time.now().value()-1;
+        tickValue = 1; // value 0 reserved for uninitialized
         //registerMyProfile();
     }
 
@@ -281,8 +281,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 valueUpdatedTick = tickValue;
 
 
-                System.println("  temp=" + t/10.0  + "  hum=" + h);
-
+                System.println("  temp=" + t/10.0  + "  hum=" + h + " vut=" + valueUpdatedTick);
                  
             }
         }
