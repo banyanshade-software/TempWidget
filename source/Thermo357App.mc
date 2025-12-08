@@ -13,25 +13,44 @@ function timstr(){
 }
 
 class Thermo357App extends Application.AppBase {
-    hidden var bleDelegate;
-    hidden var mapper;
-    hidden var view;
-    hidden var menudelegate;
+    protected var bleDelegate;
+    //hidden var mapper;
+    protected var view;
+    protected var menudelegate;
+    protected var bleSupported as Lang.Boolean;
 
 
     function initialize() {
         AppBase.initialize();
-        //self.mapper = new NameMapper();
-        self.bleDelegate = new MyBleDelegate(self.mapper);
+        var deviceSettings = System.getDeviceSettings();
+        var apiLevel = deviceSettings.monkeyVersion;
+        System.println("Thermo357App initialize() API level: " + apiLevel);
+
+        // Try to check if the module is available
+
+        if (Toybox has :BluetoothLowEnergy) {
+            self.bleSupported = true;
+            //self.mapper = new NameMapper();
+            var t = new MyBleDelegate();
+            self.bleDelegate  = t;
+        } else {
+            self.bleSupported = false;
+            var t = new DummyBleDelegate();
+            self.bleDelegate  = t;
+        }
+        System.println("BLE Module Available: " + bleSupported);
     }
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
         System.println("Thermo357App onStart() "+timstr());
-        Ble.setDelegate(self.bleDelegate);
-        // 2025-09-30 on station without BLE dongle, startScanning() 
-        // would crash the app. For debug/dev we may turn it off.
-        if ((1)) { self.bleDelegate.startScanning(); }
+        if (self.bleSupported) {
+            //self.mapper.initialize();
+            Ble.setDelegate(self.bleDelegate);
+            // 2025-09-30 on station without BLE dongle, startScanning() 
+            // would crash the app. For debug/dev we may turn it off.
+            if ((1)) { self.bleDelegate.startScanning(); }
+        }
     }
 
     // onStop() is called when your application is exiting

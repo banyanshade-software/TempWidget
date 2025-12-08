@@ -118,7 +118,7 @@ class TemperatureDatafield extends Ui.DataField
       
         if (w>110) {
             var fh = Graphics.FONT_SMALL;
-            var hhum = self.bled.humidity; // in % RH
+            var hhum = valid ? self.bled.humidity : 0; // in % RH
             var sh = (valid ? hhum.format("%d") : "--" ) +" %RH";
             var wh = w - 20;
             var hh = h/2;
@@ -131,9 +131,12 @@ class TemperatureDatafield extends Ui.DataField
                         fh, sh,
                         Graphics.TEXT_JUSTIFY_RIGHT);
         }
-        var tdeg = self.bled.temperature/10.0; // in 0.1 degC
+        var tdeg = valid ? self.bled.temperature/10.0 : 0; // in 0.1 degC
         //tdeg = -18.1; // for test
         var st = (valid ? tdeg.format("%.1f") : "--") +" °C";
+        if (!valid &&  bled.isFake()) {
+            st = "No BLE"; 
+        }
         if (valid && (tdeg < 3.0)) {
             dc.setColor(Graphics.COLOR_BLUE, bgcolor);
         }

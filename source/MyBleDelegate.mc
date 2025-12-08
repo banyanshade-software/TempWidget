@@ -30,8 +30,11 @@ const DURATION_REGULAR_SCAN = 60*2; // seconds
 const DURATION_TO_LOW       = 60*3; // seconds
 const DURATION_INVALID_DATA = 60*4; // seconds
 const DURATION_LOW_SCAN     = 60*5; // seconds
+
+
+
 class MyBleDelegate extends Ble.BleDelegate {
-    protected var namemapper;
+    //protected var namemapper;
 
     hidden var _mode = MODE_NONE;
     protected var regdev as Ble.ScanResult or Null = null;
@@ -66,10 +69,10 @@ class MyBleDelegate extends Ble.BleDelegate {
     * be refactored 
     */ 
 
-    function initialize(nm) {
+    function initialize() {
         System.println("MyBleDelegate init");
         BleDelegate.initialize();
-        self.namemapper = nm;
+        //self.namemapper = nm;
         self._mode = MODE_NONE;
 
         self.regdevname = Prop.getValue("tp357_devname");
@@ -173,7 +176,9 @@ class MyBleDelegate extends Ble.BleDelegate {
                 break;
         }
     }
-
+    function isFake() as Toybox.Lang.Boolean {
+        return false;
+    }   
     function forceRefresh() {
         if (_mode == MODE_SCAN_REG) {
             System.println("forceRefresh");
