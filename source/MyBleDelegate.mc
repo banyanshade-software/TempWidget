@@ -220,7 +220,7 @@ class MyBleDelegate extends Ble.BleDelegate {
         } else {
             setMode(MODE_SCAN_NOKN);
         }
-        System.println("startScanning");
+        debug_prt("startScanning", null);
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
     }
 
@@ -236,7 +236,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     // https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L4
 
     function onScanResults(iterator) {
-        System.println("MyBleDelegate onScanResults "+timstr());
+        debug_prt("MyBleDelegate onScanResults", null);
         //var need = false;
         for (;;) {
             var scanResult = iterator.next(); // as Ble.ScanResult;
@@ -250,7 +250,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             } 
             //System.println("got name: " + n);
             if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
-                System.println("got a TP357 :" + n  + " - RSSI: " + r.getRssi());
+                debug_prt("got a TP357 :" + n  + " - RSSI: " + r.getRssi(), null);
                  
                 if (_mode == MODE_SCAN_NOKN) {
                     // any TP357 can be regisetered
@@ -272,7 +272,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 t0 = tickValue;
                 
 
-                System.println("known device, processing data");
+                debug_prt("known device, processing data", null);
                 var raw = r.getRawData();
                 //System.println("  raw data" + raw);
                 //System.println("  len=" + raw.size());
@@ -286,7 +286,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                 valueUpdatedTick = tickValue;
 
 
-                System.println("  temp=" + t/10.0  + "  hum=" + h + " vut=" + valueUpdatedTick);
+                debug_prt("  temp=" + t/10.0  + "  hum=" + h + " vut=" + valueUpdatedTick, null);
                  
             }
         }

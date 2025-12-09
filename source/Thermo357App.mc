@@ -4,13 +4,31 @@ using Toybox.WatchUi as Ui;
 using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.System as System;  
 
-function timstr(){
+function _timstr(){
     var t = System.getClockTime();
     var s = t.hour.format("%02d") + ":" 
         + t.min.format("%02d") + ":" 
         + t.sec.format("%02d");
     return s;
 }
+
+// see https://github.com/blueacorn/Infocal/blob/87783573a84487bfd2d1f09cacf266a5b05ebbe4/source/utils/Debug.mc#L4
+
+(:debug)
+public function debug_prt(format as String, params as Object or Array or Null) as Void {
+    var s = _timstr();
+    System.print(s + " ");
+    if (params instanceof Array) {
+        System.println(Lang.format(format, params));
+    } else {
+        System.println(Lang.format(format, [params]));
+    }
+}
+(:release)
+public function debug_prt(format as String, params as Object or Array or Null) as Void {
+    // do nothing
+}   
+
 
 class Thermo357App extends Application.AppBase {
     protected var bleDelegate;
@@ -24,7 +42,7 @@ class Thermo357App extends Application.AppBase {
         AppBase.initialize();
         var deviceSettings = System.getDeviceSettings();
         var apiLevel = deviceSettings.monkeyVersion;
-        System.println("Thermo357App initialize() API level: " + apiLevel);
+        debug_prt("Thermo357App initialize() API level: " + apiLevel, null);
 
         // Try to check if the module is available
 
@@ -38,12 +56,12 @@ class Thermo357App extends Application.AppBase {
             var t = new DummyBleDelegate();
             self.bleDelegate  = t;
         }
-        System.println("BLE Module Available: " + bleSupported);
+        debug_prt("BLE Module Available: " + bleSupported, null);
     }
 
     // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
-        System.println("Thermo357App onStart() "+timstr());
+        debug_prt("Thermo357App onStart()", null);
         if (self.bleSupported) {
             //self.mapper.initialize();
             Ble.setDelegate(self.bleDelegate);
