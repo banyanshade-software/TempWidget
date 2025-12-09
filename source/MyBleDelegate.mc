@@ -84,9 +84,21 @@ class MyBleDelegate extends Ble.BleDelegate {
         //registerMyProfile();
     }
 
+    function modestr(m) as Toybox.Lang.String {
+        switch (m) {
+            case MODE_NONE:      return "NONE";
+            case MODE_SCAN_KN:   return "SCAN_KN";
+            case MODE_SCAN_NOKN: return "SCAN_NOKN";
+            case MODE_SCAN_REG:  return "SCAN_REG";
+            case MODE_SCAN_LOW:  return "SCAN_LOW";
+            default:             return "UNKNOWN";
+        }
+    }
     function setMode(m) {
-        System.println("mode " + _mode + " -> " + m);
+        debug_prt("mode "+ modestr(_mode) + " -> " + modestr(m)
+            +" t0=" + t0 + " tick=" + tickValue, null); 
         self._mode = m;
+        t0 = tickValue;
     }
 
     /*
@@ -160,7 +172,8 @@ class MyBleDelegate extends Ble.BleDelegate {
             case MODE_SCAN_NOKN:
             case MODE_SCAN_KN:
                 if (tickValue-t0 > DURATION_TO_LOW) {
-                    t0 = tickValue;
+                    debug_prt("Going to LOW SCAN mode, t0=" + t0 
+                            + " tick=" + tickValue, null);
                     Ble.setScanState(Ble.SCAN_STATE_OFF);
                     setMode(MODE_SCAN_LOW);
                 }
@@ -168,7 +181,6 @@ class MyBleDelegate extends Ble.BleDelegate {
             case MODE_SCAN_REG:
                 if (tickValue-t0 > DURATION_TO_LOW) {
                     self.startScanning();
-                    t0 = tickValue;
                 }  
                 break;
             default:
@@ -181,9 +193,9 @@ class MyBleDelegate extends Ble.BleDelegate {
     }   
     function forceRefresh() {
         if (_mode == MODE_SCAN_REG) {
-            System.println("forceRefresh");
+            debug_prt("forceRefresh", null);
+            tickValue  = Time.now().value()-tickBase;
             self.startScanning();
-            t0 = tickValue;
         }
     }
     public function hasRegisteredDevice() as Toybox.Lang.Boolean {
@@ -214,13 +226,12 @@ class MyBleDelegate extends Ble.BleDelegate {
 
     function startScanning() 
     {
-        self.t0 = tickValue;
+        debug_prt("startScanning", null);
         if (hasRegisteredDevice()) {
             setMode(MODE_SCAN_KN);
         } else {
             setMode(MODE_SCAN_NOKN);
         }
-        debug_prt("startScanning", null);
         Ble.setScanState(Ble.SCAN_STATE_SCANNING);
     }
 
@@ -269,7 +280,6 @@ class MyBleDelegate extends Ble.BleDelegate {
                 }
                 Ble.setScanState(SCAN_STATE_OFF);
                 setMode(MODE_SCAN_REG);
-                t0 = tickValue;
                 
 
                 debug_prt("known device, processing data", null);
