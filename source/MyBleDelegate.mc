@@ -121,8 +121,8 @@ class MyBleDelegate extends Ble.BleDelegate {
            //System.println("Valid true");
            return true;
         }
-        System.println("NOT valid tick="+tickValue.format("%d")
-            +" vut="+valueUpdatedTick.format("%d"));
+       debug_prt("NOT valid tick="+tickValue.format("%d")
+            +" vut="+valueUpdatedTick.format("%d"), NULL);
         return false;
     }
 
@@ -259,7 +259,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             if (n == null) {
                 continue; //n = "unknown";
             } 
-            //System.println("got name: " + n);
+            debug_prt("got name: " + n, NULL);
             if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
                 debug_prt("got a TP357 :" + n  + " - RSSI: " + r.getRssi(), null);
                  
