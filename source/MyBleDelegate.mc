@@ -39,6 +39,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     hidden var _mode = MODE_NONE;
     protected var regdev as Ble.ScanResult or Null = null;
     protected var regdevname as Toybox.Lang.String or Null = "";
+    protected var tempDtaOffset = -1; // to be determined on first data packet
     //protected var valueUpdatedFlag = false;
     protected var t0 = 0;
     protected var tickValue = 0;
@@ -76,7 +77,8 @@ class MyBleDelegate extends Ble.BleDelegate {
         self._mode = MODE_NONE;
 
         self.regdevname = Prop.getValue("tp357_devname");
-        self.regdevname =  "TP357 (4A0D)"; /// XXX DENIG
+        //self.regdevname =  "TP357 (4A0D)"; /// XXX DENIG
+        tempDtaOffset = -1;
         System.println("restored regdevname: " + regdevname);
 
         tickBase = Time.now().value()-1;
@@ -122,7 +124,7 @@ class MyBleDelegate extends Ble.BleDelegate {
            return true;
         }
        debug_prt("NOT valid tick="+tickValue.format("%d")
-            +" vut="+valueUpdatedTick.format("%d"), NULL);
+            +" vut="+valueUpdatedTick.format("%d"), null);
         return false;
     }
 
@@ -165,6 +167,7 @@ class MyBleDelegate extends Ble.BleDelegate {
                     t0 = tickValue;
                     regdevname = "";
                     regdev = null;
+                    tempDtaOffset = -1;
                     setMode(MODE_SCAN_NOKN);
                 }
                 break;
@@ -204,6 +207,18 @@ class MyBleDelegate extends Ble.BleDelegate {
         }
         return true;
     }
+    public function getDtaOffset() as Lang.Integer {
+        if (regdevname == null) {
+            return 20;
+        }
+        if  (regdevname.substring(0,5).equals("TP357")) {
+            return 20;
+        } else if (regdevname.substring(0,6).equals("TP351S")) {
+            return 21;
+        } else {
+            return 20; // default
+        }
+    }
 
     public function registerDevice(r as Ble.ScanResult, n as Toybox.Lang.String) {
         if (r != regdev) {
@@ -212,6 +227,7 @@ class MyBleDelegate extends Ble.BleDelegate {
             if (n != regdevname) {
                 regdevname = n;
                 Prop.setValue("tp357_devname", regdevname);
+                tempDtaOffset = -1; // to be determined on first data packet
             }
         }
     }
@@ -259,9 +275,11 @@ class MyBleDelegate extends Ble.BleDelegate {
             if (n == null) {
                 continue; //n = "unknown";
             } 
-            debug_prt("got name: " + n, NULL);
-            if ((n.length() >= 5) &&  n.substring(0, 5).equals("TP357")) {
-                debug_prt("got a TP357 :" + n  + " - RSSI: " + r.getRssi(), null);
+            debug_prt("got name: " + n, null);
+            if ((n.length() >= 5) &&  
+                 (  n.substring(0, 5).equals("TP357")
+                 || n.substring(0, 6).equals("TP351S"))) {
+                debug_prt("got a TP35x :" + n  + " - RSSI: " + r.getRssi(), null);
                  
                 if (_mode == MODE_SCAN_NOKN) {
                     // any TP357 can be regisetered
@@ -284,13 +302,23 @@ class MyBleDelegate extends Ble.BleDelegate {
 
                 debug_prt("known device, processing data", null);
                 var raw = r.getRawData();
-                //System.println("  raw data" + raw);
-                //System.println("  len=" + raw.size());
+                
+                System.println("  raw data" + raw);
+                System.println("  len=" + raw.size());
+                if (tempDtaOffset<0) {
+                    tempDtaOffset = getDtaOffset();
+                    debug_prt(" determined data offset: " + tempDtaOffset, null);
+                }
+                // TP351S : len 27
+                // raw data[2, 1, 6, 14, 8, 84, 80, 51, 53, 49, 83, 32, 40, 65, 54, 70, 50, 41, 8, 255, 194, 155, 0, 56, 34, 51, 1]
+                //21
                 // https://github.com/theengs/decoder/blob/development/src/devices/TPTH_json.h#L19-L25
-                var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => 20,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
+               
+                var t = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_SINT16, { :offset => tempDtaOffset,     :endianness => Toybox.Lang.ENDIAN_LITTLE });
+                var h = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => tempDtaOffset+2,   :endianness => Toybox.Lang.ENDIAN_LITTLE });
                 //var f = raw.decodeNumber(Toybox.Lang.NUMBER_FORMAT_UINT8,  { :offset => 20+2+1, :endianness => Toybox.Lang.ENDIAN_LITTLE });
-                        
+
+
                 temperature = t;
                 humidity = h;
                 valueUpdatedTick = tickValue;
