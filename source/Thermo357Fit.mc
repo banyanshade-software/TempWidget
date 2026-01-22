@@ -3,61 +3,82 @@ using Toybox.FitContributor as Fit;
 
 // see https://github.com/garmin/connectiq-apps for reference on FitContributor
 
-const HEART_RATE_FIELD_RECORD_ID = 0;
-const HEART_RATE_FIELD_SESSION_MIN_ID = 1;
-const HEART_RATE_FIELD_SESSION_MAX_ID = 2;
-const HEART_RATE_FIELD_SESSION_AVG_ID = 3;
-const HEART_RATE_FIELD_LAP_MIN_ID = 4;
-const HEART_RATE_FIELD_LAP_MAX_ID = 5;
-const HEART_RATE_FIELD_LAP_AVG_ID = 6;
+const TEMPERATURE_FIELD_RECORD_ID = 0;
+const TEMPERATURE_NATIVE_NUM_RECORD_MESG = 3;
 
-const HEART_RATE_NATIVE_NUM_RECORD_MESG = 3;
+/*
+const TEMPERATURE_FIELD_SESSION_MIN_ID = 1;
+const TEMPERATURE_FIELD_SESSION_MAX_ID = 2;
+const TEMPERATURE_FIELD_SESSION_AVG_ID = 3;
+const TEMPERATURE_FIELD_LAP_MIN_ID = 4;
+const TEMPERATURE_FIELD_LAP_MAX_ID = 5;
+const TEMPERATURE_FIELD_LAP_AVG_ID = 6;
 
-const HEART_RATE_NATIVE_NUM_SESSION_MIN_MESG = 64;
-const HEART_RATE_NATIVE_NUM_SESSION_MAX_MESG = 17;
-const HEART_RATE_NATIVE_NUM_SESSION_AVG_MESG = 16;
 
-const HEART_RATE_NATIVE_NUM_LAP_MIN_MESG = 63;
-const HEART_RATE_NATIVE_NUM_LAP_MAX_MESG = 16;
-const HEART_RATE_NATIVE_NUM_LAP_AVG_MESG = 15;
+const TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG = 64;
+const TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG = 17;
+const TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG = 16;
 
-const HEART_RATE_UNITS = "BPM";
+const TEMPERATURE_NATIVE_NUM_LAP_MIN_MESG = 63;
+const TEMPERATURE_NATIVE_NUM_LAP_MAX_MESG = 16;
+const TEMPERATURE_NATIVE_NUM_LAP_AVG_MESG = 15;
+*/
+const TEMPERATURE_UNITS = "°C";
 
-class FitContributions {
+class Thermo357Fit {
 
- function initialize(dataField) {
-       /*
-        mHeartRateRecordField = dataField.createField("heart_rate", HEART_RATE_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>HEART_RATE_UNITS });
+    protected var mTemperatureRecordField;
+    /*protected var mMinTemperatureSessionField;
+    protected var mMaxTemperatureSessionField;
+    protected var mAvgTemperatureSessionField;
+    protected var mMinTemperatureLapField;
+    protected var mMaxTemperatureLapField;
+    protected var mAvgTemperatureLapField;*/
+    
+	protected var mTimerRunning = false;
+	protected var mSessionStats;
+	protected var mLapStats;
+
+    function initialize(dataField) {
+
+       
+        mTemperatureRecordField = dataField.createField("temperature", 
+          TEMPERATURE_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, 
+          { :nativeNum=>TEMPERATURE_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>TEMPERATURE_UNITS });
         
-        mMinHeartRateSessionField = dataField.createField("min_heart_rate", HEART_RATE_FIELD_SESSION_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_SESSION_MIN_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>HEART_RATE_UNITS });
-        mMaxHeartRateSessionField = dataField.createField("max_heart_rate", HEART_RATE_FIELD_SESSION_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_SESSION_MAX_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>HEART_RATE_UNITS });
-        mAvgHeartRateSessionField = dataField.createField("avg_heart_rate", HEART_RATE_FIELD_SESSION_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_SESSION_AVG_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>HEART_RATE_UNITS });
+        /*
+        mMinTemperatureSessionField = dataField.createField("min_temperature", TEMPERATURE_FIELD_SESSION_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
+        mMaxTemperatureSessionField = dataField.createField("max_temperature", TEMPERATURE_FIELD_SESSION_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
+        mAvgTemperatureSessionField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_SESSION_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
         
-        mMinHeartRateLapField = dataField.createField("min_heart_rate", HEART_RATE_FIELD_LAP_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_LAP_MIN_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>HEART_RATE_UNITS });
-        mMaxHeartRateLapField = dataField.createField("max_heart_rate", HEART_RATE_FIELD_LAP_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_LAP_MAX_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>HEART_RATE_UNITS });
-        mAvgHeartRateLapField = dataField.createField("avg_heart_rate", HEART_RATE_FIELD_LAP_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>HEART_RATE_NATIVE_NUM_LAP_AVG_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>HEART_RATE_UNITS });
+        mMinTemperatureLapField = dataField.createField("min_temperature", TEMPERATURE_FIELD_LAP_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MIN_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
+        mMaxTemperatureLapField = dataField.createField("max_temperature", TEMPERATURE_FIELD_LAP_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MAX_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
+        mAvgTemperatureLapField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_LAP_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_AVG_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
 
 		mSessionStats = new MinMaxAvg(false);
 		mLapStats = new MinMaxAvg(false);
         */
     }
 
-/*
-    function setHeartRateData(heartrate) {
-    	mHeartRateRecordField.setData(heartrate > 0 ? heartrate : 0xFF);
+
+    function setTemperatureData(temp10) {
+        debug_prt("Thermo357Fit.setTemperatureData: " + temp10/10.0 + " °C", null);
+    	mTemperatureRecordField.setData(temp10/10.0);
     	
+        /*
     	if(mTimerRunning) {
     		mSessionStats.setData(heartrate);
     		mLapStats.setData(heartrate);
     		
-			mMinHeartRateSessionField.setData(mSessionStats.min());
-			mMaxHeartRateSessionField.setData(mSessionStats.max());
-			mAvgHeartRateSessionField.setData(mSessionStats.avg());
+			mMinTemperatureSessionField.setData(mSessionStats.min());
+			mMaxTemperatureSessionField.setData(mSessionStats.max());
+			mAvgTemperatureSessionField.setData(mSessionStats.avg());
 			
-			mMinHeartRateLapField.setData(mSessionStats.min());
-			mMaxHeartRateLapField.setData(mSessionStats.max());
-			mAvgHeartRateLapField.setData(mSessionStats.avg());
+			mMinTemperatureLapField.setData(mSessionStats.min());
+			mMaxTemperatureLapField.setData(mSessionStats.max());
+			mAvgTemperatureLapField.setData(mSessionStats.avg());
     	}
+        */
     }
     function onNextMultisportLeg() {
     	mSessionStats.reset();
@@ -88,5 +109,5 @@ class FitContributions {
     function onTimerStop() {
         mTimerRunning = false;
     }
-    */ 
+
 }

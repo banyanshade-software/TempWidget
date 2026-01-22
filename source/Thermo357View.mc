@@ -5,7 +5,6 @@ using Toybox.Graphics;
 
 
 
-
 class TemperatureDatafield extends Ui.DataField
  {
     private var bled;
@@ -14,11 +13,19 @@ class TemperatureDatafield extends Ui.DataField
     private var fontheight_tiny;
     private var temp_width;
 
+    private var fit as Thermo357Fit or Null;
+
     function initialize(b as MyBleDelegate) {
         DataField.initialize();
         self.bled = b;
-        //fontheight_large = Graphics.getFontAscent(Graphics.FONT_LARGE);
-        fontheight_large = Graphics.getFontHeight(Graphics.FONT_LARGE);
+        
+        self.fit = new Thermo357Fit(self);
+
+
+        fontheight_large = Graphics.getFontAscent(Graphics.FONT_LARGE);
+        //fontheight_large = Graphics.getFontHeight(Graphics.FONT_SYSTEM_NUMBER_HOT);
+        // see https://github.com/buessow/garmin/blob/6e1570fadb1e5057faed5a6fd4269eca87e59abe/GlucoseDataField/source/GlucoseDataFieldView.mc#L340
+
         fontheight_small = Graphics.getFontHeight(Graphics.FONT_SMALL);
         fontheight_tiny  = Graphics.getFontHeight(Graphics.FONT_TINY);
     }
@@ -106,6 +113,7 @@ class TemperatureDatafield extends Ui.DataField
         var valid = false;
         if (self.bled.valueAreValid()) {
             valid = true;
+            fit.setTemperatureData(self.bled.temperature);
         }
         var wt = 0;
         var just = Graphics.TEXT_JUSTIFY_LEFT;
@@ -133,7 +141,7 @@ class TemperatureDatafield extends Ui.DataField
         }
         var tdeg = valid ? self.bled.temperature/10.0 : 0; // in 0.1 degC
         //tdeg = -18.1; // for test
-        var st = (valid ? tdeg.format("%.1f") : "--") +" °C";
+        var st = (valid ? tdeg.format("%.1f") : "--") + "°C";
         if (!valid &&  bled.isFake()) {
             st = "No BLE"; 
         }
@@ -143,6 +151,7 @@ class TemperatureDatafield extends Ui.DataField
         dc.drawText(wt, h/2-fontheight_large/2,
                     Graphics.FONT_LARGE, st,
                     just);
+        
     }
 
     // Called when this View is removed from the screen. Save the
@@ -160,4 +169,35 @@ class TemperatureDatafield extends Ui.DataField
             // Handle settings action
         }
     }
+
+
+
+    function onNextMultisportLeg() {
+    	fit.onNextMultisportLeg();
+    }
+    
+    function onTimerLap() {
+    	fit.onTimerLap();
+    }
+    
+    function onTimerReset() {
+    	fit.onTimerReset();
+    }
+    
+    function onTimerPause() {
+    	fit.onTimerPause();
+    }
+    
+    function onTimerResume() {
+    	fit.onTimerResume();
+    }
+    
+    function onTimerStart() {
+    	fit.onTimerStart();
+    }
+    
+    function onTimerStop() {
+    	fit.onTimerStop();
+    }
+
 }
