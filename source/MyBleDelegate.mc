@@ -263,7 +263,7 @@ class MyBleDelegate extends Ble.BleDelegate {
     // https://github.com/pedasmith/BluetoothDeviceController/blob/6883b70da7852fa4c70dede47af628a72baff380/BluetoothDeviceController/Assets/CharacteristicsData/ThermoPro_TP357_Temperature.json#L4
 
     function onScanResults(iterator) {
-        debug_prt("MyBleDelegate onScanResults", null);
+        //debug_prt("MyBleDelegate onScanResults", null);
         //var need = false;
         for (;;) {
             var scanResult = iterator.next(); // as Ble.ScanResult;

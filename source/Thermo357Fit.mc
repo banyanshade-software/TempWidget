@@ -45,6 +45,8 @@ class Thermo357Fit {
         mTemperatureRecordField = dataField.createField("temperature", 
           TEMPERATURE_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, 
           { :nativeNum=>TEMPERATURE_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>TEMPERATURE_UNITS });
+        debug_prt("Thermo357Fit field: " + mTemperatureRecordField, null);
+
         
         /*
         mMinTemperatureSessionField = dataField.createField("min_temperature", TEMPERATURE_FIELD_SESSION_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
@@ -79,6 +81,14 @@ class Thermo357Fit {
 			mAvgTemperatureLapField.setData(mSessionStats.avg());
     	}
         */
+    }
+    function onStart() {
+    	mTimerRunning = false;
+    	mSessionStats = new MinMaxAvg(false);
+    	mLapStats = new MinMaxAvg(false);
+    }
+    function onStop()  {
+        
     }
     function onNextMultisportLeg() {
     	mSessionStats.reset();
