@@ -36,8 +36,8 @@ class Thermo357Fit {
     protected var mAvgTemperatureLapField;*/
     
 	protected var mTimerRunning = false;
-	protected var mSessionStats;
-	protected var mLapStats;
+	//protected var mSessionStats;
+	//protected var mLapStats;
 
     function initialize(dataField) {
 
@@ -64,7 +64,7 @@ class Thermo357Fit {
 
 
     function setTemperatureData(temp10) {
-        debug_prt("Thermo357Fit.setTemperatureData: " + temp10/10.0 + " °C", null);
+        //debug_prt("Thermo357Fit.setTemperatureData: " + temp10/10.0 + " °C", null);
     	mTemperatureRecordField.setData(temp10/10.0);
     	
         /*
@@ -84,24 +84,24 @@ class Thermo357Fit {
     }
     function onStart() {
     	mTimerRunning = false;
-    	mSessionStats = new MinMaxAvg(false);
-    	mLapStats = new MinMaxAvg(false);
+    	//mSessionStats = new MinMaxAvg(false);
+    	//mLapStats = new MinMaxAvg(false);
     }
     function onStop()  {
         
     }
     function onNextMultisportLeg() {
-    	mSessionStats.reset();
-    	mLapStats.reset();
+    	//mSessionStats.reset();
+    	//mLapStats.reset();
     }
 
     function onTimerLap() {
-    	mLapStats.reset();
+    	//mLapStats.reset();
     }
     
     function onTimerReset() {
-    	mSessionStats.reset();
-    	mLapStats.reset();
+    	//mSessionStats.reset();
+    	//mLapStats.reset();
     }
     
     function onTimerPause() {
