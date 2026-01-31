@@ -2,21 +2,47 @@
 <!-- see https://github.com/ydutertre/myvario/blob/ec983f5f7ec76ece5ae5bf21692dbf3432a654d7/resources/fit.xml for instance -->
 <fitContributions>
 
-  <!-- record -->
-  <fitField id="0"
+<!-- record -->
+<fitField id="0"
             displayInChart="true"
-            sortOrder="1"
+            sortOrder="0"
             precision="1"
             chartTitle="@Strings.titleTemperature"
             dataLabel="@Strings.labelTemperature"
             unitLabel="@Strings.unitTemperature"
-            fillColor="#FF0000" />
+            fillColor="#FF8020" />
 
   <!-- session (here for ex) -->
-  <fitField id="80"
+<fitField id="80"
             displayInActivitySummary="true"
             sortOrder="80"
-            dataLabel="@Strings.titleTemperature"
+            dataLabel="@Strings.minTemperature"
+            unitLabel="@Strings.unitTemperature" />
+<fitField id="81"
+            displayInActivitySummary="true"
+            sortOrder="81"
+            dataLabel="@Strings.maxTemperature"
+            unitLabel="@Strings.unitTemperature" />
+<fitField id="82"
+            displayInActivitySummary="true"
+            sortOrder="82"
+            dataLabel="@Strings.avgTemperature"
             unitLabel="@Strings.unitTemperature" />
 
+<!-- lap (here for ex) -->
+<fitField id="83"
+            displayInActivityLaps="true"
+            sortOrder="83"
+            dataLabel="@Strings.minTemperature"
+            unitLabel="@Strings.unitTemperature" />
+<fitField id="84"
+            displayInActivityLaps="true"
+            sortOrder="84"
+            dataLabel="@Strings.maxTemperature"
+            unitLabel="@Strings.unitTemperature" />
+<fitField id="85"
+            displayInActivityLaps="true"
+            sortOrder="85"
+            dataLabel="@Strings.avgTemperature"
+            unitLabel="@Strings.unitTemperature" />
 </fitContributions>

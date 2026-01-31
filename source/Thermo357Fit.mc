@@ -6,18 +6,18 @@ using Toybox.FitContributor as Fit;
 const TEMPERATURE_FIELD_RECORD_ID = 0;
 const TEMPERATURE_NATIVE_NUM_RECORD_MESG = 3;
 
+
+const TEMPERATURE_FIELD_SESSION_MIN_ID = 80;
+const TEMPERATURE_FIELD_SESSION_MAX_ID = 81;
+const TEMPERATURE_FIELD_SESSION_AVG_ID = 82;
+const TEMPERATURE_FIELD_LAP_MIN_ID = 83;
+const TEMPERATURE_FIELD_LAP_MAX_ID = 84;
+const TEMPERATURE_FIELD_LAP_AVG_ID = 85;
+
 /*
-const TEMPERATURE_FIELD_SESSION_MIN_ID = 1;
-const TEMPERATURE_FIELD_SESSION_MAX_ID = 2;
-const TEMPERATURE_FIELD_SESSION_AVG_ID = 3;
-const TEMPERATURE_FIELD_LAP_MIN_ID = 4;
-const TEMPERATURE_FIELD_LAP_MAX_ID = 5;
-const TEMPERATURE_FIELD_LAP_AVG_ID = 6;
-
-
-const TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG = 64;
-const TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG = 17;
-const TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG = 16;
+const TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG = 86;
+const TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG = 87;
+const TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG = 88;
 
 const TEMPERATURE_NATIVE_NUM_LAP_MIN_MESG = 63;
 const TEMPERATURE_NATIVE_NUM_LAP_MAX_MESG = 16;
@@ -28,16 +28,16 @@ const TEMPERATURE_UNITS = "°C";
 class Thermo357Fit {
 
     protected var mTemperatureRecordField;
-    /*protected var mMinTemperatureSessionField;
+    protected var mMinTemperatureSessionField;
     protected var mMaxTemperatureSessionField;
     protected var mAvgTemperatureSessionField;
     protected var mMinTemperatureLapField;
     protected var mMaxTemperatureLapField;
-    protected var mAvgTemperatureLapField;*/
+    protected var mAvgTemperatureLapField;
     
 	protected var mTimerRunning = false;
-	//protected var mSessionStats;
-	//protected var mLapStats;
+	protected var mSessionStats;
+	protected var mLapStats;
 
     function initialize(dataField) {
 
@@ -48,75 +48,85 @@ class Thermo357Fit {
         debug_prt("Thermo357Fit field: " + mTemperatureRecordField, null);
 
         
-        /*
-        mMinTemperatureSessionField = dataField.createField("min_temperature", TEMPERATURE_FIELD_SESSION_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
-        mMaxTemperatureSessionField = dataField.createField("max_temperature", TEMPERATURE_FIELD_SESSION_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
-        mAvgTemperatureSessionField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_SESSION_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
+        /* session */
+        mSessionStats = new MinMaxAvg(false);
+        mMinTemperatureSessionField = dataField.createField("min_temperature", TEMPERATURE_FIELD_SESSION_MIN_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MIN_MESG,*/ :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
+        mMaxTemperatureSessionField = dataField.createField("max_temperature", TEMPERATURE_FIELD_SESSION_MAX_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_MAX_MESG,*/ :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
+        mAvgTemperatureSessionField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_SESSION_AVG_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_SESSION_AVG_MESG,*/ :mesgType=>Fit.MESG_TYPE_SESSION, :units=>TEMPERATURE_UNITS });
         
-        mMinTemperatureLapField = dataField.createField("min_temperature", TEMPERATURE_FIELD_LAP_MIN_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MIN_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
-        mMaxTemperatureLapField = dataField.createField("max_temperature", TEMPERATURE_FIELD_LAP_MAX_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MAX_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
-        mAvgTemperatureLapField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_LAP_AVG_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_AVG_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
+        /* lap */
+        mLapStats = new MinMaxAvg(false);
+        mMinTemperatureLapField = dataField.createField("min_temperature", TEMPERATURE_FIELD_LAP_MIN_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MIN_MESG,*/ :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
+        mMaxTemperatureLapField = dataField.createField("max_temperature", TEMPERATURE_FIELD_LAP_MAX_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_MAX_MESG,*/ :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
+        mAvgTemperatureLapField = dataField.createField("avg_temperature", TEMPERATURE_FIELD_LAP_AVG_ID, Fit.DATA_TYPE_FLOAT, { /*:nativeNum=>TEMPERATURE_NATIVE_NUM_LAP_AVG_MESG,*/ :mesgType=>Fit.MESG_TYPE_LAP, :units=>TEMPERATURE_UNITS });
 
-		mSessionStats = new MinMaxAvg(false);
-		mLapStats = new MinMaxAvg(false);
-        */
+        
     }
 
 
     function setTemperatureData(temp10) {
         //debug_prt("Thermo357Fit.setTemperatureData: " + temp10/10.0 + " °C", null);
-    	mTemperatureRecordField.setData(temp10/10.0);
+        var ftemp = temp10/10.0;
+    	mTemperatureRecordField.setData(ftemp);
     	
-        /*
+        
     	if(mTimerRunning) {
-    		mSessionStats.setData(heartrate);
-    		mLapStats.setData(heartrate);
+    		mSessionStats.setData(ftemp);
+    		mLapStats.setData(ftemp);
     		
 			mMinTemperatureSessionField.setData(mSessionStats.min());
 			mMaxTemperatureSessionField.setData(mSessionStats.max());
 			mAvgTemperatureSessionField.setData(mSessionStats.avg());
 			
-			mMinTemperatureLapField.setData(mSessionStats.min());
-			mMaxTemperatureLapField.setData(mSessionStats.max());
-			mAvgTemperatureLapField.setData(mSessionStats.avg());
+			mMinTemperatureLapField.setData(mLapStats.min());
+			mMaxTemperatureLapField.setData(mLapStats.max());
+			mAvgTemperatureLapField.setData(mLapStats.avg());
     	}
-        */
     }
     function onStart() {
+        debug_prt("fit onStart", null);
     	mTimerRunning = false;
-    	//mSessionStats = new MinMaxAvg(false);
-    	//mLapStats = new MinMaxAvg(false);
+    	mSessionStats = new MinMaxAvg(false);
+    	mLapStats = new MinMaxAvg(false);
     }
     function onStop()  {
-        
+        debug_prt("fit onStop", null);
     }
     function onNextMultisportLeg() {
-    	//mSessionStats.reset();
-    	//mLapStats.reset();
+        // ???
+        debug_prt("fit onNextMultisportLeg", null);
+    	mSessionStats.reset();
+    	mLapStats.reset();
     }
 
     function onTimerLap() {
-    	//mLapStats.reset();
+        debug_prt("fit onTimerLap", null);
+    	mLapStats.reset();
     }
     
     function onTimerReset() {
-    	//mSessionStats.reset();
-    	//mLapStats.reset();
+        debug_prt("fit onTimerReset", null);
+    	mSessionStats.reset();
+    	mLapStats.reset();
     }
     
     function onTimerPause() {
+        debug_prt("fit onTimerPause", null);
     	mTimerRunning = false;
     }
     
     function onTimerResume() {
+        debug_prt("fit onTimerResume", null);
         mTimerRunning = true;
     }
     
     function onTimerStart() {
+        debug_prt("fit onTimerStart", null);
         mTimerRunning = true;
     }
 
     function onTimerStop() {
+        debug_prt("fit onTimerStop", null);
         mTimerRunning = false;
     }
 

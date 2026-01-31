@@ -12,6 +12,9 @@
     <string id="kdevPrompt">kdevPrompt</string>
 
     <string id="titleTemperature">Temperature</string>
+    <string id="maxTemperature">Temperature Max</string>
+    <string id="minTemperature">Temperature Min</string>
+    <string id="avgTemperature">Temperature Avg</string>
     <string id="labelTemperature">Temp°C</string>
     <string id="unitTemperature">°C</string>
     
