@@ -1,0 +1,22 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<!-- see https://github.com/ydutertre/myvario/blob/ec983f5f7ec76ece5ae5bf21692dbf3432a654d7/resources/fit.xml for instance -->
+<fitContributions>
+
+  <!-- record -->
+  <fitField id="0"
+            displayInChart="true"
+            sortOrder="1"
+            precision="1"
+            chartTitle="@Strings.titleTemperature"
+            dataLabel="@Strings.labelTemperature"
+            unitLabel="@Strings.unitTemperature"
+            fillColor="#FF0000" />
+
+  <!-- session (here for ex) -->
+  <fitField id="80"
+            displayInActivitySummary="true"
+            sortOrder="80"
+            dataLabel="@Strings.titleTemperature"
+            unitLabel="@Strings.unitTemperature" />
+
+</fitContributions>

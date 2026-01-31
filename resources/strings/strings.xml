@@ -10,5 +10,9 @@
     <string id="kdev">kdev</string>
     <string id="kdevTitle">kdevTitle</string>
     <string id="kdevPrompt">kdevPrompt</string>
+
+    <string id="titleTemperature">Temperature</string>
+    <string id="labelTemperature">Temp°C</string>
+    <string id="unitTemperature">°C</string>
     
 </strings>
