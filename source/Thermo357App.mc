@@ -46,7 +46,11 @@ class Thermo357App extends Application.AppBase {
 
         // Try to check if the module is available
 
-        if (Toybox has :BluetoothLowEnergy) {
+        if (true) {
+            self.bleSupported = false;
+            var t = new DummyBleDelegateDemo();
+            self.bleDelegate  = t;        
+        } else if (Toybox has :BluetoothLowEnergy) {
             self.bleSupported = true;
             //self.mapper = new NameMapper();
             var t = new MyBleDelegate();
