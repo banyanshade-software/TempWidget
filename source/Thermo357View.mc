@@ -21,7 +21,6 @@ class TemperatureDatafield extends Ui.DataField
         
         self.fit = new Thermo357Fit(self);
 
-
         fontheight_large = Graphics.getFontAscent(Graphics.FONT_LARGE);
         //fontheight_large = Graphics.getFontHeight(Graphics.FONT_SYSTEM_NUMBER_HOT);
         // see https://github.com/buessow/garmin/blob/6e1570fadb1e5057faed5a6fd4269eca87e59abe/GlucoseDataField/source/GlucoseDataFieldView.mc#L340

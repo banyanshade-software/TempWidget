@@ -5,7 +5,7 @@ using Toybox.Lang;
 
 
 class DummyBleDelegate {
-    public var temperature = 182; // in 0.1 degC
+    public var temperature = -182; // in 0.1 degC
     public var humidity = 52;    // in % RH
 
     function initialize() {
