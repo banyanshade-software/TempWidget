@@ -109,15 +109,8 @@ class TemperatureDatafield extends Ui.DataField
             disp_status = false;
         }
 
-        if ((false)) {
-            debug_prt("TemperatureDatafield onUpdate() w="
-                +w.format("%d")+" h="+h.format("%d")
-                +" fhl="+fontheight_large.format("%d")
-                +" twidth="+width_temp.format("%d")
-                +" fhs="+fontheight_small.format("%d")
-                +" fht="+fontheight_tiny.format("%d"), null
-                );
-        }
+        
+        
         if (true) {
             // display temperature
             var valid = false;
@@ -135,7 +128,10 @@ class TemperatureDatafield extends Ui.DataField
                 dc.setColor(Graphics.COLOR_BLUE, bgcolor);
             }
             var x = w/10 + width_temp; 
-            var y = font_large;
+            var y = h/10; // + fontheight_large;
+            if (!disp_wide && disp_hum) {
+                y += h/10 + fontheight_small;
+            }
 
             dc.drawText(x, y, 
                     font_large, st,
