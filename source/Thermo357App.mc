@@ -46,7 +46,7 @@ class Thermo357App extends Application.AppBase {
 
         // Try to check if the module is available
 
-        if (true) {
+        if (false) {
             self.bleSupported = false;
             var t = new DummyBleDelegateDemo();
             self.bleDelegate  = t;        
