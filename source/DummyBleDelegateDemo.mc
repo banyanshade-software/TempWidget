@@ -8,6 +8,9 @@ class DummyBleDelegateDemo extends DummyBleDelegate {
 
     private var tk = 0;
 
+    function initialize() {
+        DummyBleDelegate.initialize();
+    }
     public function valueAreValid() as Toybox.Lang.Boolean {
         return true;
     }
