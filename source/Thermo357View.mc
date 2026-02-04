@@ -4,9 +4,10 @@ using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
 
 const font_large = Graphics.FONT_SYSTEM_LARGE;
-const font_small = Graphics.FONT_SYSTEM_SMALL;
+//const font_small = Graphics.FONT_SYSTEM_SMALL;
+const font_small = Graphics.FONT_SMALL;
 const font_tiny = Graphics.FONT_SYSTEM_TINY;
-const font_xtiny = Graphics.FONT_SYSTEM_XTINY;
+//const font_xtiny = Graphics.FONT_SYSTEM_XTINY;
 
 
 class TemperatureDatafield extends Ui.DataField
@@ -15,16 +16,24 @@ class TemperatureDatafield extends Ui.DataField
     private var fontheight_large;
     private var fontheight_small;
     private var fontheight_tiny;
-    private var fontheight_xtiny;
+    //private var fontheight_xtiny;
 
     private var width_temp;
     private var width_hum;
 
     private var fit as Thermo357Fit or Null;
+    protected var temp_only = false as Lang.Boolean;
 
     function initialize(b as MyBleDelegate) {
         DataField.initialize();
         self.bled = b;
+
+        var deviceSettings = System.getDeviceSettings();
+        var screenShape = deviceSettings.screenShape;
+        debug_prt("screenShape="+screenShape, null);
+        if (screenShape == System.SCREEN_SHAPE_ROUND) { 
+            temp_only = true;
+        }
         
         self.fit = new Thermo357Fit(self);
 
@@ -34,7 +43,7 @@ class TemperatureDatafield extends Ui.DataField
 
         fontheight_small = Graphics.getFontHeight(font_small);
         fontheight_tiny  = Graphics.getFontHeight(font_tiny);
-        fontheight_xtiny  = Graphics.getFontHeight(font_xtiny);
+        //fontheight_xtiny  = Graphics.getFontHeight(font_xtiny);
     }
 
 
@@ -71,6 +80,11 @@ class TemperatureDatafield extends Ui.DataField
         dc.setColor(fgcolor, bgcolor);
         dc.clear();
 
+        var valid = false;
+        if (self.bled.valueAreValid()) {
+            valid = true;
+            fit.setTemperatureData(self.bled.temperature);
+        }
 
         /*
         calculate or update setup
@@ -86,61 +100,102 @@ class TemperatureDatafield extends Ui.DataField
         var w = dc.getWidth();
         var h = dc.getHeight();
         width_temp = dc.getTextWidthInPixels("-00.0 °C", font_large);
-        width_hum = dc.getTextWidthInPixels("100 %RH", font_large);
         var disp_wide = false as Lang.Boolean;
         var disp_hum = false as Lang.Boolean;
         var disp_status = false as Lang.Boolean;
+
         var fh = fontheight_large;
-        if ((width_temp+width_hum)*1.3 <= w) {
-            disp_wide = true;
-            disp_hum = true;
-        } else {
-            disp_wide = false;
-            if (h >= (fontheight_large+font_small)*1.3) {
+
+        var space_vert =  h - fontheight_large;
+        var space_horiz = 0;
+        var n_vert = 1;
+        var n_horiz = 1;
+
+        if (!temp_only) {
+            width_hum = dc.getTextWidthInPixels("100 %RH", font_small);
+            if ((width_temp+width_hum)*1.2 <= w) {
+                disp_wide = true;
                 disp_hum = true;
-                fh += fontheight_small;
+                space_horiz = w - width_temp - width_hum;
+                n_horiz++;
             } else {
-                disp_hum = false;
+                disp_wide = false;
+                space_horiz = w - width_temp;
+                if (h >= (fontheight_large+font_small)*1.3) {
+                    n_vert++;
+                    disp_hum = true;
+                    fh += fontheight_small;
+                    space_vert -= fontheight_small;
+                } else {
+                    disp_hum = false;
+                }
             }
         }
-        if (h>fh*1.2) {
+        if (true && !temp_only && (h>fh*1.2)) {
             disp_status = true;
+            space_vert -= fontheight_tiny;
+            n_vert++;
         } else {
             disp_status = false;
         }
 
         
-        
-        if (true) {
-            // display temperature
-            var valid = false;
-            if (self.bled.valueAreValid()) {
-                valid = true;
-                fit.setTemperatureData(self.bled.temperature);
+        var x = 0;
+        var y = 0;
+        var sep_h = space_vert / (n_vert+1);
+        var sep_w = space_horiz / (n_horiz+1);
+        debug_prt("h="+h+" fh="+fh+" space_vert="+space_vert+" n_vert="+n_vert+" sep_h="+sep_h, null);
+        if (disp_hum) {
+            // display humidity
+            var hhum = valid ? self.bled.humidity : 0; // in % RH
+            var sh = (valid ? hhum.format("%d") : "--" ) +" %RH";
+
+            if (disp_wide) {
+                x = w - sep_w - width_hum;
+                y = sep_h + fontheight_large - fontheight_small;
+            } else {
+                x = sep_w;
+                y = sep_h;
             }
+            dc.drawText(x, y, 
+                    font_small, sh,
+                    Graphics.TEXT_JUSTIFY_LEFT);
+            
+        }
+         if (true) {
+            // display temperature
+            
             var tdeg = valid ? self.bled.temperature/10.0 : 0; // in 0.1 degC
             var st = (valid ? tdeg.format("%.1f") : "--") + "°C";
 
             if (!valid &&  bled.isFake()) {
                 st = "No BLE";
             }
-            if (valid && (tdeg < 3.0)) {
-                dc.setColor(Graphics.COLOR_BLUE, bgcolor);
+            if (valid && (tdeg <= 0.0)) {
+                dc.setColor(Graphics.COLOR_DK_BLUE, bgcolor);
             }
-            var x = w/10 + width_temp; 
-            var y = h/10; // + fontheight_large;
-            if (!disp_wide && disp_hum) {
-                y += h/10 + fontheight_small;
+            x = sep_w + width_temp; 
+            //y += sep_h; // + fontheight_large;
+            if (disp_wide) {
+                y = sep_h; 
+            } else {
+                y = sep_h + fontheight_small;
             }
-
             dc.drawText(x, y, 
                     font_large, st,
                     Graphics.TEXT_JUSTIFY_RIGHT);
         }
-    
-        if (disp_status) {
 
+        if (disp_status) {
+            x = sep_w;
+            y = h - sep_h - fontheight_tiny;
+            var s = self.bled.msgstring();
+            dc.drawText(x, y,
+                    font_tiny, s,
+                    Graphics.TEXT_JUSTIFY_LEFT);
         }
+       
+       
         return;
         /*
          * depending on field size, we will display mode below temperature
