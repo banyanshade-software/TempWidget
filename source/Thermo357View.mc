@@ -37,12 +37,12 @@ class TemperatureDatafield extends Ui.DataField
         
         self.fit = new Thermo357Fit(self);
 
-        // fontheight_large = Graphics.getFontAscent(font_large);
-        fontheight_large = Graphics.getFontHeight(font_large);
+        fontheight_large = Graphics.getFontAscent(font_large);
+        // fontheight_large = Graphics.getFontHeight(font_large);
         // see https://github.com/buessow/garmin/blob/6e1570fadb1e5057faed5a6fd4269eca87e59abe/GlucoseDataField/source/GlucoseDataFieldView.mc#L340
 
-        fontheight_small = Graphics.getFontHeight(font_small);
-        fontheight_tiny  = Graphics.getFontHeight(font_tiny);
+        fontheight_small = Graphics.getFontAscent(font_small);
+        fontheight_tiny  = Graphics.getFontAscent(font_tiny);
         //fontheight_xtiny  = Graphics.getFontHeight(font_xtiny);
     }
 
@@ -60,7 +60,9 @@ class TemperatureDatafield extends Ui.DataField
         debug_prt("TemperatureDatafield onShow()", null);
         self.bled.forceRefresh();
     }
-
+    function compute(info as $.Toybox.Activity.Info) {
+            debug_prt("TemperatureDatafield compute()", null);
+    }
     // Update the view
     function onUpdate(dc as Dc) as Void {
         // Call the parent onUpdate function to redraw the layout
@@ -100,6 +102,8 @@ class TemperatureDatafield extends Ui.DataField
         var w = dc.getWidth();
         var h = dc.getHeight();
         width_temp = dc.getTextWidthInPixels("-00.0 °C", font_large);
+        var t = dc.getTextDimensions("-00.0 °C", font_large);
+        debug_prt("width_temp="+t[0]+" height_temp="+t[1]+ " font_height="+fontheight_large, null);
         var disp_wide = false as Lang.Boolean;
         var disp_hum = false as Lang.Boolean;
         var disp_status = false as Lang.Boolean;
@@ -148,7 +152,7 @@ class TemperatureDatafield extends Ui.DataField
         if (disp_hum) {
             // display humidity
             var hhum = valid ? self.bled.humidity : 0; // in % RH
-            var sh = (valid ? hhum.format("%d") : "--" ) +" %RH";
+            var sh = (valid ? hhum.format("%d") : "--" ) +" %RH" ;
 
             if (disp_wide) {
                 x = w - sep_w - width_hum;
@@ -166,7 +170,7 @@ class TemperatureDatafield extends Ui.DataField
             // display temperature
             
             var tdeg = valid ? self.bled.temperature/10.0 : 0; // in 0.1 degC
-            var st = (valid ? tdeg.format("%.1f") : "--") + "°C";
+            var st = (valid ? tdeg.format("%.1f") : "--") + "°C" ;
 
             if (!valid &&  bled.isFake()) {
                 st = "No BLE";
@@ -194,7 +198,12 @@ class TemperatureDatafield extends Ui.DataField
                     font_tiny, s,
                     Graphics.TEXT_JUSTIFY_LEFT);
         }
-       
+        /*
+        79 total wide   => 26 leftover for spacing => 8.66 per gap
+            36 temp
+            (19 hum)
+            17 status   
+        */       
        
         return;
         /*
