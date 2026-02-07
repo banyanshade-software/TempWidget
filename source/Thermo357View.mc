@@ -61,10 +61,11 @@ class TemperatureDatafield extends Ui.DataField
         self.bled.forceRefresh();
     }
     function compute(info as $.Toybox.Activity.Info) {
-            debug_prt("TemperatureDatafield compute()", null);
+            debug_prt("compute()", null);
     }
     // Update the view
     function onUpdate(dc as Dc) as Void {
+        debug_prt("onUpdate()", null);
         // Call the parent onUpdate function to redraw the layout
         DataField.onUpdate(dc);
 

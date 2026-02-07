@@ -3,6 +3,7 @@ import Toybox.Lang;
 using Toybox.WatchUi as Ui;
 using Toybox.BluetoothLowEnergy as Ble;
 using Toybox.System as System;  
+using Toybox.Background as Background;
 
 function _timstr(){
     var t = System.getClockTime();
@@ -37,9 +38,18 @@ class Thermo357App extends Application.AppBase {
     protected var menudelegate;
     protected var bleSupported as Lang.Boolean;
 
+    function initBackground() {
+        if (System has :ServiceDelegate) {
+            Background.registerForSleepEvent();
+            Background.registerForWakeEvent();
+            return true;
+        }
+        return false;
+    }
 
     function initialize() {
         AppBase.initialize();
+        initBackground();
         var deviceSettings = System.getDeviceSettings();
         var apiLevel = deviceSettings.monkeyVersion;
         debug_prt("Thermo357App initialize() API level: " + apiLevel, null);
