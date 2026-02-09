@@ -81,10 +81,10 @@ class Thermo357App extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [Ui.Views] or [Ui.Views, Ui.InputDelegates] {
-        menudelegate = new BleMenuDelegate();
+        //menudelegate = new BleMenuDelegate();
         view = new TemperatureDatafield(/*self.mapper,*/ self.bleDelegate);
-        return [view, menudelegate];
-        //return [view];
+        //return [view, menudelegate];
+        return [view];
     }
 
 }
